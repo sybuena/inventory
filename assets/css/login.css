@@ -1,0 +1,21 @@
+.btn-float:not(.bgm-white):not(.bgm-gray) > i {
+    color: #fff;
+    margin-top: 4px;
+}
+
+.fg-float .fg-label {
+  top: 10px;
+}
+
+.fg-float .fg-toggled .fg-label {
+  top: -20px;
+  font-size: 12px;
+}
+
+.input-group.m-b-20.top-35 {
+    margin-top: 35px;
+}
+
+div.swal-div{
+	position:absolute;
+}

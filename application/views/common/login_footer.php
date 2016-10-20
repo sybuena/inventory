@@ -1,0 +1,2 @@
+
+<?php loadAssets($js, 'js'); ?>
