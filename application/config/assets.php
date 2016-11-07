@@ -517,6 +517,42 @@ $config['salesDetail_js']   = array(
 	'/assets/js/app/salesDetail.js'
 );
 
+$config['notes_css']  = array(
+	'/assets/css/style.css',
+	'/assets/css/style-css.css',
+	$vendor.'animate.css/animate.min.css',
+	$vendor.'fullcalendar/dist/fullcalendar.min.css',
+	$vendor.'bootstrap-sweetalert/lib/sweet-alert.css',
+	$vendor.'material-design-iconic-font/dist/css/material-design-iconic-font.min.css',
+	$vendor.'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css',
+	$vendor.'eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css',
+	$vendor.'bootstrap-select/dist/css/bootstrap-select.css',
+	'/assets/vendors/select2/select2.css',
+	'/assets/vendors/bootgrid/jquery.bootgrid.min.css',
+	'/assets/font-awesome/css/font-awesome.min.css',
+	'/assets/css/app.min.1.css',
+	'/assets/css/app.min.2.css',
+);
+
+$config['notes_js']   = array(
+	$vendor.'jquery/dist/jquery.min.js',
+	$vendor.'bootstrap/dist/js/bootstrap.min.js',
+	$vendor.'moment/min/moment.min.js',
+	$vendor.'Waves/dist/waves.min.js',
+	'/assets/vendors/bootstrap-growl/bootstrap-growl.min.js',
+	$vendor.'bootstrap-sweetalert/lib/sweet-alert.min.js',
+	$vendor.'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+	$vendor.'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+	'/assets/vendors/bootgrid/jquery.bootgrid.updated.min.js',
+	'/assets/js/timer.jquery.js',
+	'/assets/vendors/select2/select2.js',
+	'/assets/js/functions.js',
+	'/assets/js/demo.js',
+	//APP JS
+	'/assets/js/app/base.js',
+	'/assets/js/app/notes.js'
+);
+
 $config['purchase_css']  = array(
 	'/assets/css/style.css',
 	'/assets/css/style-css.css',

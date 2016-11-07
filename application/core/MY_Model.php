@@ -24,6 +24,7 @@ class MY_Model extends CI_Model {
     const PURCHASE          = 'purchase';
     const INVOICE           = 'invoice';
     const QUOTE             = 'quote';
+    const NOTES             = 'notes';
 
     /* Public Properties
     -------------------------------*/

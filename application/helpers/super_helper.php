@@ -1,5 +1,92 @@
 <?php //-->
 
+function getOrgImage($data) {
+
+    if(!isset($data['image']) || empty($data['image'])) {
+        return '/assets/img/default_avatar_org.png';
+    } 
+    if(substr($data['image'], 0, 1) != '/') {
+        $data['image'] = '/'.$data['image'];
+    }
+    
+    return $data['image'];
+}
+
+function getContactsImage($user, $size = 500, $image = true) {
+
+    //if no specific instruction for image
+    if(!isset($user['image']) || empty($user['image'])) {
+        //use the default
+        $imageLink = getGravatar($user['username'], $size, 'mm', 'g', $image);
+    }
+
+    //at this point we know there is instruction
+    if($user['image'] == 'twitter') {
+        $imageLink = getTwitterImage($user['twitter'], $size);
+        
+        if($image) {
+            $imageLink = '<img src="' .$imageLink. '" width="'.$size.'"/>';
+        }
+    } else if($user['image'] == 'email') {
+        $imageLink = 
+            '<div class="no-redirect">
+                <script src="http://www.avatarapi.com/js.aspx?email='.$user['email'].'&size=200">
+                </script>
+            </div>';   
+    } else {
+        $imageLink = getGravatar($user['username'], $size, 'mm', 'g', $image);
+    }
+
+    return $imageLink;
+}
+
+function getImage($user, $size = 500, $image = false) {
+
+    //if no specific instruction for image
+    if(!isset($user['image']) || empty($user['image'])) { 
+        //use the default
+        $imageLink = getGravatar($user['username'], $size, 'mm', 'g', $image);
+    }
+
+    //at this point we know there is instruction
+    if($user['image'] == 'twitter') {
+        $imageLink = getTwitterImage($user['twitter'], $size);
+        
+        if($image) {
+            $imageLink = '<img src="' .$imageLink. '" width="'.$size.'"/>';
+        }
+    } else if($user['image'] == 'email') {
+        $imageLink = 
+            '<div class="no-redirect">
+                <script src="http://www.avatarapi.com/js.aspx?email='.$user['username'].'&size=200">
+                </script>
+            </div>';   
+    }
+    
+    return $imageLink;
+}
+
+function getTwitterImage($screenName) {
+    return 'https://twitter.com/'.$screenName.'/profile_image?size=original';
+}
+
+function getGravatar($email, $s = 80, $d = 'identicon', $r = 'g', $img = false, $atts = array()) {
+
+    $url = 'https://www.gravatar.com/avatar/';
+    $url .= md5( strtolower( trim( $email ) ) );
+    $url .= "?s=$s&d=$d&r=$r";
+    
+    if($img) {
+        $url = '<img src="' . $url . '"';
+        foreach ( $atts as $key => $val ) {
+            $url .= ' ' . $key . '="' . $val . '"';
+        }
+        $url .= ' />';
+    }
+
+    return $url;
+}
+
 function money($num) {
     return '₱ '.decim($num);
 }
@@ -95,7 +182,27 @@ function loginData() {
     $user = $CI->session->userdata('has_login');
     
     if(isset($user) && !empty($user)){
-       return $user;
+        if(empty($user['image'])) {
+            $user['image'] =  getImage($user);
+        } else {
+            $backslash = substr($user['image'], 0, 1);
+            //if link has no backslash in first instance
+            if($backslash != '/') {
+                //we add one
+                $user['image'] =  '/'.$user['image'];
+            }
+        }
+
+        $user['user_role'] = 'Administrator';
+        
+        if(isset($user['organization']) || !empty($user['organization'])) {
+            foreach($user['organization'] as $v) {
+                if($v['role'] == 2) {
+                    $user['user_role'] = 'Accountant';
+                }
+            }
+        }
+        return $user;
     }
 
     return null;

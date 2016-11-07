@@ -37,10 +37,6 @@
 	        </ul>
 	    </li>
 
-	   	<!-- <li class="logo pull-right">
-	    	<a href="#" id="support">Support</a>
-	   	</li> -->
-	</ul>
 
 	<!-- Top Search Content -->
 	<div id="top-search-wrap">
@@ -50,5 +46,3 @@
 	    </div>
 	</div>
 </header>
-
-<?php include(APPPATH.'/views/main-record-call-modal.php'); ?>

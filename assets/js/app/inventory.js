@@ -200,6 +200,8 @@ function addItem(table) {
 		);
 
 		$('#add-inventory-modal').modal('show');
+		
+		return false;
 	});
 
 	//save

@@ -1,6 +1,6 @@
 (function() {
 
-	getList('all');
+	//getList('all');
     searchList();
     searchDashboard();
     replyToTicket();

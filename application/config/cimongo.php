@@ -13,8 +13,8 @@ if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
 	$config['pass'] = '';
 //LIVE 1011
 } else {
-	$config['user'] = 'super';
-	$config['pass'] = 'f0ll0wm3d0wn2th3riv3r';
+	$config['user'] = '';
+	$config['pass'] = '';
 }
 
 /*  
