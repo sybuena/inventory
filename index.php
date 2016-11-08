@@ -1,5 +1,5 @@
 <?php
-
+echo 'dev';exit;
 /**
  * CodeIgniter
  *
