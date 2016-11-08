@@ -6,7 +6,8 @@ $config['db'] 	= 'apgars';
 
 
 $whitelist = array( '127.0.0.1', '::1', '10.0.3.249');
-
+echo '<pre>';
+print_r($_SERVER);exit;
 //detect if in localhost or dev server
 if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
 	$config['user'] = '';
