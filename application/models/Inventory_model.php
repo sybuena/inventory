@@ -228,11 +228,15 @@ class Inventory_model extends MY_Model {
         $row['rows'] = array();
 
         foreach($list as $k => $v) {
+            $type = '<button class="btn bgm-blue btn-xs waves-effect">Item</button>';
+            if($v['type'] == 'service') {
+                $type = '<button class="btn bgm-red btn-xs waves-effect">Service</button>';
+            }
             $row['rows'][$k] = array( 
                 'id'        => $v['_id']->{'$id'},
                 'code'      => $v['code'],
                 'name'      => $v['name'],
-                'type'      => ucfirst($v['type']),
+                'type'      => $type,
                 'category'  => isset($v['category']['name']) ? $v['category']['name'] : '<i>None</i>',
                 'cost'      => isset($v['cost']) && !empty($v['cost']) ? number_format($v['cost'], 2) : '0.00',
                 'sales'     => isset($v['sales']) && !empty($v['sales']) ? number_format($v['sales'], 2) : '0.00',

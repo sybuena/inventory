@@ -8,6 +8,12 @@
 	    <div class="container">
 	        <div class="block-header">
 	            <h2>Settings</h2>
+                <ol class="breadcrumb breadcrums2">
+                    <li><a href="/app">Home</a></li>
+                    <li class="active" id="main-list-breadcrums">
+                        Settings
+                    </li>
+                </ol>
 	        </div>
 
 	        <div class="row">

@@ -326,6 +326,19 @@ function getList(type, table) {
 	    selection 		: true,
         multiSelect 	: true,
         keepSelection 	: true,
+        formatters 	 	: {
+            name_format 	: function(column, row) {
+            	if(row['code'] != '') {
+	                return '<p>'+row['name']+
+	                '<br><small style="font-weight: 300;">#'+row['code']+'</small><p>';
+	                       
+            	} else {
+            		return '<p>'+row['name']+
+	                '<br><small style="font-weight: 300;"></small><p>';
+	                    
+            	}
+            },
+        }
     //after the ajax is finish
     }).on('loaded.rs.jquery.bootgrid', function (e){
     	//count result

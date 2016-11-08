@@ -35,11 +35,25 @@ th[data-column-id="image"] {
             
             <div class="card m-b-0" id="messages-main">
                 <div class="ms-menu">
-                   <!--  <div class="ms-block">
+                    <div class="ms-block">
+                        <div class="dropdown">
+                            <button class="btn btn-primary bgm-black btn-block" id="add-group-show">
+                                Add Contact Group
+                            </button>
+                        </div>
+                    </div>
+                    <br/>
+                    
+                    <div class="listview lv-user customer-group-list">
+                    </div>
+
+                </div>
+                <!-- <div class="ms-menu">
+                    <div class="ms-block">
                         <div class="ms-user">
                             <div>Use grouping to sort or categorize customer accourding to what you need</div>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="listview lv-user">
                         <a class="lv-item media active" id="all">
                             <div class="media-body">
@@ -61,7 +75,7 @@ th[data-column-id="image"] {
                             </div>
                         </a>
                     </div>
-                    <!-- <div class="ms-block">
+                    <div class="ms-block">
                         <div class="dropdown">
                             <button class="btn btn-primary bgm-black" id="add-group-show">Add New Group</button>
                         </div>
@@ -69,10 +83,10 @@ th[data-column-id="image"] {
                     <br/>
                     
                     <div class="listview lv-user customer-group-list">
-                    </div> -->
+                    </div>
 
                     
-                </div>
+                </div> -->
                 <div class="ms-body">
                     <div class="lv-header-alt clearfix m-b-5">
                         <h2 class="lvh-label hidden-xs"><span id="crm-table-list-total">19,453</span> Record(s)</h2>

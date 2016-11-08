@@ -103,17 +103,15 @@ function secondsToTime($seconds) {
 
 function showImage($info) {
     if(!isset($info['image'])) {
-
-        $name = substr($info['first_name'], 0, 1).substr($info['last_name'], 0, 1);
-        $color = 'bgm-red';
-        if(isset($info['gender'])) {
-            if($info['gender'] == 'Female') {
-                $color = 'bgm-cyan';
-            } else if($info['gender'] == 'Other') {
-                $color = 'bgm-pink';
-            }
+        $explode = explode(' ', $info['company_name']);
+        $name = '';
+        foreach($explode as $v) {
+            $name .= substr($v, 0, 1);
         }
-
+        
+       // $name = substr($info['first_name'], 0, 1).substr($info['last_name'], 0, 1);
+        $color = 'bgm-red';
+       
         return '<div class="lv-avatar '.$color.' pull-left" style="margin-left:0px">'.$name.'</div>';   
     } else {
         return ' <img src="'.$info['image'].'" alt="'.$info['name'].'">';

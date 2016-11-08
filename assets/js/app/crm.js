@@ -4,10 +4,15 @@
 	addGroup();
 	getCustomerGroup();
 	
-
 })();
 
+/**
+ * Customer listing
+ * 
+ * @return this
+ */
 function getCustomerGroup() {
+
 	var url = '/customer/listing/getGroupList/';
 	var A_HTML = 
 	'<a href="#" class="list-group-item [ACTIVE]" id="[ID]">'+
@@ -56,36 +61,34 @@ function getCustomerGroup() {
 	);
 }
 
-
+/**
+ * Create new group for customer
+ *
+ * @return this
+ */
 function addGroup() {
+	var name 		= $('#add-group-name');
+	var description = $('#add-group-description');
+
 	$('#add-group-show').unbind('click').bind('click', function() {
 		$('#customer-group-add-modal').modal('show');
 
-		$('#add-group-name').val('').parent().removeClass('has-error');
-		$('#add-group-description').val('').parent().removeClass('has-error');
+		name.val('').parent().removeClass('has-error');
+		description.val('').parent().removeClass('has-error');
 		$('#add-group-error').addClass('hide');
 	});
 
 	$('#add-group-save').unbind('click').bind('click', function() {
 		var error 		= false;
-		var name 		= $('#add-group-name');
-		var description = $('#add-group-description');
 
 		$('#add-group-name').parent().removeClass('has-error');
 		$('#add-group-description').parent().removeClass('has-error');
 		$('#add-group-error').addClass('hide');
 
 		//now check for empty fields
-		if(name.val() == '') {
-			$('#add-group-name').parent().addClass('has-error');
-			error = true;
-		}
-
-		if(description.val() == '') {
-			$('#add-group-description').parent().addClass('has-error');
-			error = true;
-		}
-
+		(name.val() == '') ? (error = helper.hasError(name, 1, '')) : helper.noError(name, 1);
+		(description.val() == '') ? (error = helper.hasError(description, 1, '')) : helper.noError(description, 1);
+		
 		//if no empty fields
 		if(!error) {
 			//show some loading
@@ -136,7 +139,7 @@ function addContacts() {
 	//basic info
 	var companyName 	= $(addCustomer+'company-name');
 	var accountNumber 	= $(addCustomer+'account-number');
-	var group 			= $(addCustomer+'account-group');
+	var group 			= $(addCustomer+'group');
 	//primary person
 	var firstname 	= $(addCustomer+'firstname');
 	var lastname 	= $(addCustomer+'lastname');
@@ -263,6 +266,7 @@ function addContacts() {
 				'website' 	: website.val(),
 			}
 
+			
 			//and add now
 			base.
 				setUrl(url).
@@ -301,6 +305,7 @@ function getCustomerList(type) {
 		bootgridAction(table).
 		bootgridDelete(table, '/customer/listing/delete/');
 
+	$(table).bootgrid('destroy');
 	$(table).bootgrid({
 		navigation : 2,
     	css     : base.icon,

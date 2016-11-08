@@ -35,10 +35,10 @@
                     <div class="col-sm-6">
                         <h4 class="contact-modal-title">Basic Information</h4>
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-12">
                                 <div class="form-group">    
                                     <label>Name <span class="required-text">*</span></label>
-                                    <input type="text" class="form-control fg-input" id="add-inventory-name" placeholder="Item or Product Name">
+                                    <input type="text" class="form-control fg-input" id="add-inventory-name" placeholder="What should we call this inventory Item/ Service ?">
                                 </div>
                             </div>
 
@@ -46,10 +46,9 @@
                                 <div class="form-group">    
                                     <label>Type <span class="required-text">*</span></label>
                                     <select class="form-control fg-input" id="add-inventory-type">
-                                        <option value="0">Select Item...</option>
+                                        <option value="0">Select Item</option>
                                         <option value="item">Item</option>
                                         <option value="service">Service</option>
-                                        <option value="others">Others</option>
                                     </select>
                                 </div>
                             </div>
@@ -57,7 +56,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">    
                                     <label>Code</label> <span class="required-text">*</span></label>
-                                    <input type="text" class="form-control fg-input" id="add-inventory-code" placeholder="Code indicator of this item">
+                                    <input type="text" class="form-control fg-input" id="add-inventory-code" placeholder="Code indicator of form this inventory">
                                 </div>
                             </div>
 
@@ -70,10 +69,17 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-6">
+                                <div class="form-group">    
+                                    <label>Location </label>
+                                    <input type="text" class="form-control fg-input" id="add-inventory-name" placeholder="Inventory Location">
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <div class="form-group">    
                                     <label>Description</label> </label>
-                                    <textarea class="form-control fg-input" id="add-inventory-description" placeholder="Short description of this item..."></textarea>
+                                    <textarea rows="5" class="form-control fg-input" id="add-inventory-description" placeholder="Tell us more about this inventory Item/Service"></textarea>
                                 </div>
                             </div>
 

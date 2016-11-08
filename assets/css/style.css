@@ -432,7 +432,7 @@ fieldset[disabled] .form-control {
 }
 
 .pagination > .active > a, .pagination > .active > span, .pagination > .active > a:hover, .pagination > .active > span:hover, .pagination > .active > a:focus, .pagination > .active > span:focus {
-    background-color: #ffc107!important;
+    background-color:#2196f3!important;
 }
 
 .btn-info {
