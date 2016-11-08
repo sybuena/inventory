@@ -2,20 +2,16 @@
 
 $config['host'] = 'localhost';
 $config['port'] = 27017;
-$config['db'] 	= 'apgars';
 
-
-$whitelist = array( '127.0.0.1', '::1', '10.0.3.249');
-echo '<pre>';
-print_r($_SERVER);exit;
-//detect if in localhost or dev server
-if(in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
-	$config['user'] = '';
-	$config['pass'] = '';
-//LIVE 1011
+//if DEV SERVER/ DATABASE
+if($_SERVER['SERVER_NAME'] == 'dev.apgars-inventory.com') {
+	$config['db'] = 'apgars-dev';
+//for LIVE SERVER/DATABASE
+} else if($_SERVER['SERVER_NAME'] == 'apgars-inventory.com') {
+	$config['db'] = 'apgars-live';
+//else DEFAULT LOCAL
 } else {
-	$config['user'] = '';
-	$config['pass'] = '';
+	$config['db'] = 'apgars';
 }
 
 /*  
