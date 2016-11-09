@@ -29,7 +29,7 @@ th[data-column-id="image"] {
 	            <h2>Inventory List</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
-                    <li class="active">Contact List</li>
+                    <li class="active">Inventory List</li>
                 </ol>
 	            
             </div>
@@ -70,7 +70,7 @@ th[data-column-id="image"] {
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="" id="inventory-add-modal"
+                                <a href="/inventory/import" class=""
                                     data-toggle="tooltip" 
                                     data-placement="right" 
                                     data-original-title="Import"

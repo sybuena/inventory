@@ -19,80 +19,44 @@
             </div>
 	      
             <div class="card">
-                <div class="card-header ch-alt">
-                    &nbsp   
-                    <ul class="lv-actions actions">
-                        <li>
-                            <a class="inventory-delete" inventory-id="<?=$id;?>">
-                                <i class="zmdi zmdi-delete"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="card-body card-padding form-horizontal">
-                    <div class="row m-b-25">
-                        <div class="contact-info-field">
-                            
-                            <div class="form-group m-b-20">
-                                <label class="col-sm-3 control-label textlabel">
-                                    Code <span class="required-text">*</span>
-                                </label>
-                                <div class="col-sm-3">
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" id="inventory-code" value="<?=$inventory['code']; ?>">
-                                    </div>
-                                </div>
-                                <label class="col-sm-1 control-label textlabel">
-                                    Name <span class="required-text">*</span>
-                                </label>
-                                <div class="col-sm-4">
-                                    <div class="fg-line">
-                                        <input type="text" class="form-control" id="inventory-name" value="<?=$inventory['name']; ?>">
-                                    </div>
-                                </div>
-                                <span class="col-sm-1"></span>
-                            </div>
+                <ul class="tab-nav tn-justified">
+                    <li class="waves-effect active">
+                        <a href="#detail-about" data-toggle="tab" aria-expanded="false">
+                            Detail
+                        </a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="#detail-sales-log" data-toggle="tab" aria-expanded="true">
+                            Sales Transaction
+                        </a>
+                    </li>
 
-                            <div class="form-group m-b-20">
-                                <label class="col-sm-3 control-label textlabel">
-                                    Type <span class="required-text">*</span>
-                                </label>
-                                <div class="col-sm-3">
-                                    <div class="fg-line">
-                                        <select class="form-control" id="inventory-type">
-                                            <option value="item">Item</option>
-                                            <option value="service">Service</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <label class="col-sm-1 control-label textlabel">
-                                    Category
-                                </label>
-                                <div class="col-sm-4">
-                                    <div class="fg-line">
-                                        <select class="form-control" id="inventory-category">
-                                            <option value="">None</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <span class="col-sm-1"></span>
-                            </div>
+                    <li class="waves-effect">
+                        <a href="#detail-purchases-log" data-toggle="tab">
+                            Purchases Transaction
+                        </a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="#detail-notes" data-toggle="tab">
+                            Notes & Activity
+                        </a>
+                    </li>
+                </ul>
 
-                            <div class="form-group m-b-20">
-                                <label class="col-sm-3 control-label textlabel">Description</label>
-                                <div class="col-sm-8">
-                                    <div class="fg-line">
-                                        <textarea class="form-control" rows="5" id="inventory-description"><?=$inventory['description']; ?></textarea>
-                                    </div>
-                                </div>
-                                <span class="col-sm-1"></span>
-                            </div>
-
-                        </div>
+                <div class="tab-content">
+                    <div class="tab-pane card-body card-padding form-horizontal active" id="detail-about">
+                        <?php include('block/basic-information.php');?>
+                    </div>
+                    <div class="tab-pane" id="detail-sales-log">
+                        <?php include('block/sales-transaction.php');?>
+                    </div>
+                    <div class="tab-pane" id="detail-purchases-log">
+                        <?php include('block/purchase-transaction');?>
+                    </div>
+                    <div class="tab-pane" id="detail-notes">
+                        <?php include('block/activity.php');?>
                     </div>
                 </div>
-                
-                
             </div>
 	    </div>
 	</section>

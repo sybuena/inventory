@@ -93,7 +93,7 @@ function money($num) {
 
 function decim($num) {
     
-    return number_format($num, 2, '.', '');
+    return number_format($num, 2, '.', ',');
 }
 function secondsToTime($seconds) {
     $dtF = new \DateTime('@0');

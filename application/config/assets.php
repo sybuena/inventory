@@ -445,6 +445,24 @@ $config['inventory_js']   = array(
 	'/assets/js/app/inventory.js'
 );
 
+$config['inventoryImport_js']   = array(
+	$vendor.'jquery/dist/jquery.min.js',
+	$vendor.'bootstrap/dist/js/bootstrap.min.js',
+	$vendor.'moment/min/moment.min.js',
+	$vendor.'Waves/dist/waves.min.js',
+	'/assets/vendors/bootstrap-growl/bootstrap-growl.min.js',
+	$vendor.'bootstrap-sweetalert/lib/sweet-alert.min.js',
+	$vendor.'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+	$vendor.'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+	'/assets/vendors/bootgrid/jquery.bootgrid.updated.min.js',
+	'/assets/js/timer.jquery.js',
+	'/assets/js/functions.js',
+	'/assets/js/demo.js',
+	//APP JS
+	'/assets/js/app/base.js',
+	'/assets/js/app/inventoryImport.js'
+);
+
 $config['sales_css']  = array(
 	'/assets/css/style.css',
 	'/assets/css/style-css.css',
