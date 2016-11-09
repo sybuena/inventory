@@ -67,6 +67,16 @@ class Organization_model extends MY_Model {
 
         return $this;
     }
+    
+    public function update($data) {
+
+        $where = array('_id' => new MongoId(loginOrg()));
+        
+        return $this->cimongo
+            ->where($where)
+            ->update(self::ORGANIZATION, $data);
+    }
+
     /**
      * DB call to get user login
      *

@@ -150,6 +150,23 @@ class Settings extends MY_Controller {
         return $this->_returnSuccess();
     }
 
+    public function updateOrg() {
+        parent::post();
+        $_POST['updated_by']   = loginId();
+        $_POST['updated_date'] = strtotime('now');
+
+        $this->organization->update($_POST);
+
+        return $this->_returnSuccess();
+    }
+
+    public function getCurrentOrg() {
+
+        $info = $this->organization->detail2(loginOrg());
+        //pre($info);exit;
+        return $this->_returnData($info);
+    }
+
     /**
      * Get organization info
      * 

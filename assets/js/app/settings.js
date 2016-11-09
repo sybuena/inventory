@@ -41,40 +41,39 @@ function getActivity() {
 
     $('#settings-activity-list').bootgrid('reload');
 }
+
 /**
  * Invite email address to access current organization
  * 
  */
 function addMember() {
+	var email 		= $('#settings-user-email-address');
+	var firstname 	= $('#settings-user-firstname');
+	var lastname 	= $('#settings-user-lastname');
+	var role 		= $('#settings-user-role');
+
+	//unset fields
+	$('[href="#modal-add-user"]').unbind('click').bind('click', function() {
+		helper.noError(firstname, 1);
+		helper.noError(email, 1);
+		helper.noError(lastname, 1);
+		firstname.val('');
+		email.val('');
+		lastname.val('');
+
+		$('#invite-user-error-message').addClass('hide');
+	});
 
 	$('#settings-user-add-member').unbind('click').bind('click', function() {	
 		var error 		= false;
-		var email 		= $('#settings-user-email-address');
-		var firstname 	= $('#settings-user-firstname');
-		var lastname 	= $('#settings-user-lastname');
-		var role 		= $('#settings-user-role');
+	
+		(email.val() == '') ? (error = helper.hasError(email, 1)) : helper.noError(email, 1);
+		(firstname.val() == '') ? (error = helper.hasError(firstname, 1)) : helper.noError(firstname, 1);
+		(lastname.val() == '') ? (error = helper.hasError(lastname, 1)) : helper.noError(lastname, 1);
 
-		email.parent().parent().removeClass('has-error').find('small').html('');
-		firstname.parent().parent().removeClass('has-error').find('small').html('');
-		lastname.parent().parent().removeClass('has-error').find('small').html('');
-
-		if(email.val() == '') {
-			email.parent().parent().addClass('has-error').find('small').html('Required field');
-			error = true;
-		}
-
-		if(firstname.val() == '') {
-			firstname.parent().parent().addClass('has-error').find('small').html('Required field');
-			error = true;
-		}
-
-		if(lastname.val() == '') {
-			lastname.parent().parent().addClass('has-error').find('small').html('Required field');
-			error = true;
-		}
-
+		
 		if(!base.isValidEmailAddress(email.val()) && email.val() != '') {
-			email.parent().parent().addClass('has-error').find('small').html('Invalid email address');	
+			email.parent().addClass('has-error').find('small').html(' <i>Invalid email address</i>');	
 			error = true;
 		}
 
@@ -120,46 +119,56 @@ function addMember() {
 }
 
 function getMemberList() {
-	var EMPTY_HTML = 
-		'<h2 style="text-transform: uppercase;margin-top: 50px;">Oops! No Result were found</h2>'+
-        '<p>We\'re sorry, It seems as though we were not able to locate exactly what you were looking for.</p>';
+
+	var url   = '/settings/getMember/';
+    var table = '#settings-user-list';
+
+    base.bootgridAction(table)
     
-    var LOADING_HTML = 
-    '<div style="margin-top: 50px">'+
-	    '<div class="preloader pls-amber pl-xxl">'+
-	        '<svg class="pl-circular" viewBox="25 25 50 50">'+
-	            '<circle class="plc-path" cx="50" cy="50" r="20"></circle>'+
-	        '</svg>'+
-	    '</div>'+
-	    '<h4 class="to-uc">Loading Awesomeness!!</h4>'+
-    '</div>';
-
-	var url = '/settings/getMember/';
-
-    $('#settings-user-list').bootgrid({
-        navigation : 2,
-    	css: {
-            icon 		: 'zmdi icon',
-            iconDown 	: 'zmdi-caret-down',
-            iconUp	 	: 'zmdi-caret-up',
-        },
-       	labels: {
-        	noResults 	: EMPTY_HTML,
-        	loading 	: LOADING_HTML,
-    	},
+    $(table).bootgrid({
+    	css 	: base.icon,
+        labels  : base.label,
+        navigation 	 	: 2,
         ajax 		 	: true,
-	    url 		 	: url,
-	    selection 		: true,
+        selection 		: true,
         multiSelect 	: true,
         keepSelection 	: true,
+	    url 		 : url,
+	    formatters 	 : {
+	    	active 	: function(column, row) {
+            	if(row['active'] == 'Active') {
+	                return '<button class="btn bgm-blue btn-xs waves-effect">Active</button>';
+	                       
+            	} else if(row['active'] == 'Pending') {
+            		return '<button class="btn btn-warning btn-xs waves-effect">Pending</button>';
+            	}
+            },
+            last_login : function(column, row) {
+                
+                if(typeof row['last_login'] !== 'undefined') {
+                    return  moment.unix(row['last_login']).calendar();
+                } else {
+                    return '----';
+                }
+
+            }
+            
+        }
     }).on('loaded.rs.jquery.bootgrid', function(){
-    	//view member detail
-    	viewMemberDetail();
-	   	//delete member
-	   	deleteMember();
+    	var total = $(table).bootgrid('getTotalRowCount');
+    	
+    	$('#settings-user-list-count').html(total+' Record(s)');
+
+    	$('#settings-user-list td.text-left').unbind('click').bind('click', function() {
+	   		var userId = $(this).parent().data('row-id');
+	        window.location = '/userDetail/info/'+userId;
+
+	   	});	
 	});
 
-    $('#settings-user-list').bootgrid('reload');
+    $(table).bootgrid('reload');
+
+    return this;
 }
 
 function deleteMember() {
@@ -209,110 +218,115 @@ function deleteMember() {
    	});
 }
 
-function viewMemberDetail() {
-	//view detail
-   	$('#settings-user-list td.text-left').unbind('click').bind('click', function() {
-   		var userId = $(this).parent().data("row-id");
-        window.location = '/userDetail';
-   	});	
-}
-
 /**
  * For Organization tab data
  *
  */
 
 function getOrganization() {
+	var bName 		 = '#settings-';
+	//basic info
+	var name 		 = $(bName+'name');
+	var legalName 	 = $(bName+'legal-name');
+	var lineBusiness = $(bName+'line-business');
+	var tinNumber 	 = $(bName+'tin-number');
+	var description  = $(bName+'description');
+	//address
+	var street 		 = $(bName+'street-address');
+	var city 		 = $(bName+'city');
+	var province     = $(bName+'province');
+	var zip     	 = $(bName+'zip');
+	var country      = $(bName+'country');
+	//contact
+	var telephone	 = $(bName+'telephone');
+	var phone	 	 = $(bName+'phone');
+	var fax	 	 	 = $(bName+'fax');
+	var website	 	 = $(bName+'website');
+	var skype	 	 = $(bName+'skype');
+	var twitter	 	 = $(bName+'twitter');
+	var linkedin	 = $(bName+'linkedin');
+	var facebook	 = $(bName+'facebook');
+	//save
+	var save 		 = $(bName+'org-update');
 
 	var data = {'id' : 1};
-	var url = '/settings/getOrganizationInfo';
-	// base.
-	// 	setUrl().
-	// 	setData(data).
-	// 	post(function(response) {
+	var url = '/settings/getCurrentOrg';
 
-	// 		var info = response.data['organisation_info']['Organisations']['Organisation'];
-
-	// 		$('.resync-organization-detail').attr('id', response.data['_id']['$id']);
-
-	// 		// Display name
-	// 		$('#organization-setting-display-name').val(info['Name']);
-	// 		// Legal company name
-	// 		$('#organization-setting-legal-name').val(info['LegalName']);
-	// 		// Line of business of the company
-	// 		if(info['LineOfBusiness'] != undefined) {
-	// 			$('#organization-setting-line-of-business').val(info['LineOfBusiness']);
-	// 		}
-	// 		// Organization type
-	// 		if(info['OrganisationType'] != undefined) {
-	// 			$('#organization-organization-type').val(fixCasing(info['OrganisationType']));
-	// 		}
-	// 		// Registration Number
-	// 		if(info['RegistrationNumber'] != undefined) {
-	// 			$('#organization-setting-registration-number').val(fixCasing(info['RegistrationNumber']));
-	// 		}
-	// 		// Addresses
-	// 		if(info['Addresses'] != undefined) {
-	// 			if(info['Addresses']['Address'].length > 0) {
-	// 				for(i in info['Addresses']['Address']){
-	// 					if(info['Addresses']['Address'][i]['AddressType'] == 'POBOX') {
-	// 						getAddress(info['Addresses']['Address'][i], 'postal');
-	// 					} else if(info['Addresses']['Address'][i]['AddressType'] == 'STREET') {
-	// 						getAddress(info['Addresses']['Address'][i], 'physical');
-	// 					} 
-	// 				}
-	// 			}
-	// 		}
-	// 		// Phones
-	// 		if(info['Phones'] != undefined) {
-	// 			if(info['Phones']['Phone'].length > 0) {
-	// 				for(i in info['Phones']['Phone']){
-	// 					if(info['Phones']['Phone'][i]['PhoneType'] == 'OFFICE') {
-	// 						// For office or telephone number
-	// 						$('#organization-setting-telephone-start').val(info['Phones']['Phone'][i]['PhoneCountryCode']);
-	// 						$('#organization-setting-telephone').val(info['Phones']['Phone'][i]['PhoneNumber']);
-	// 					} else if(info['Phones']['Phone'][i]['PhoneType'] == 'FAX') {
-	// 						// For fax number
-	// 						$('#organization-setting-fax-start').val(info['Phones']['Phone'][i]['PhoneCountryCode']);
-	// 						$('#organization-setting-fax').val(info['Phones']['Phone'][i]['PhoneNumber']);
-	// 					} else if(info['Phones']['Phone'][i]['PhoneType'] == 'DDI') {
-	// 						// For DDI numbers
-	// 						$('#organization-setting-ddi-start').val(info['Phones']['Phone'][i]['PhoneCountryCode']);
-	// 						$('#organization-setting-ddi').val(info['Phones']['Phone'][i]['PhoneNumber']);
-	// 					} else if(info['Phones']['Phone'][i]['PhoneType'] == 'MOBILE') {
-	// 						// For Mobile numbers
-	// 						$('#organization-setting-mobile-start').val(info['Phones']['Phone'][i]['PhoneCountryCode']);
-	// 						$('#organization-setting-mobile').val(info['Phones']['Phone'][i]['PhoneNumber']);
-	// 					}
-	// 				}
-	// 			}
-	// 		}
-	// 		// Links
-	// 		if(info['ExternalLinks'] != undefined) {
-	// 			if(info['ExternalLinks']['ExternalLink'].length > 0) {
-	// 				for(i in info['ExternalLinks']['ExternalLink']){
-	// 					// Facebook
-	// 					if(info['ExternalLinks']['ExternalLink'][i]['LinkType'] == 'Facebook') {
-	// 						$('#organization-setting-facebook').val(info['ExternalLinks']['ExternalLink'][i]['Url']);
-	// 					// Google Plus
-	// 					} else if(info['ExternalLinks']['ExternalLink'][i]['LinkType'] == 'GooglePlus') {
-	// 						$('#organization-setting-google').val(info['ExternalLinks']['ExternalLink'][i]['Url']);
-	// 					// LinkedIn
-	// 					} else if(info['ExternalLinks']['ExternalLink'][i]['LinkType'] == 'LinkedIn') {
-	// 						$('#organization-setting-linkedid').val(info['ExternalLinks']['ExternalLink'][i]['Url']);
-	// 					// Twitter
-	// 					} else if(info['ExternalLinks']['ExternalLink'][i]['LinkType'] == 'Twitter') {
-	// 						$('#organization-setting-twitter').val(info['ExternalLinks']['ExternalLink'][i]['Url']);
-	// 					// Website
-	// 					} else if(info['ExternalLinks']['ExternalLink'][i]['LinkType'] == 'Website') {
-	// 						$('#organization-setting-website').val(info['ExternalLinks']['ExternalLink'][i]['Url']);
-	// 					}
-	// 				}
-	// 			}
-	// 		}
+	base.
+		setUrl(url).
+		get(function(response) {
 			
-	// 	});
+			var data = response.data;
+			//basic
+			name.val(data['name']);
+			legalName.val(isset(data['legal_name']) ? data['legal_name'] : data['name']);
+			lineBusiness.val(isset(data['line_business']) ? data['line_business'] : '');
+			tinNumber.val(isset(data['tin_number']) ? data['tin_number'] : '');
+			description.val(isset(data['description']) ? data['description'] : '');
+			//address
+			street.val(isset(data['address']) ? data['address'] : '');
+			city.val(isset(data['city']) ? data['city'] : '');
+			province.val(isset(data['province']) ? data['province'] : '');
+			zip.val(isset(data['zip']) ? data['zip'] : '');
+			country.val(isset(data['country']) ? data['country'] : '');
+			//contact
+			telephone.val(isset(data['telephone']) ? data['telephone'] : '');
+			phone.val(isset(data['phone']) ? data['phone'] : '');
+			fax.val(isset(data['fax']) ? data['fax'] : '');
+			website.val(isset(data['website']) ? data['website'] : '');
+			skype.val(isset(data['skype']) ? data['skype'] : '');
+			twitter.val(isset(data['twitter']) ? data['twitter'] : '');
+			linkedin.val(isset(data['linkedin']) ? data['linkedin'] : '');
+			facebook.val(isset(data['facebook']) ? data['facebook'] : '');
+		}
+	);
 
+	save.unbind('click').bind('click', function(response) {
+		var error = false;
+		(name.val() == '') ? (error = helper.hasError(name, 1, '')) : helper.noError(name, 1);
+		
+		if(!error) {
+			
+			save.
+				html('Updating Information...').
+				attr('disabled', 'disabled');
+
+			var url = '/settings/updateORg';
+			var data = {
+				'name' 			: name.val(),
+				'legal_name'    : legalName.val(),
+				'line_business' : lineBusiness.val(),
+				'tin_number'    : tinNumber.val(),
+				'description'   : description.val(),
+				'address'		: street.val(),
+				'city'			: city.val(),
+				'province'		: province.val(),
+				'zip'			: zip.val(),
+				'country'		: country.val(),
+				'telephone'		: telephone.val(),
+				'phone'			: phone.val(),
+				'fax'			: fax.val(),
+				'website'		: website.val(),
+				'skype'			: skype.val(),
+				'twitter'		: twitter.val(),
+				'linkedin'		: linkedin.val(),
+				'facebook'		: facebook.val()
+			}
+			base.
+				setUrl(url).
+				setData(data).
+				post(function(response) {
+					save.
+						html('Update Information').
+						removeAttr('disabled');
+
+					base.notification('Organization successfully updated', 'inverse');
+				}
+			);
+		}
+	});
+
+	return this;
 }
 
 /**

@@ -559,4 +559,6 @@ button.set-up-save-and-complete {
 .center {
     text-align: center;
 }
-
+.actions > li > a > i, .actions > a > i {
+    color: #313534!important;
+}

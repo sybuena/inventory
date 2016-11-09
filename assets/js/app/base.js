@@ -74,7 +74,7 @@ Base.prototype = {
         }); 
     },
     post : function(successCallback, errorCallback) {
-        console.log(this.url);
+        
         $.ajax({
              type       : 'POST',
              data       : this.data,
