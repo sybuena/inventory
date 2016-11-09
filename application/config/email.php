@@ -14,4 +14,5 @@ $config['crlf']               = $email['crlf'];
 $config['newline']            = $email['newline'];
 $config['default_email']      = $email['default_email'];
 $config['default_email_name'] = $email['default_email_name'];
-
+echo '<pre>';
+print_r($email['smtp_user']);exit;
