@@ -298,15 +298,21 @@ class Inventory_model extends MY_Model {
      * 
      * @return array
      */
-    public function getCategoryList() {
+    public function getCategoryList($select = array()) {
         $where = array(
             'status' => 1,
             'org_id' => $this->_organization['_id']->{'$id'}
         );
-
-        return $this->cimongo
-            ->get_where(self::INVENTORY_CATEGORY, $where)
-            ->result_array();
+        if(empty($select)) {
+            return $this->cimongo
+                ->get_where(self::INVENTORY_CATEGORY, $where)
+                ->result_array();
+        } else {
+            return $this->cimongo
+                ->select($select)
+                ->get_where(self::INVENTORY_CATEGORY, $where)
+                ->result_array();
+        }
     }
 
     public function getCategotyDetail($id, $select = array()) {

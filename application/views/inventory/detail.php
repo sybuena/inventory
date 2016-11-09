@@ -43,7 +43,7 @@
                     </li>
                 </ul>
 
-                <div class="tab-content">
+                <div class="tab-content p-t-0">
                     <div class="tab-pane card-body card-padding form-horizontal active" id="detail-about">
                         <?php include('block/basic-information.php');?>
                     </div>
@@ -51,7 +51,7 @@
                         <?php include('block/sales-transaction.php');?>
                     </div>
                     <div class="tab-pane" id="detail-purchases-log">
-                        <?php include('block/purchase-transaction');?>
+                        <?php include('block/purchase-transaction.php');?>
                     </div>
                     <div class="tab-pane" id="detail-notes">
                         <?php include('block/activity.php');?>

@@ -121,6 +121,59 @@ class Sales_model extends MY_Model {
         return $row;
     }
 
+    /**
+     * Get inventory sales
+     *
+     * @param string
+     * @param array
+     * @param string
+     * @param int
+     * @param int
+     * @return array
+     */
+    public function getInventorySales($id, $order, $search, $offset, $limit) {
+        
+        $where = array(
+            'status' => 3,
+            'org_id' => loginOrg(),
+            'line'   => array(
+                '$elemMatch' => array(
+                    'id' => $id
+                )
+            )
+        );
+        
+        //search query
+        if(!empty($search)) {
+            $query = urldecode($search);
+            $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+        }
+
+        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        
+        $list  = $this->cimongo
+            ->order_by($order)
+            ->select($select)
+            ->get_where(self::INVOICE, $where, $limit, ($limit * ($offset - 1)))
+            ->result_array();
+
+        foreach($list as $k => $v) {
+            //change name of status
+            $list[$k]['status_text'] = $v['status'];
+            $list[$k]['id'] = $v['_id']->{'$id'};
+            unset($list[$k]['status']);
+        }      
+
+        $row['rows'] = $list;
+        $row['total'] = (int)$this->cimongo
+            ->where($where)
+            ->count_all_results(self::INVOICE);
+
+        return $row;
+    }
+
+
     /* Protected Function
     -------------------------------*/
    
