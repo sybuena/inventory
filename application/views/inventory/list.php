@@ -25,16 +25,23 @@ th[data-column-id="image"] {
 
 	<section id="content">
 	    <div class="container">
-	        <div class="block-header">
+	        <div class="block-header pull-left">
 	            <h2>Inventory List</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
                     <li class="active">Inventory List</li>
                 </ol>
-	            
-            </div>
-          
 
+            </div>
+            <div class="pull-right m-t-10">
+                <a class="btn btn-success waves-effect" id="inventory-add-modal">
+                    <i class="zmdi zmdi-plus"></i> Add New
+                </a>
+                <a class="btn btn-success waves-effect" href="/inventory/import" >
+                    <i class="zmdi zmdi-upload"></i> Import
+                </a>
+           </div>
+            <div class="clearfix"></div>
             <div class="card m-b-0" id="messages-main">
                 <div class="ms-menu">
                     <div class="ms-block">
@@ -60,7 +67,7 @@ th[data-column-id="image"] {
                         </div>
                         
                         <ul class="lv-actions actions">
-                            <li>
+                            <!-- <li>
                                 <a href="" class="" id="inventory-add-modal"
                                     data-toggle="tooltip" 
                                     data-placement="right" 
@@ -78,7 +85,7 @@ th[data-column-id="image"] {
                                     <i class="zmdi zmdi-upload"></i>
                                 </a>
                             </li>
-
+ -->
                             <li>
                                 <a href="" class="lvh-search-trigger"
                                     data-toggle="tooltip" 

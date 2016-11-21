@@ -122,7 +122,7 @@ class Sales_model extends MY_Model {
     }
 
     /**
-     * Get inventory sales
+     * Get customer sales
      *
      * @param string
      * @param array
@@ -131,23 +131,27 @@ class Sales_model extends MY_Model {
      * @param int
      * @return array
      */
-    public function getInventorySales($id, $order, $search, $offset, $limit) {
+    public function getCustomerSales($id, $order, $search, $offset, $limit) {
         
         $where = array(
-            'status' => 3,
-            'org_id' => loginOrg(),
-            'line'   => array(
-                '$elemMatch' => array(
-                    'id' => $id
-                )
-            )
+            'status'   => array('$ne' => 0),
+            'org_id'   => loginOrg(),
+            'customer' => $id
         );
         
         //search query
         if(!empty($search)) {
             $query = urldecode($search);
-            $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
-            $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+             if(strstr($query, '-')) {
+                $explode = explode('-', $query);
+                if(isset($explode[1]) && $explode[1] != '0') {
+                    $where['status'] =  array('$in' => array((int) $explode[1], (string) $explode[1]));
+                }
+                
+            } else {
+                $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+                $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            }
         }
 
         $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
@@ -169,6 +173,184 @@ class Sales_model extends MY_Model {
         $row['total'] = (int)$this->cimongo
             ->where($where)
             ->count_all_results(self::INVOICE);
+
+        return $row;
+    }
+
+    /**
+     * Get inventory sales
+     *
+     * @param string
+     * @param array
+     * @param string
+     * @param int
+     * @param int
+     * @return array
+     */
+    public function getInventorySales($id, $order, $search, $offset, $limit) {
+        
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg(),
+            'line'   => array(
+                '$elemMatch' => array(
+                    'id' => $id
+                )
+            )
+        );
+        
+        //search query
+        if(!empty($search)) {
+            $query = urldecode($search);
+             if(strstr($query, '-')) {
+                $explode = explode('-', $query);
+                if(isset($explode[1]) && $explode[1] != '0') {
+                    $where['status'] =  array('$in' => array((int) $explode[1], (string) $explode[1]));
+                }
+                
+            } else {
+                $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+                $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            }
+        }
+
+        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        
+        $list  = $this->cimongo
+            ->order_by($order)
+            ->select($select)
+            ->get_where(self::INVOICE, $where, $limit, ($limit * ($offset - 1)))
+            ->result_array();
+
+        foreach($list as $k => $v) {
+            //change name of status
+            $list[$k]['status_text'] = $v['status'];
+            $list[$k]['id'] = $v['_id']->{'$id'};
+            unset($list[$k]['status']);
+        }      
+
+        $row['rows'] = $list;
+        $row['total'] = (int)$this->cimongo
+            ->where($where)
+            ->count_all_results(self::INVOICE);
+
+        return $row;
+    }
+
+    /**
+     * Get inventory sales
+     *
+     * @param string
+     * @param array
+     * @param string
+     * @param int
+     * @param int
+     * @return array
+     */
+    public function getInventoryQuotation($id, $order, $search, $offset, $limit) {
+        
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg(),
+            'line'   => array(
+                '$elemMatch' => array(
+                    'id' => $id
+                )
+            )
+        );
+        
+        //search query
+        if(!empty($search)) {
+            $query = urldecode($search);
+
+            if(strstr($query, '-')) {
+                $explode = explode('-', $query);
+                if(isset($explode[1]) && $explode[1] != '0') {
+                    $where['status'] =  array('$in' => array((int) $explode[1], (string) $explode[1]));
+                }
+                
+            } else {
+                $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+                $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            }
+        }
+        
+        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        
+        $list  = $this->cimongo
+            ->order_by($order)
+            ->select($select)
+            ->get_where(self::QUOTE, $where, $limit, ($limit * ($offset - 1)))
+            ->result_array();
+
+        foreach($list as $k => $v) {
+            //change name of status
+            $list[$k]['status_text'] = $v['status'];
+            $list[$k]['id'] = $v['_id']->{'$id'};
+            unset($list[$k]['status']);
+        }      
+
+        $row['rows'] = $list;
+        $row['total'] = (int)$this->cimongo
+            ->where($where)
+            ->count_all_results(self::QUOTE);
+
+        return $row;
+    }
+
+    /**
+     * Get customer quote
+     *
+     * @param string
+     * @param array
+     * @param string
+     * @param int
+     * @param int
+     * @return array
+     */
+    public function getCustomerQuotation($id, $order, $search, $offset, $limit) {
+        
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg(),
+            'customer'   => $id
+        );
+        
+        //search query
+        if(!empty($search)) {
+            $query = urldecode($search);
+
+            if(strstr($query, '-')) {
+                $explode = explode('-', $query);
+                if(isset($explode[1]) && $explode[1] != '0') {
+                    $where['status'] =  array('$in' => array((int) $explode[1], (string) $explode[1]));
+                }
+                
+            } else {
+                $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+                $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            }
+        }
+        
+        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        
+        $list  = $this->cimongo
+            ->order_by($order)
+            ->select($select)
+            ->get_where(self::QUOTE, $where, $limit, ($limit * ($offset - 1)))
+            ->result_array();
+
+        foreach($list as $k => $v) {
+            //change name of status
+            $list[$k]['status_text'] = $v['status'];
+            $list[$k]['id'] = $v['_id']->{'$id'};
+            unset($list[$k]['status']);
+        }      
+
+        $row['rows'] = $list;
+        $row['total'] = (int)$this->cimongo
+            ->where($where)
+            ->count_all_results(self::QUOTE);
 
         return $row;
     }

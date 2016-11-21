@@ -100,32 +100,40 @@
                             </a>
                         </li>
                         <li class="waves-effect">
+                            <a href="#detail-quotation-log" data-toggle="tab">
+                                Quotation Log
+                            </a>
+                        </li>
+                        <li class="waves-effect">
                         	<a href="#detail-sales-log" data-toggle="tab">
-                                Sales
+                                Sales Log
                             </a>
                         </li>
 
                         <li class="waves-effect">
                         	<a href="#detail-purchases-log" data-toggle="tab">
-                                Purchases
+                                Purchases Log
                             </a>
                         </li>
-                        <li class="waves-effect">
+                        <!-- <li class="waves-effect">
                        		<a href="#detail-notes" data-toggle="tab">
                                 Notes & Activity
                             </a>
-                       	</li>
+                       	</li> -->
                     </ul>
                     
-                    <div class="tab-content">
+                    <div class="tab-content p-t-0">
                     	<div role="tabpanel" class="tab-pane active" id="detail-about">
-                            <?php include('detail-about.php'); ?>
+                            <?php include('block/about.php'); ?>
+                        </div>
+                        <div role="tabpanel" class="tab-pane " id="detail-quotation-log">
+                            <?php include('block/quotation-log.php'); ?>
                         </div>
                         <div role="tabpanel" class="tab-pane " id="detail-sales-log">
-                        	<?php //include('detail-call-log.php'); ?>
+                        	<?php include('block/sales-log.php'); ?>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="detail-purchases-log">
-                        	<?php //include('detail-ticket.php'); ?>
+                        	<?php include('block/purchase-log.php'); ?>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="detail-notes">
                         	<?php include('detail-notes.php'); ?>

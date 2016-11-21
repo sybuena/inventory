@@ -26,6 +26,29 @@
                 </a>
             </li>
             <li class="dropdown">
+                <a href="" data-toggle="dropdown" >
+                    <i class="zmdi zmdi-sort-amount-desc"></i>
+                </a>
+                
+                <ul class="dropdown-menu dropdown-menu-right" id="inventory-sales-table-status">
+                    <li class="active">
+                        <a href="" status="0">All Status</a>
+                    </li>
+                    <li>
+                        <a href="" status="1">Pending Status</a>
+                    </li>
+                    <li>
+                        <a href="" status="2">Draft Status</a>
+                    </li>
+                    <li>
+                        <a href="" status="3">Approved Status</a>
+                    </li>
+                    <li>
+                        <a href="" status="4">Declined Status</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="dropdown">
                 <a href="" data-toggle="dropdown" aria-expanded="false">
                     <i class="zmdi zmdi-more-vert"></i>
                 </a>

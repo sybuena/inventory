@@ -1,9 +1,9 @@
 <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix m-b-5">
-        <h2 class="lvh-label hidden-xs" id="inventory-purchase-table-count">0 Record(s)</h2>
+        <h2 class="lvh-label hidden-xs" id="inventory-quotation-table-count">0 Record(s)</h2>
         
         <div class="lvh-search">
-            <input type="text" placeholder="Start typing..." class="lvhs-input" id="inventory-purchase-table-search">
+            <input type="text" placeholder="Start typing..." class="lvhs-input" id="inventory-quotation-table-search">
             <i class="lvh-search-close">×</i>
         </div>
         
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a id="inventory-purchase-table-refresh" 
+                <a id="inventory-quotation-table-refresh" 
                  data-toggle="tooltip" 
                  data-placement="top" 
                  data-original-title="Refresh Table" >
@@ -30,7 +30,7 @@
                     <i class="zmdi zmdi-sort-amount-desc"></i>
                 </a>
                 
-                <ul class="dropdown-menu dropdown-menu-right" id="inventory-purchase-table-status">
+                <ul class="dropdown-menu dropdown-menu-right" id="inventory-quotation-table-status">
                     <li class="active">
                         <a href="" status="0">All Status</a>
                     </li>
@@ -53,7 +53,7 @@
                     <i class="zmdi zmdi-more-vert"></i>
                 </a>
                 
-                <ul class="dropdown-menu dropdown-menu-right" id="inventory-purchase-table-page">
+                <ul class="dropdown-menu dropdown-menu-right" id="inventory-quotation-table-page">
                     <li class="active">
                         <a href="" page="10">10 per page</a>
                     </li>
@@ -76,15 +76,15 @@
     </div>
 
     <div class="table-responsive">
-        <table id="inventory-purchase-table" class="table-condensed table-hover">
+        <table id="inventory-quotation-table" class="table-condensed table-hover">
             <thead>
                 <tr>
                     <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                    <th data-column-id="order_number" data-order="asc">Order #</th>
+                    <th data-column-id="invoice_number" data-order="asc">Quote #</th>
                     <th data-column-id="reference_number" data-order="asc">Reference #</th>
-                    <th data-column-id="from" data-formatter="from" data-order="asc">Supplier</th>
+                    <th data-column-id="to" data-formatter="to" data-order="asc">Customer</th>
                     <th data-column-id="date" data-sortable="false">Date</th>
-                    <th data-column-id="due_date" data-sortable="false">Delivery Date</th>
+                    <th data-column-id="due_date" data-sortable="false">Expiry</th>
                     <th data-column-id="total_amount" data-sortable="false" data-align="right">Amount</th>
                     <th data-column-id="status_text" data-formatter="status_text" data-sortable="false">Status</th>
                 </tr>

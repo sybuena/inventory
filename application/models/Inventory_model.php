@@ -25,6 +25,76 @@ class Inventory_model extends MY_Model {
 
     /* Public Function
     -------------------------------*/
+    public function itemPendingSales($id) {
+        $where = array(
+            'status' => array('$in' => array(1, '1')),
+            'org_id' => loginOrg(),
+            'line'   => array('$elemMatch' => array('id' => $id))
+        );
+
+        $list = $this->cimongo
+            ->select(array('line'))
+            ->get_where(self::SALES, $where)
+            ->result_array(); 
+
+        $count = 0;
+
+        foreach($list as $v) {
+            foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+        }
+
+        return $count;
+    }
+
+    public function itemQuantation($id) {
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg(),
+            'line'   => array('$elemMatch' => array('id' => $id))
+        );
+
+        $list = $this->cimongo
+            ->select(array('line'))
+            ->get_where(self::QUOTE, $where)
+            ->result_array(); 
+
+        $count = 0;
+
+        foreach($list as $v) {
+            foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+        }
+        return $count;
+    }
+
+    public function itemPendingPurchase($id) {
+        //status 1 = pending
+        $where = array(
+            'status' => array('$in' => array(1, '1')),
+            'org_id' => loginOrg(),
+            'line'   => array('$elemMatch' => array('id' => $id))
+        );
+
+        $list = $this->cimongo
+            ->select(array('line'))
+            ->get_where(self::PURCHASE, $where)
+            ->result_array(); 
+        
+        $count = 0;
+
+        foreach($list as $v) {
+            foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+        }
+
+        return $count;
+    }
+
+
     public function detail($id, $select = array()) {
         $where = array(
             'status' => 1,

@@ -87,8 +87,9 @@ function getGravatar($email, $s = 80, $d = 'identicon', $r = 'g', $img = false, 
     return $url;
 }
 
-function money($num) {
-    return '₱ '.decim($num);
+function money($num, $sign = '₱') {
+    
+    return $sign.' '.decim($num);
 }
 
 function decim($num) {

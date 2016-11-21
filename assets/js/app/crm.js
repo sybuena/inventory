@@ -341,7 +341,7 @@ function getCustomerList(type) {
     	$('#crm-table-list tbody tr .text-left').unbind('click').bind('click', function(e) {
 	        var id = $(this).parent().data('row-id');
 	        
-	        window.location = '/customer/detail/id/'+id
+	        window.location = '/customer/detail?id='+id
 	    });
 
     });

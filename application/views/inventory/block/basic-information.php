@@ -1,29 +1,15 @@
 <div class="row m-b-25">
-    <div class="col-xs-3">
-        <div class="bgm-blue brd-2 p-15">
-            <div class="c-white m-b-5">Quantity on Hand</div>
-            <h2 class="m-0 c-white f-300"><?=$inventory['stock'];?></h2>
-        </div>
-    </div>
-
-    <div class="col-xs-3">
-        <div class="bgm-orange brd-2 p-15">
-            <div class="c-white m-b-5">In Quatation/Pending Order</div>
-            <h2 class="m-0 c-white f-300">0 / 12</h2>
-        </div>
-    </div>
-
-    <div class="col-xs-3">
+    <div class="col-lg-6">
         <div class="bgm-cyan brd-2 p-15">
             <div class="c-white m-b-5">Purchase Cost</div>
-            <h2 class="m-0 c-white f-300"><?=money($inventory['cost']);?></h2>
+            <h2 class="m-0 c-white f-300"><?=money($data['cost']);?></h2>
         </div>
     </div>
 
-    <div class="col-xs-3">
+    <div class="col-lg-6">
         <div class="bgm-green brd-2 p-15">
             <div class="c-white m-b-5">Sales Cost</div>
-            <h2 class="m-0 c-white f-300"><?=money($inventory['sales']);?></h2>
+            <h2 class="m-0 c-white f-300"><?=money($data['sales']);?></h2>
         </div>
     </div>
 </div>
@@ -38,7 +24,7 @@
             </label>
             <div class="col-sm-8">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="inventory-name" value="<?=$inventory['name']; ?>">
+                    <input type="text" class="form-control" id="data-name" value="<?=$data['name']; ?>">
                 </div>
             </div>
             <span class="col-sm-1"></span>
@@ -50,7 +36,7 @@
             </label>
             <div class="col-sm-3">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="inventory-code" value="<?=$inventory['code']; ?>">
+                    <input type="text" class="form-control" id="data-code" value="<?=$data['code']; ?>">
                 </div>
             </div>
             <label class="col-sm-1 control-label textlabel">
@@ -58,9 +44,9 @@
             </label>
             <div class="col-sm-4">
                 <div class="fg-line">
-                    <select class="form-control" id="inventory-type">
+                    <select class="form-control" id="data-type">
                         <?php foreach($type as $v): ?>
-                            <?php if(isset($inventory['type']) && $inventory['type'] == $v) :?>
+                            <?php if(isset($data['type']) && $data['type'] == $v) :?>
                                 <option value="<?=$v;?>" selected="selected"><?=ucfirst($v);?></option>
                             <?php else :?>
                                 <option value="<?=$v;?>"><?=ucfirst($v);?></option>
@@ -78,8 +64,8 @@
             </label>
             <div class="col-sm-3">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="inventory-location" 
-                    placeholder="Inventory Location" value="<?=$inventory['location']; ?>">
+                    <input type="text" class="form-control" id="data-location" 
+                    placeholder="data Location" value="<?=$data['location']; ?>">
                 </div>
             </div>
             <label class="col-sm-1 control-label textlabel">
@@ -87,10 +73,10 @@
             </label>
             <div class="col-sm-4">
                 <div class="fg-line">
-                    <select class="form-control" id="inventory-category">
+                    <select class="form-control" id="data-category">
                         <option value="">None</option>
                         <?php foreach($category as $v): ?>
-                            <?php if(isset($inventory['category']['id']) && $inventory['category']['id'] == $v['_id']->{'$id'}) :?>
+                            <?php if(isset($data['category']['id']) && $data['category']['id'] == $v['_id']->{'$id'}) :?>
                                 <option value="<?=$v['_id']->{'$id'};?>" selected="selected">
                                     <?=$v['name'];?>
                                 </option>
@@ -108,7 +94,7 @@
             <label class="col-sm-3 control-label textlabel">Description</label>
             <div class="col-sm-8">
                 <div class="fg-line">
-                    <textarea class="form-control" rows="5" id="inventory-description" placeholder="Tell us more about this Item/Service"><?=$inventory['description']; ?></textarea>
+                    <textarea class="form-control" rows="5" id="data-description" placeholder="Tell us more about this Item/Service"><?=$data['description']; ?></textarea>
                 </div>
             </div>
             <span class="col-sm-1"></span>
@@ -117,7 +103,7 @@
         <div class="form-group m-t-30">
             <span class="col-sm-3"></span>
             <div class="col-sm-8">
-                <button class="btn btn-primary pull-right" id="inventory-update">Update Information</button>
+                <button class="btn btn-primary pull-right" id="data-update">Update Information</button>
             </div>
             <span class="col-sm-1"></span>
         </div>

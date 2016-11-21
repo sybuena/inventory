@@ -24,14 +24,20 @@ th[data-column-id="image"] {
 
 	<section id="content">
 	    <div class="container">
-	        <div class="block-header">
+	        <div class="block-header pull-left">
 	            <h2>Contact List</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
                     <li class="active">Contact List</li>
                 </ol>
             </div>
-            
+             <div class="pull-right m-t-10">
+                <a class="btn btn-success waves-effect" id="customer-add-modal-show">
+                    <i class="zmdi zmdi-plus"></i> Add New
+                </a>
+                
+           </div>
+            <div class="clearfix"></div>
             
             <div class="card m-b-0" id="messages-main">
                 <div class="ms-menu">
@@ -48,45 +54,6 @@ th[data-column-id="image"] {
                     </div>
 
                 </div>
-                <!-- <div class="ms-menu">
-                    <div class="ms-block">
-                        <div class="ms-user">
-                            <div>Use grouping to sort or categorize customer accourding to what you need</div>
-                        </div>
-                    </div>
-                    <div class="listview lv-user">
-                        <a class="lv-item media active" id="all">
-                            <div class="media-body">
-                                <div class="lv-title">All</div>
-                                <div class="lv-small">All available contacts</div>
-                            </div>
-                        </a>
-                        <a class="lv-item media">
-                            
-                            <div class="media-body">
-                                <div class="lv-title">Customer</div>
-                                <div class="lv-small">For Sales</div>
-                            </div>
-                        </a>
-                        <a class="lv-item media" id="all">
-                            <div class="media-body">
-                                <div class="lv-title">Supplier</div>
-                                <div class="lv-small">For Purchases</div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="ms-block">
-                        <div class="dropdown">
-                            <button class="btn btn-primary bgm-black" id="add-group-show">Add New Group</button>
-                        </div>
-                    </div>
-                    <br/>
-                    
-                    <div class="listview lv-user customer-group-list">
-                    </div>
-
-                    
-                </div> -->
                 <div class="ms-body">
                     <div class="lv-header-alt clearfix m-b-5">
                         <h2 class="lvh-label hidden-xs"><span id="crm-table-list-total">19,453</span> Record(s)</h2>
@@ -97,15 +64,6 @@ th[data-column-id="image"] {
                         </div>
                     
                         <ul class="lv-actions actions">
-                            <li class="user-admin">
-                                <a id="customer-add-modal-show" 
-                                 data-toggle="tooltip" 
-                                 data-placement="top"
-                                 data-original-title="Add Contact"
-                                 class="rotate-image">
-                                    <i class="zmdi zmdi-plus"></i>
-                                </a>
-                            </li>
                             <li>
                                 <a href="" class="lvh-search-trigger">
                                     <i class="zmdi zmdi-search"></i>

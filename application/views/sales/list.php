@@ -1,9 +1,6 @@
 <?php include(APPPATH.'/views/common/header.php'); ?>
 <?php include(APPPATH.'/views/common/top_menu.php'); ?>
-<style>
 
-.box-price h2 {font-size: 34px !important; text-align: right !important;}
-</style>
 <!-- Content -->
 <section id="main" data-layout="layout-1">
 	<?php include(APPPATH.'/views/common/sidebar.php'); ?>

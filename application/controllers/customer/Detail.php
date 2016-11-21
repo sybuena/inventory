@@ -33,7 +33,8 @@ class Detail extends MY_Controller {
      * @param string
      * @return html|string
      */
-    public function id($id) {
+    public function index() {
+        $id = $_GET['id'];
         //prepare variables we need
         $data['js']       = $this->config->item('crmDetail_js');
         $data['css']      = $this->config->item('crmDetail_css');
@@ -45,6 +46,76 @@ class Detail extends MY_Controller {
         
         $this->load->view('customer/detail', $data);
     }
+
+    /**
+     * Get inventory sales transaction for all inventory status
+     * 
+     * @param string
+     * @return json
+     */
+    public function quotation($id) {
+
+        $sort   = (isset($_POST['sort'])) ? $_POST['sort'] : array();
+        $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
+        $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
+        $search = (isset($_POST['searchPhrase']) && !empty($_POST['searchPhrase'])) ? $_POST['searchPhrase'] : '';
+
+        //get member list
+        $row = $this->sales->getCustomerQuotation($id, $sort, $search, $offset, $limit);
+
+        $row['current']  = (int)$offset;
+        $row['rowCount'] = (int)$limit;
+
+        //return json
+        return $this->_returnRaw($row);
+    }
+
+    /**
+     * Get customer sales transaction for all inventory status
+     * 
+     * @param string
+     * @return json
+     */
+    public function sales($id) {
+
+        $sort   = (isset($_POST['sort'])) ? $_POST['sort'] : array();
+        $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
+        $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
+        $search = (isset($_POST['searchPhrase']) && !empty($_POST['searchPhrase'])) ? $_POST['searchPhrase'] : '';
+
+        //get member list
+        $row = $this->sales->getCustomerSales($id, $sort, $search, $offset, $limit);
+
+        $row['current']  = (int)$offset;
+        $row['rowCount'] = (int)$limit;
+
+        //return json
+        return $this->_returnRaw($row);
+    }
+
+    /**
+     * Get inventory sales transaction for all inventory status
+     * 
+     * @param string
+     * @return json
+     */
+    public function purchase($id) {
+
+        $sort   = (isset($_POST['sort'])) ? $_POST['sort'] : array();
+        $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
+        $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
+        $search = (isset($_POST['searchPhrase']) && !empty($_POST['searchPhrase'])) ? $_POST['searchPhrase'] : '';
+
+        //get member list
+        $row = $this->purchase->getCustomerPurchase($id, $sort, $search, $offset, $limit);
+
+        $row['current']  = (int)$offset;
+        $row['rowCount'] = (int)$limit;
+
+        //return json
+        return $this->_returnRaw($row);
+    }
+
 
     /**
      * Edit all customer fields, just pass array

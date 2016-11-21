@@ -254,6 +254,21 @@ Base.prototype = {
             return false;
         });
 
+        $(table+'-status li').unbind('click').bind('click', function() {
+            //remove active
+            $(table+'-status li').removeClass('active');
+            //then make the current link page
+            $(this).addClass('active');
+            //hide dropdown 
+            $(this).closest(".dropdown-menu").prev().dropdown("toggle");
+            //parse 
+            var status = parseInt($(table+'-status li.active a').attr('status'));
+            //reload and reload also pagination
+            $(table).bootgrid('search', 'status-'+status);
+            
+            return false;
+        });
+
         return this;
 
     }

@@ -21,31 +21,43 @@
 	                <div class="card">
                         <ul class="tab-nav tn-justified" role="tablist">
                         	<li class="active">
-                                <a href="#settingsOrg" data-toggle="tab">Organization Settings</a>
+                                <a href="#settingsOrg" data-toggle="tab">
+                                    Organization Settings
+                                </a>
                             </li>
                             <li>
-                                <a href="#settingsGeneral" data-toggle="tab">General Settings</a>
+                                <a href="#settingsGeneral" data-toggle="tab">
+                                    General Settings
+                                </a>
                             </li>
-                            <li><a href="#settingsUser" data-toggle="tab">Users</a></li>
+                            <li>
+                                <a href="#settingsUser" data-toggle="tab">
+                                    Users
+                                </a>
+                            </li>
 
-                            <li><a href="#settingsActivity" data-toggle="tab">Activity</a></li>
+                            <li>
+                                <a href="#settingsActivity" data-toggle="tab">
+                                    Activity
+                                </a>
+                            </li>
                         </ul>
                           
                         <div class="tab-content p-t-0">
-                        	<div role="tabpanel" class="tab-pane active card-body card-padding" id="settingsOrg"
+                        	<div class="tab-pane active card-body card-padding" id="settingsOrg"
                             >
                                 <?php include('settings/organizations.php'); ?>
                             </div>
                             
-                            <div role="tabpanel" class="tab-pane active card-body card-padding" id="settingsGeneral">
+                            <div class="tab-pane card-body card-padding" id="settingsGeneral">
                                 <?php include('settings/general.php'); ?>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="settingsUser">
+                            <div class="tab-pane" id="settingsUser">
                                 <?php include('settings/users.php'); ?>
                             </div>
 
-                            <div role="tabpanel" class="tab-pane" id="settingsActivity">
+                            <div class="tab-pane" id="settingsActivity">
                                 <?php include('settings/activity.php'); ?>
                             </div>
                         </div>

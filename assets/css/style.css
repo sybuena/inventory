@@ -562,3 +562,4 @@ button.set-up-save-and-complete {
 .actions > li > a > i, .actions > a > i {
     color: #313534!important;
 }
+.box-price h2 {font-size: 34px !important; text-align: right !important;}
