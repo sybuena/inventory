@@ -22,7 +22,6 @@
                     <li class="active">Detail</li>
                 </ol>
             </div>
-            
             <div class="card" id="profile-main">
                 <div class="pm-overview c-overflow">
                     <div class="pmo-pic">

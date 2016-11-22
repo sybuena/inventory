@@ -11352,9 +11352,10 @@ a.lv-footer:hover {
 }
 
 #chat {
-  padding: 20px 0;
+  /*padding: 20px 0;*/
   width: 280px;
-  right: -300px;
+  /*right: -300px;*/
+  
 }
 
 #chat.toggled {
@@ -11362,7 +11363,7 @@ a.lv-footer:hover {
 }
 
 #chat .chat-search {
-  padding: 20px 20px 15px 20px;
+  /*padding: 20px 20px 15px 20px;*/
 }
 
 #chat .chat-search .form-control {

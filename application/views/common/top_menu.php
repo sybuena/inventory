@@ -11,9 +11,18 @@
 	    <li class="logo hidden-xs">
 	        <a href="/"><?php echo isset($org_name) ? $org_name : 'Digong'; ?></a>
 	    </li>
+
 	    <li class="pull-right">
 	        <ul class="top-menu">
-	        	
+	        	<li>
+	        		<div class="pull-right" id="chat">
+		        		<div class="chat-search">
+		                    <div class="fg-line">
+		                        <input type="text" class="form-control" placeholder="Search Contact or Inventory">
+		                    </div>
+		                </div>
+	                </div>
+	        	</li>
 	            <li class="dropdown">
 		            <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
 		            <ul class="dropdown-menu dm-icon pull-right">
