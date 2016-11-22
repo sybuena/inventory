@@ -24,7 +24,7 @@
             </label>
             <div class="col-sm-8">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="data-name" value="<?=$data['name']; ?>">
+                    <input type="text" class="form-control" id="inventory-name" value="<?=$data['name']; ?>">
                 </div>
             </div>
             <span class="col-sm-1"></span>
@@ -36,7 +36,7 @@
             </label>
             <div class="col-sm-3">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="data-code" value="<?=$data['code']; ?>">
+                    <input type="text" class="form-control" id="inventory-code" value="<?=$data['code']; ?>">
                 </div>
             </div>
             <label class="col-sm-1 control-label textlabel">
@@ -44,7 +44,7 @@
             </label>
             <div class="col-sm-4">
                 <div class="fg-line">
-                    <select class="form-control" id="data-type">
+                    <select class="form-control" id="inventory-type">
                         <?php foreach($type as $v): ?>
                             <?php if(isset($data['type']) && $data['type'] == $v) :?>
                                 <option value="<?=$v;?>" selected="selected"><?=ucfirst($v);?></option>
@@ -64,8 +64,8 @@
             </label>
             <div class="col-sm-3">
                 <div class="fg-line">
-                    <input type="text" class="form-control" id="data-location" 
-                    placeholder="data Location" value="<?=$data['location']; ?>">
+                    <input type="text" class="form-control" id="inventory-location" 
+                    placeholder="Inventory Location" value="<?=$data['location']; ?>">
                 </div>
             </div>
             <label class="col-sm-1 control-label textlabel">
@@ -73,7 +73,7 @@
             </label>
             <div class="col-sm-4">
                 <div class="fg-line">
-                    <select class="form-control" id="data-category">
+                    <select class="form-control" id="inventory-category">
                         <option value="">None</option>
                         <?php foreach($category as $v): ?>
                             <?php if(isset($data['category']['id']) && $data['category']['id'] == $v['_id']->{'$id'}) :?>
@@ -94,7 +94,7 @@
             <label class="col-sm-3 control-label textlabel">Description</label>
             <div class="col-sm-8">
                 <div class="fg-line">
-                    <textarea class="form-control" rows="5" id="data-description" placeholder="Tell us more about this Item/Service"><?=$data['description']; ?></textarea>
+                    <textarea class="form-control" rows="5" id="inventory-description" placeholder="Tell us more about this Item/Service"><?=$data['description']; ?></textarea>
                 </div>
             </div>
             <span class="col-sm-1"></span>
@@ -103,7 +103,7 @@
         <div class="form-group m-t-30">
             <span class="col-sm-3"></span>
             <div class="col-sm-8">
-                <button class="btn btn-primary pull-right" id="data-update">Update Information</button>
+                <button class="btn btn-primary pull-right" id="inventory-update">Update Information</button>
             </div>
             <span class="col-sm-1"></span>
         </div>
