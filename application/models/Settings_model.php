@@ -42,10 +42,23 @@ class Settings_model extends MY_Model {
     public function getAllSequence() {
         $where = array('org_id' => loginOrg());
 
-        return $this->cimongo
+        $list =  $this->cimongo
             ->select(array('invoice', 'purchase_order', 'quotation'))
             ->get_where(self::SETTINGS, $where)
             ->row_array();
+
+        if(empty($list)) {
+            $this->saveSequence();
+             $where = array('org_id' => loginOrg());
+
+            $list =  $this->cimongo
+                ->select(array('invoice', 'purchase_order', 'quotation'))
+                ->get_where(self::SETTINGS, $where)
+                ->row_array();
+        }
+
+        return $list;
+
     }
 
     public function updateNextNumber($type) {
