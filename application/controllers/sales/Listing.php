@@ -37,6 +37,45 @@ class Listing extends MY_Controller {
         $this->load->view('sales/list', $data);
     }
 
+    public function calculateHeader() {
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg()
+        );
+        $row = $this->cimongo   
+            ->select(array('total_amount', 'status', 'due_date'))
+            ->get_where(MY_Model::INVOICE, $where)
+            ->result_array();
+
+        $data = array(
+            'pending'   => 0, 
+            'draft'     => 0,
+            'approved'   => 0,
+            'declined'   => 0
+        );
+
+        foreach($row as $v) {
+            if($v['status'] ==  1) {
+                $data['pending'] += $v['total_amount'];
+            }
+            if($v['status'] ==  2) {
+                $data['draft'] += $v['total_amount'];
+            }
+            if($v['status'] ==  3) {
+                $data['approved'] += $v['total_amount'];
+            }
+            if($v['status'] ==  4) {
+                $data['declined'] += $v['total_amount'];
+            }
+        }
+        $data['pending'] = money($data['pending']);
+        $data['draft'] = money($data['draft']);
+        $data['approved'] = money($data['approved']);
+        $data['declined'] = money($data['declined']);
+        
+        return $this->_returnData($data);
+    }
+
     /**
      * Get 
      * 

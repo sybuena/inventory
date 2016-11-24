@@ -3,8 +3,40 @@
 	getList();
     //for adding modal
 	purchaseModal(0, 0);
+    header();
 
 })();
+
+function header() {
+    var url = '/purchase/listing/calculateHeader/';
+    base.
+        setUrl(url).
+        get(function(response) {
+
+            $('#purchase-draft').html(response.data['draft']);
+            $('#purchase-pending').html(response.data['pending']);
+            $('#purchase-approved').html(response.data['approved']);
+            $('#purchase-declined').html(response.data['declined']);
+        }
+    );
+    return this;
+}
+
+function loadNumber() {
+    var number = $('#add-purchase-order-number');
+    number.attr('disabled', 'disabled');
+    var url = '/settings/getNumber/purchase_order';
+
+    base.
+        setUrl(url).
+        get(function(response) {
+            number.val(response.data['number']);
+        }
+    );
+    
+
+    return this;
+}
 
 /**
  * Load all possible suppplier
@@ -58,6 +90,8 @@ function purchaseModal(id, data) {
     var date        = $(baseId+'date');
     var dueDate     = $(baseId+'due-date');
     var total       = $(baseId+'total-amount');
+    var attention   = $(baseId+'attention');
+    var instruction = $(baseId+'instruction');
 
     var inventory   = $('#select-item-inventory');
 
@@ -92,7 +126,8 @@ function purchaseModal(id, data) {
         $('#add-purchase-other-table tbody').html('');
 
         loadSupplier(0);
-    
+        loadNumber();
+
         return false;
     });
     
@@ -112,6 +147,8 @@ function purchaseModal(id, data) {
         date.val(data['date']);
         dueDate.val(data['due_date']);
         total.val(data['total_amount']);
+        attention.val(data['attention']);
+        instruction.val(data['instruction']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -264,6 +301,7 @@ function purchaseModal(id, data) {
             var val = $(this).select2('data');
             //get cost price
             var costRate = val['cost'];
+
             var quantity = 1;
             var amount   = parseFloat(parseFloat(costRate) * quantity).toFixed(2);
 
@@ -395,7 +433,7 @@ function purchaseModal(id, data) {
         //check for error
         (supplier.val() == 0) ? (error = helper.hasError(supplier, 1)) : helper.noError(supplier, 1);
         (orderNumber.val() == '') ? (error = helper.hasError(orderNumber, 1)) : helper.noError(orderNumber, 1);
-        (refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
+        //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
         (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
@@ -419,7 +457,9 @@ function purchaseModal(id, data) {
                 'line'              : line,
                 'service'           : service,
                 'other'             : other,
-                'total_amount'      : total.val()
+                'total_amount'      : total.val(),
+                'attention'         : attention.val(),
+                'instruction'       : instruction.val(),
             };
 
             base.

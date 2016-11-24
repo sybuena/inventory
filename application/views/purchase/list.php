@@ -1,9 +1,6 @@
 <?php include(APPPATH.'/views/common/header.php'); ?>
 <?php include(APPPATH.'/views/common/top_menu.php'); ?>
-<style>
 
-.box-price h2 {font-size: 34px !important; text-align: right !important;}
-</style>
 <!-- Content -->
 <section id="main" data-layout="layout-1">
 	<?php include(APPPATH.'/views/common/sidebar.php'); ?>
@@ -11,7 +8,13 @@
 	<section id="content">
 	    <div class="container">
 	        <div class="block-header">
-	            <h2>Purchase Order</h2>
+	            <h2>Purchase Order Listing</h2>
+                <ol class="breadcrumb breadcrums2">
+                    <li><a href="/app">Home</a></li>
+                    <li class="active" id="main-list-breadcrums">
+                        Purchase List
+                    </li>
+                </ol>
             </div>
           
             <div class="row">
@@ -22,7 +25,7 @@
                             <h2>Purchase</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="purchase-draft">0</h2>
                         </div>
                     </div>
                 </div>
@@ -34,7 +37,7 @@
                             <h2>Purchase</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="purchase-pending">0</h2>
                         </div>
                     </div>
                 </div>
@@ -46,7 +49,7 @@
                             <h2>Purchase</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="purchase-approved">0</h2>
                         </div>
                     </div>
                 </div>
@@ -58,7 +61,7 @@
                             <h2>Purchase</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="purchase-declined">0</h2>
                         </div>
                     </div>
                 </div>

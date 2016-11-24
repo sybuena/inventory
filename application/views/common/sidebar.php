@@ -67,7 +67,7 @@ span.p-info {
             <a href=""><i class="zmdi zmdi-long-arrow-down"></i> Purchases </a>
             <ul style="display: none;">
                 <li><a href="/purchase/listing">Purchase Order</a></li>
-                <li><a href="/settings/users">Bills</a></li>
+                <!-- <li><a href="/settings/users">Bills</a></li> -->
             </ul>
         </li>
 

@@ -139,6 +139,20 @@
                         </button>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-sm-6"></div>
+                    <div class="col-sm-6">
+                        <div class="form-group">    
+                            <label>Attention</label>
+                            <input type="text" class="form-control fg-input" placeholder="If any person needed to mention special attention for this purchase order" id="add-purchase-attention">
+                        </div>
+                    
+                        <div class="form-group">    
+                            <label>Instruction </label>
+                            <input type="text" class="form-control fg-input" id="add-purchase-instruction" placeholder="If there is a special instruction for this purchase order">
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <button class="btn bgm-gray waves-effect" data-dismiss="modal">Cancel</button>

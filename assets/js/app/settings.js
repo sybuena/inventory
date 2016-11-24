@@ -9,6 +9,11 @@
 	$('[href="#settingsOrg"]').unbind('click').bind('click', function() {
 		getOrganization();
 	});
+	$('[href="#settingsGeneral"]').unbind('click').bind('click', function() {
+		getGeneralSettings();
+		saveFinancial();
+	});
+	
 	
 	$('[href="#settingsActivity"]').unbind('click').bind('click', function() {
 		getActivity();
@@ -25,6 +30,68 @@
 	addMember();	
 
 })();
+
+function saveFinancial() {
+
+	var bName  = '#gen-';
+	var invPre = $(bName+'inv-prefix');
+	var invSeq = $(bName+'inv-seq');
+	var poPre  = $(bName+'po-prefix');
+	var poSeq  = $(bName+'po-seq');
+	var quoPre = $(bName+'quote-prefix');
+	var quoSeq = $(bName+'quote-seq');
+	var button = $(bName+'update');
+
+	button.unbind('click').bind('click', function() {
+		var error = false;
+		(invPre.val() == '') ? (error = helper.hasError(invPre, 2)) : helper.noError(invPre, 2);
+		(invSeq.val() == '') ? (error = helper.hasError(invSeq, 2)) : helper.noError(invSeq, 2);
+		(poPre.val() == '') ? (error = helper.hasError(poPre, 2)) : helper.noError(poPre, 2);
+		(poSeq.val() == '') ? (error = helper.hasError(poSeq, 2)) : helper.noError(poSeq, 2);
+		(quoPre.val() == '') ? (error = helper.hasError(quoPre, 2)) : helper.noError(quoPre, 2);
+		(quoSeq.val() == '') ? (error = helper.hasError(quoSeq, 2)) : helper.noError(quoSeq, 2);
+		
+		if(!error) {
+			var url = '/settings/updateSequence/';
+			var data = {
+				'invoice' : {
+					'prefix' 	: invPre.val(),
+					'sequence'  : invSeq.val()
+				},
+				'purchase_order' : {
+					'prefix'   : poPre.val(),
+					'sequence' : poSeq.val()
+				},
+				'quotation' : {
+					'prefix'   : quoPre.val(),
+					'sequence' : quoSeq.val()
+				}
+			};
+			
+			button.
+				html('Updating...').
+				attr('disabled', 'disabled');
+
+			base.
+				setUrl(url).
+				setData(data).
+				post(function(response) {
+					button.
+						html('Update Information').
+						removeAttr('disabled');
+						
+					base.notification('Financial information successfully updated', 'inverse');
+				}
+			);
+
+
+		}
+
+		return  false;
+	});
+
+	return false;
+}
 
 function getActivity() {
 	$('#settings-activity-list').bootgrid({
@@ -335,231 +402,27 @@ function getOrganization() {
  */
 
 function getGeneralSettings() {
+	var url = '/settings/general';
+	
+	$('.gen-loading').attr('disabled', 'disabled').val('');
 
-	var data = {'id' : 1};
-
-	//This is for calendar thingy
-	$('#organization-settings-conversion-date').datetimepicker({
-        viewMode: 'years',
-        format: 'MM/YYYY'
-    });
-
-	// Unset the input
-	$('#organization-settings-tin-number-modal').val('');
-
-	// Get the Id of the organization
 	base.
-		setUrl('settings/getOrganizationInfo').
-		setData(data).
-		post(function(response) {
+		setUrl(url).
+		get(function(response) {
+			
+			$('.gen-loading').removeAttr('disabled');
 
-			$('.organization-edit-tin-number-modal').attr('id', response.data['_id']['$id']);
+			$('#gen-inv-prefix').val(response.data['invoice']['prefix']);
+			$('#gen-inv-seq').val(response.data['invoice']['next']);
 
-			if(response.data['tin_number'] != undefined) {
-				$('#organization-settings-tin-number-modal').val(response.data['tin_number']);
-				$('#organization-settings-tin-number').val(response.data['tin_number']);
-			} else {
-				$('#organization-settings-tin-number-modal').val('');
-				$('#organization-settings-tin-number').val('');
-			}
+			$('#gen-po-prefix').val(response.data['purchase_order']['prefix']);
+			$('#gen-po-seq').val(response.data['purchase_order']['next']);
 
-
-			if(response.data['conversion_date'] != undefined) {
-				$('#organization-settings-conversion-date').data("DateTimePicker").date(response.data['conversion_date']);
-			} else {
-				$('#organization-settings-conversion-date').data("DateTimePicker").date('');
-			}
-
-			if(response.data['rdo_code'] != undefined) {	
-				$('#organization-settings-rdo-code').chosen().val(response.data['rdo_code']);
-	        	$('#organization-settings-rdo-code').trigger("chosen:updated");
-			} else {
-				$('#organization-settings-rdo-code').chosen().val('');
-	        	$('#organization-settings-rdo-code').trigger("chosen:updated");				
-			}
-
-			// This is for the Tin Number Settings
-			tinNumberSetting(response.data['_id']['$id']);
-			// For loading of datepicker
-			datePicker(response.data['_id']['$id']);
-
-			return false;
-
-
-		});
-
-		// This is for onchange of RDO 
-		$('#organization-settings-rdo-code').chosen().unbind('change').change('click', function() {
-
-			var code = $(this).chosen().val();
-			var data = {'code' : code};
-
-			// Updated the save rdo code
-			base.
-				setUrl('settings/saveRdoCode').
-				setData(data).
-				post(function(response) { 
-
-					base.notification('RDO Code successfully updated.', 'success');
-					// swal('Success!', 'RDO Code successfully updated. ', 'success'); 
-					// getGeneralSettings();
-
-				});
-		});
-}
-
-/**
- * Tin Number Settings
- *
- */
-function tinNumberSetting(id) {
-
-	// // This is for tin number
-	$('#organization-settings-tin-number').mask('0000-0000-0000-0000');
-
-	$("#organization-settings-tin-number").debounce("keyup", function() {
-// console.log('sdjb')
-		var tin  = $(this).val();
-
-		// Check if tin is not empty
-		if(tin == '' || tin.length < 19) {
-			$(this).parent().parent().addClass('has-error');
-			$(this).parent().parent().find('small.help-block').html('Invalid TIN Number!');
-		} else {						
-			$(this).parent().parent().removeClass('has-error');
-			$(this).parent().parent().find('small.help-block').html('');
-
-			var data = {
-				'id'  : id,
-				'tin' : tin
-			};	
-
-			base.
-				setUrl('settings/tinNumberUpdate').
-				setData(data).
-				post(function(response) {
-
-					if(!response.error) {
-       					swal('Sucess!', 'Organization\'s tin number is successfully updated!', 'success'); 
-						$('#modal-edit-tin-number').modal('hide');
-						getGeneralSettings();
-					}
-
-				});
+			$('#gen-quote-prefix').val(response.data['quotation']['prefix']);
+			$('#gen-quote-seq').val(response.data['quotation']['next']);
 		}
+	);
 
-	}, 1000);
-
-
-
-	// Submit button
-	$('.organization-edit-tin-number-modal').unbind('click').bind('click', function() {
-
-		var id 	 = $(this).attr('id');
-		var tin  = $('#organization-settings-tin-number-modal').val();
-
-		// Check if tin is not empty
-		if(tin == '') {
-			$('#organization-settings-tin-number-modal').parent().parent().addClass('has-error');
-		} else {						
-			$('#organization-settings-tin-number-modal').parent().parent().removeClass('has-error');
-
-			var data = {
-				'id'  : id,
-				'tin' : tin
-			};
-
-			base.
-				setUrl('settings/tinNumberUpdate').
-				setData(data).
-				post(function(response) {
-
-					if(!response.error) {
-       					// swal('Sucess!', 'Organization\'s tin number is successfully updated!', 'success'); 
-						base.notification('Organization\'s tin number is successfully updated!', 'success');
-
-						$('#modal-edit-tin-number').modal('hide');
-						getgeneralSettings();
-					}
-
-				});
-		}
-	});
-
-}
-/**
- * Fix casing of the value
- *
- */
-function fixCasing(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
-}
-
-/**
- * Get the address depending the type
- *
- */
-function getAddress(address, type) {
-	// Address Line 1
-	if(address['AddressLine1'] != undefined || address['AddressLine1'] != '') {
-		$('#organization-setting-'+type+'-address-street').val(address['AddressLine1']);
-	}
-	// City
-	if(address['City'] != undefined || address['City'] != '') {
-		$('#organization-setting-'+type+'-address-city').val(address['City']);
-	}
-	// State
-	if(address['Region'] != undefined || address['Region'] != '') {
-		$('#organization-setting-'+type+'-address-state').val(address['Region']);
-	}
-	// Country
-	if(address['Country'] != undefined || address['Country'] != '') {
-		$('#organization-setting-'+type+'-address-country').val(address['Country']);
-	}
-	// zip
-	if(address['PostalCode'] != undefined || address['PostalCode'] != '') {
-		$('#organization-setting-'+type+'-address-zip').val(address['PostalCode']);
-	}
-	// zip
-	if(address['AttentionTo'] != undefined || address['AttentionTo'] != '') {
-		$('#organization-setting-'+type+'-address-attention').val(address['AttentionTo']);
-	}
-
-	return;
-
-}
-
-/**
- * Load the date picker
- *
- */
-function datePicker(id) {
-
-	// On change of date
-    $('#organization-settings-conversion-date').unbind('dp.change').bind('dp.change', function(e) {
-
-    	if(e.oldDate !== null) {
-
-	    	var data = {
-	    		'id' 	: id,
-	    		'date'  : $('#organization-settings-conversion-date').val()
-	    	}
-
-	    	base.
-	    		setUrl('settings/setConversionDate').
-	    		setData(data).
-	    		post(function(response) {
-
-	       			// swal('Sucess!', 'Organization\'s conversion date is successfully updated!', 'success'); 
-					base.notification('Organization\'s conversion date is successfully updated!', 'success');
-
-	       			getGeneralSettings();
-
-	       			return false;
-
-	    		});
-    	}
-    });
-
-
+	return false
+	
 }

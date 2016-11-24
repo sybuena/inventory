@@ -10,6 +10,12 @@
 	    <div class="container">
 	        <div class="block-header">
 	            <h2>Sales Invoice</h2>
+                 <ol class="breadcrumb breadcrums2">
+                    <li><a href="/app">Home</a></li>
+                    <li class="active" id="main-list-breadcrums">
+                        Invoice List
+                    </li>
+                </ol>
             </div>
           
             <div class="row">
@@ -20,7 +26,7 @@
                             <h2>Invoice</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="invoice-draft">0</h2>
                         </div>
                     </div>
                 </div>
@@ -32,7 +38,7 @@
                             <h2>Invoice</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="invoice-pending">0</h2>
                         </div>
                     </div>
                 </div>
@@ -44,7 +50,7 @@
                             <h2>Invoice</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="invoice-approved">0</h2>
                         </div>
                     </div>
                 </div>
@@ -56,7 +62,7 @@
                             <h2>Invoice</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="invoice-declined">0</h2>
                         </div>
                     </div>
                 </div>

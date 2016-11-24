@@ -12,7 +12,13 @@
 	<section id="content">
 	    <div class="container">
 	        <div class="block-header">
-	            <h2>Quote</h2>
+	            <h2>Quotation</h2>
+                <ol class="breadcrumb breadcrums2">
+                    <li><a href="/app">Home</a></li>
+                    <li class="active" id="main-list-breadcrums">
+                        Quotation List
+                    </li>
+                </ol>
             </div>
           
             <div class="row">

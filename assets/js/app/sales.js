@@ -2,7 +2,39 @@
 	getList();
 	//for adding modal
 	invoiceModal(0, 0);
+    header();
 })();
+
+function header() {
+    var url = '/sales/listing/calculateHeader/';
+    base.
+        setUrl(url).
+        get(function(response) {
+
+            $('#invoice-draft').html(response.data['draft']);
+            $('#invoice-pending').html(response.data['pending']);
+            $('#invoice-approved').html(response.data['approved']);
+            $('#invoice-declined').html(response.data['declined']);
+        }
+    );
+    return this;
+}
+
+function loadNumber() {
+    var number = $('#add-invoice-invoice-number');
+    number.attr('disabled', 'disabled');
+    var url = '/settings/getNumber/invoice';
+
+    base.
+        setUrl(url).
+        get(function(response) {
+            number.val(response.data['number']);
+        }
+    );
+    
+
+    return this;
+}
 
 /**
  * Load all possible customer
@@ -103,7 +135,7 @@ function invoiceModal(id, data) {
         $('#add-invoice-other-table tbody').html('');
 
         loadCustomer(0);
-    
+        loadNumber();
         return false;
     });
     

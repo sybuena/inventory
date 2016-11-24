@@ -89,13 +89,19 @@ function getGravatar($email, $s = 80, $d = 'identicon', $r = 'g', $img = false, 
 
 function money($num, $sign = '₱') {
     
-    return $sign.' '.decim($num);
+    return $sign.' '.decim2($num);
 }
 
 function decim($num) {
     
+    return number_format($num, 2, '.', '');
+}
+
+function decim2($num) {
+    
     return number_format($num, 2, '.', ',');
 }
+
 function secondsToTime($seconds) {
     $dtF = new \DateTime('@0');
     $dtT = new \DateTime("@$seconds");

@@ -308,8 +308,8 @@ class Inventory_model extends MY_Model {
                 'name'      => $v['name'],
                 'type'      => $type,
                 'category'  => isset($v['category']['name']) ? $v['category']['name'] : '<i>None</i>',
-                'cost'      => isset($v['cost']) && !empty($v['cost']) ? number_format($v['cost'], 2) : '0.00',
-                'sales'     => isset($v['sales']) && !empty($v['sales']) ? number_format($v['sales'], 2) : '0.00',
+                'cost'      => isset($v['cost']) && !empty($v['cost']) ? money($v['cost']) : money('0.00'),
+                'sales'     => isset($v['sales']) && !empty($v['sales']) ? money($v['sales']) : money('0.00'),
                 'stock'  => isset($v['stock']) ? number_format($v['stock'], 2) : '0.00'
             );
         }

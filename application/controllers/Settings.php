@@ -23,7 +23,7 @@ class Settings extends MY_Controller {
 
         parent::__construct();
         
-        if($this->login->status() != 'app' && $this->login->status() != 'setUp') {
+        if($this->login->status() != 'app') {
             
             redirect($this->login->status());
         }    
@@ -41,6 +41,60 @@ class Settings extends MY_Controller {
         
 		$this->load->view('settings', $data);
 	}
+
+    public function getNumber($type = 'invoice') {
+        //$this->settings->updateNextNumber($type);
+
+        return $this->_returnData(array('number' => $this->settings->nextNumber($type)));
+    }
+
+    /**
+     * Update invoice, purchase order, quotation number
+     * 
+     * @return json
+     */
+    public function updateSequence() {
+        
+        parent::post();
+
+        $_POST['date_updated'] = strtotime('now');
+        $_POST['updated_by'] = loginId();
+
+        $_POST['invoice']['digit'] = strlen($_POST['invoice']['sequence']);
+        $_POST['invoice']['next'] = +$_POST['invoice']['sequence'];
+
+        $_POST['purchase_order']['digit'] = strlen($_POST['purchase_order']['sequence']);
+        $_POST['purchase_order']['next'] = +$_POST['purchase_order']['sequence'];
+
+        $_POST['quotation']['digit'] = strlen($_POST['quotation']['sequence']);
+        $_POST['quotation']['next'] = +$_POST['quotation']['sequence'];
+        
+        unset($_POST['invoice']['sequence']);
+        unset($_POST['purchase_order']['sequence']);
+        unset($_POST['quotation']['sequence']);
+
+        $this->settings->update($_POST);
+        
+        return $this->_returnSuccess();
+    }
+
+    /**
+     * Get general setting for financial information
+     * 
+     * @return json
+     */
+    public function general() {
+           
+        $data =$this->settings->getAllSequence();
+        //format number
+        $data['invoice']['next'] = 
+            sprintf('%0'.$data['invoice']['digit'].'d', $data['invoice']['next']);
+        $data['purchase_order']['next'] = sprintf('%0'.$data['purchase_order']['digit'].'d', $data['purchase_order']['next']);
+        $data['quotation']['next'] = 
+            sprintf('%0'.$data['quotation']['digit'].'d', $data['quotation']['next']);
+        
+        return $this->_returnData($data);
+    }
 
     /**
      * Get organization member list
@@ -179,48 +233,6 @@ class Settings extends MY_Controller {
         $info = $this->organization->organizationInfo($this->_organization['_id']->{'$id'});
 
         return $this->_returnData($info);
-    }
-
-    /**
-     * Tin number add / update
-     * 
-     * @return json
-     */
-    public function tinNumberUpdate() {
-        //no post data
-        parent::post();
-        
-        $this->organization->tinNumber($_POST);
-
-        return $this->_returnSuccess();
-    }
-
-    /**
-     * Setting conversion date
-     * 
-     * @return json
-     */
-    public function setConversionDate() {
-        //no post data
-        parent::post();
-        
-        $this->organization->setConversionDate($_POST);
-
-        return $this->_returnSuccess();
-    }
-
-    /**
-     * Save the rdo code
-     * 
-     * @return json
-     */
-    public function saveRdoCode() {
-        //no post data
-        parent::post();
-        
-        $this->organization->saveRdoCode($_POST, $this->_organization['_id']->{'$id'});
-
-        return $this->_returnSuccess();
     }
 
     /**

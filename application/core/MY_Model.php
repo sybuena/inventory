@@ -26,6 +26,9 @@ class MY_Model extends CI_Model {
     const QUOTE             = 'quote';
     const NOTES             = 'notes';
 
+    //SETTINGS
+    const SETTINGS = 'settings';
+
     /* Public Properties
     -------------------------------*/
 

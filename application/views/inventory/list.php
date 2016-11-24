@@ -113,7 +113,7 @@ th[data-column-id="image"] {
                                 <tr>
                                     <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
                                     <!-- <th data-column-id="code" data-order="asc">Code</th> -->
-                                    <th data-column-id="name" data-order="asc" data-formatter="name_format" style="width: 700px;">Name</th>
+                                    <th data-column-id="name" data-order="asc" data-width="700px" data-formatter="name_format">Name</th>
                                     <th data-column-id="type" data-order="asc">Type</th>
                                     <th data-column-id="category" data-sortable="false">Category</th>
                                     <th data-column-id="cost" data-order="asc" data-align="right">Cost Price</th>

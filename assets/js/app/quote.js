@@ -4,6 +4,22 @@
 	quoteModal(0, 0);
 })();
 
+function loadNumber() {
+    var number = $('#add-quote-quote-number');
+    number.attr('disabled', 'disabled');
+    var url = '/settings/getNumber/quotation';
+
+    base.
+        setUrl(url).
+        get(function(response) {
+            number.val(response.data['number']);
+        }
+    );
+    
+
+    return this;
+}
+
 /**
  * Load all possible customer
  * 
@@ -106,7 +122,7 @@ function quoteModal(id, data) {
         $('#add-quote-other-table tbody').html('');
 
         loadCustomer(0);
-    
+        loadNumber();
         return false;
     });
     
