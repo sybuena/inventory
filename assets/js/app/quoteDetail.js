@@ -1,7 +1,140 @@
 (function() {
 	editQuote();
 	deleteQuote();
+    markAccepted();
+    markSent();
+    convertInvoice();
+
 })();
+
+function convertInvoice() {
+    $('.quote-convert').unbind('click').bind('click', function() {
+        var id = $(this).attr('quote-id');
+        var number = $('#quote-number').html()
+        swal({
+            title : 'Convert Quote('+number+') as Invoice?',   
+            text  : 'This will create new invoice for this quotation',   
+            type  : 'warning',   
+            showCancelButton: true,   
+            confirmButtonText: 'Yes, convert this',   
+            cancelButtonText: 'Nope, Im just kidding!',   
+            closeOnConfirm: false,   
+            closeOnCancel: true
+
+        },function(isConfirm) {
+            if(isConfirm) {  
+                
+                var url = '/quote/detail/action/sent/'+id;
+
+                //loading
+                swal({
+                    title : "Saving...",   
+                    text : "Just a sec! This might take some minutes depending on the items",   
+                    showConfirmButton : false 
+                });
+
+                base.
+                    setUrl(url).
+                    get(function(response) {
+                        swal.close();
+                        //success message
+                        base.notification('Successfully Mark as Sent', 'inverse');
+
+                        location.reload();
+                    }
+                );
+            } 
+        });
+    });
+}
+
+function markSent() {
+
+    $('.quote-sent').unbind('click').bind('click', function() {
+        var id = $(this).attr('quote-id');
+
+        swal({
+            title : 'Mark Quotation as sent?',   
+            text  : 'You are about to mark this quotation status as sent',   
+            type  : 'warning',   
+            showCancelButton: true,   
+            confirmButtonText: 'Yes, mark this',   
+            cancelButtonText: 'Nope, Im just kidding!',   
+            closeOnConfirm: false,   
+            closeOnCancel: true
+
+        },function(isConfirm) {
+            if(isConfirm) {  
+                
+                var url = '/quote/detail/action/sent/'+id;
+
+                //loading
+                swal({
+                    title : "Saving...",   
+                    text : "Just a sec! This might take some minutes depending on the items",   
+                    showConfirmButton : false 
+                });
+
+                base.
+                    setUrl(url).
+                    get(function(response) {
+                        swal.close();
+                        //success message
+                        base.notification('Successfully Mark as Sent', 'inverse');
+
+                        location.reload();
+                    }
+                );
+            } 
+        });
+    });
+
+    return this;
+}
+
+function markAccepted() {
+
+    $('.quote-accept').unbind('click').bind('click', function() {
+        var id = $(this).attr('quote-id');
+
+        swal({
+            title : 'Mark Quotation as accepted?',   
+            text  : 'You are about to mark this quotation status as accepted',   
+            type  : 'warning',   
+            showCancelButton: true,   
+            confirmButtonText: 'Yes, mark this',   
+            cancelButtonText: 'Nope, Im just kidding!',   
+            closeOnConfirm: false,   
+            closeOnCancel: true
+
+        },function(isConfirm) {
+            if(isConfirm) {  
+                
+                var url = '/quote/detail/action/accept/'+id;
+
+                //loading
+                swal({
+                    title : "Saving...",   
+                    text : "Just a sec! This might take some minutes depending on the items",   
+                    showConfirmButton : false 
+                });
+
+                base.
+                    setUrl(url).
+                    get(function(response) {
+                        swal.close();
+                        //success message
+                        base.notification('Successfully Mark as Accepted', 'inverse');
+
+                        location.reload();
+                    }
+                );
+            } 
+        });
+    });
+
+    return this;
+}
 
 function deleteQuote() {
 
@@ -494,7 +627,7 @@ function quoteModal(id, data) {
                     base.notification('Invoice successfully saved', 'inverse');
 
                     $('#add-quote-modal').modal('hide');
-                    $('#quote-table-list').bootgrid('reload');
+                    location.reload();
                 }
             );
         }

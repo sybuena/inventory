@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Delivery Date <span class="required-text">*</span></label>
+                        <label>Due Date <span class="required-text">*</span></label>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                                 <div class="dtp-container fg-line">

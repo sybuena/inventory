@@ -47,7 +47,7 @@
                             <div class="text-left m-l-20">
                                 <h4>
                                     Quote Number <br>
-                                    <span class="c-blue"><?=$quote['quote_number']; ?></span>
+                                    <span class="c-blue" id="quote-number"><?=$quote['quote_number']; ?></span>
                                 </h4>
                                 
                                 <span class="text-muted">
@@ -187,7 +187,7 @@
                         </tr>
                         </tbody>
                     </table>
-                    
+                
                     <div class="clearfix"></div>
                     <div class="p-25 row">
                         
@@ -204,15 +204,37 @@
                             <p class="c-gray"><?=show($quote['terms'], 'N/A')?></p>
                         </div>
                     </div>
+                    <div class="clearfix"></div>
+                        <?php if($quote['status'] != 4) : ?>
+                            <div class="pull-right button-actions">
+                                <!-- IF DRAFT -->
+                                <?php if($quote['status'] == 2) : ?>
+                                    <button class="btn bgm-orange quote-sent" quote-id="<?=$id;?>">
+                                        Mark as Sent Quotation
+                                    </button>
+                                <!-- IF SENT -->
+                                <?php elseif($quote['status'] == 1) : ?>
+                                    <button class="btn bgm-blue quote-accept" quote-id="<?=$id;?>">
+                                        Mark as Accepted Quotation
+                                    </button>
+                                <!-- IF ACCEPTED -->
+                                <?php elseif($quote['status'] == 3) : ?>
+                                    <button class="btn bgm-lightgreen quote-convert" quote-id="<?=$id;?>">
+                                        Convert Quotation as Invoice
+                                    </button>
+                                <?php endif;?>
+                            </div>
+                        <?php endif;?>
+                    <div class="clearfix"></div>
 
                 </div>
-                <footer class="m-t-15 p-20">
+                <!-- <footer class="m-t-15 p-20">
                     <ul class="list-inline text-center list-unstyled">
                         <li class="m-l-5 m-r-5"><small>support@company.com</small></li>
                         <li class="m-l-5 m-r-5"><small>00971 452 9900</small></li>
                         <li class="m-l-5 m-r-5"><small>www.company.com</small></li>
                     </ul>
-                </footer>
+                </footer> -->
             </div>
 	    </div>
 	</section>

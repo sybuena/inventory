@@ -454,7 +454,7 @@ $config['inventoryDetail_js']   = array(
 	$vendor.'bootstrap-sweetalert/lib/sweet-alert.min.js',
 	$vendor.'malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
 	$vendor.'eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-//	'/assets/vendors/bootgrid/jquery.bootgrid.updated.min.js',
+	'/assets/vendors/bootgrid/jquery.bootgrid.updated.min.js',
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',

@@ -584,13 +584,13 @@ function getList() {
             status_text : function(column, row) {
 
                 if(row['status_text'] == 1) {
-                    return '<button class="btn bgm-orange btn-xs waves-effect status-table" status="'+row['status_text']+'">Pending</button>';
+                    return '<button class="btn bgm-orange btn-xs waves-effect status-table" status="'+row['status_text']+'">Sent</button>';
                 } else if(row['status_text'] == 2) {
                     return '<button class="btn bgm-cyan btn-xs waves-effect status-table" status="'+row['status_text']+'">Draft</button>';
                 } else if(row['status_text'] == 3) {
-                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Approved</button>';
+                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Accepted</button>';
                 } else if(row['status_text'] == 4) {
-                    return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Declined</button>';
+                    return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Invoiced</button>';
                 }
             }
         },

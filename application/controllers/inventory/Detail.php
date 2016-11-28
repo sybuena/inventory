@@ -68,6 +68,19 @@ class Detail extends MY_Controller {
 
         $_POST['updated_by'] = loginId();
         $_POST['updated_date'] = strtotime('now');
+        
+        if(isset($_POST['category']) && !empty($_POST['category'])) {
+
+        }
+        if(!empty($_POST['category'])) {
+            //now get group name
+            $group = $this->inventory->getCategotyDetail($_POST['category'], array('name'));
+
+            $_POST['category'] = array(
+                'id'    => $_POST['category'],
+                'name'  => $group['name']
+            );
+        }
 
         $this->inventory->updateItem($id, $_POST);
         
