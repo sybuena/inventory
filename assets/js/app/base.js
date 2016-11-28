@@ -47,6 +47,13 @@ Base.prototype = {
 
         return this;
     },
+     keyUpString : function(element) {
+        $(element).on('input', function() {
+          this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');
+        });
+
+        return this;
+    },
     paginate : function(offset, limit) {
         this.offset   = offset;
         this.limit    = limit;

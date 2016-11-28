@@ -36,11 +36,11 @@
                                 </a>
                             </li>
 
-                            <li>
+                            <!-- <li>
                                 <a href="#settingsActivity" data-toggle="tab">
                                     Activity
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                           
                         <div class="tab-content p-t-0">

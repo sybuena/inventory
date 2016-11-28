@@ -41,7 +41,7 @@ function getContactsImage($user, $size = 500, $image = true) {
 }
 
 function getImage($user, $size = 500, $image = false) {
-
+    return '/assets/img/default.png';
     //if no specific instruction for image
     if(!isset($user['image']) || empty($user['image'])) { 
         //use the default

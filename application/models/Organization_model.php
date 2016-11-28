@@ -323,6 +323,16 @@ class Organization_model extends MY_Model {
             }
         }
 
+        //get last login in login table
+        $lastLogin = $this->cimongo
+            ->order_by(array('login_date' => 'DESC'))
+            ->get_where(self::LOGIN_ACTIVITY, array('login_user' => $v['_id']->{'$id'}))
+            ->row_array();
+        
+        if(!empty($lastLogin)) {
+            $list[$k]['last_login'] = $lastLogin['login_date'];
+        }
+
         $row['rows'] = $list;
         
         $row['total'] = $this->cimongo

@@ -100,6 +100,80 @@ class User_model extends MY_Model {
     }
 
     /**
+     * Get the info of the users
+     *
+     * @param  id
+     * @param  array
+     * @return bool
+     */
+    public function userInfo($id, $select = array(), $orgInclude = null) {
+
+        $role = '';
+        $user = $this->cimongo
+            ->select($select)
+            ->get_where(self::USERS_TABLE, array(
+                '_id' => new MongoId($id)))
+            ->row_array();
+        
+        foreach ($user['organization'] as $key => $value) {
+            if($value['id'] == loginOrg()) {
+                $role = $value['role'];
+                if($value['role'] == 1) {
+                    $user['role_name'] = 'Administrator';
+                    $user['role'] = 1;
+                } else if($value['role'] == 2) {
+                    $user['role_name'] = 'Accountant';
+                    $user['role'] = 2;
+                }
+            }
+        }
+
+        // If unidentified value lets put an empty field
+        foreach ($select as $key => $value) {            
+            if(!isset($user[$value])) {
+                // Put empty string
+                $user[$value] = '';
+            } 
+        }
+
+        if(is_null($orgInclude)) {
+            // lets unset the orgs
+            unset($user['organization']);            
+        }
+
+        return $user;
+        
+    }
+    
+    public function saveInfo($id, $data, $basic = null) {
+
+        $info = $this->userInfo($id, array(), 1);
+
+        if(!is_null($basic)) {
+
+            // Change the role of the user based of organization
+            foreach ($info['organization'] as $key => $value) {
+                if($value['id'] == loginOrg()) {
+                    $info['organization'][$key]['role'] = $data['role'];
+                }
+            }
+
+            // Set the organization
+            $data['organization'] = $info['organization'];  
+            $data['name'] = $data['first_name'] . ' ' . $data['last_name'];          
+
+        }
+
+        $this->cimongo
+            ->where(array(
+                '_id' => new MongoId($id)))
+            ->update(self::USERS_TABLE, $data);
+
+        return;
+        
+    }
+
+    /**
      * Mark user as active now, 
      * 
      * @param string
@@ -180,6 +254,41 @@ class User_model extends MY_Model {
         return $this->cimongo
             ->where($where)
             ->update(self::USERS_TABLE, $row);
+    }
+    
+    /**
+     * Get user activity
+     * 
+     * @param string
+     * @param string
+     * @param int
+     * @param int
+     * @return array
+     */
+    public function getUserActivity($id, $order, $search, $offset, $limit) {
+
+        $where = array('login_user' => $id);
+
+        //search query
+        if(!empty($search)) {
+            $query = urldecode($search);
+            $where['$or'][]['action'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['browser'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['ip_address'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+
+        }
+        
+        $row['rows'] = $this->cimongo
+            ->order_by($order)
+            ->select(array('login_date', 'ip_address', 'browser'))
+            ->get_where(self::LOGIN_ACTIVITY, $where, $limit, ((int)$offset - 1) * 10)
+            ->result_array();
+        
+        $row['total'] = $this->cimongo
+            ->where($where)
+            ->count_all_results(self::LOGIN_ACTIVITY);
+
+        return $row;        
     }
     
     /* Protected Function
