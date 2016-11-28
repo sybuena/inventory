@@ -96,14 +96,14 @@
                                 <i class="zmdi zmdi-search"></i>
                             </a>
                         </li>
-                        <li class="user-admin">
+                       <!--  <li class="user-admin">
                             <a href="" id="purchase-table-list-delete" 
                              data-toggle="tooltip" 
                              data-placement="top"
                              data-original-title="Delete Item">
                                 <i class="zmdi zmdi-delete"></i>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li>
                             <a href="" data-toggle="tooltip" data-placement="top" data-original-title="Refresh Table" id="purchase-table-list-refresh">

@@ -426,7 +426,7 @@ function quoteModal(id, data) {
         //check for error
         (customer.val() == 0) ? (error = helper.hasError(customer, 1)) : helper.noError(customer, 1);
         (quoteNumber.val() == '') ? (error = helper.hasError(quoteNumber, 1)) : helper.noError(quoteNumber, 1);
-        (refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
+        //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
         (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
@@ -568,9 +568,9 @@ function getList() {
         labels  : base.label,
         ajax 		 	: true,
 	    url 		 	: url,
-	    selection 		: true,
-        multiSelect 	: true,
-        keepSelection 	: true,
+	    // selection 		: true,
+     //    multiSelect 	: true,
+     //    keepSelection 	: true,
         formatters      : {
             to     : function(column, row) {
                 if(row['customer_info']['account_number'] != '') {

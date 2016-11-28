@@ -578,9 +578,9 @@ function getList() {
         labels  : base.label,
         ajax 		 	: true,
 	    url 		 	: url,
-	    selection 		: true,
-        multiSelect 	: true,
-        keepSelection 	: true,
+	    // selection 		: true,
+     //    multiSelect 	: true,
+     //    keepSelection 	: true,
         formatters      : {
             from     : function(column, row) {
                 if(row['supplier_info']['account_number'] != '') {

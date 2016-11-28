@@ -577,9 +577,9 @@ function getList() {
         labels  : base.label,
         ajax 		 	: true,
 	    url 		 	: url,
-	    selection 		: true,
-        multiSelect 	: true,
-        keepSelection 	: true,
+	    // selection 		: true,
+     //    multiSelect 	: true,
+     //    keepSelection 	: true,
         formatters      : {
             to     : function(column, row) {
                 if(row['customer_info']['account_number'] != '') {

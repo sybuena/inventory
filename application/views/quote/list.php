@@ -96,7 +96,7 @@
                                 <i class="zmdi zmdi-search"></i>
                             </a>
                         </li>
-                        <li class="user-admin">
+                        <!-- <li class="user-admin">
                             <a href="" id="<?=$table.'-delete';?>" 
                              data-toggle="tooltip" 
                              data-placement="top"
@@ -104,7 +104,7 @@
                                 <i class="zmdi zmdi-delete"></i>
                             </a>
                         </li>
-
+ -->
                         <li>
                             <a href="" data-toggle="tooltip" data-placement="top" data-original-title="Refresh Table" id="<?=$table.'-refresh';?>">
                                 <i class="zmdi zmdi-refresh-sync"></i>
@@ -139,7 +139,7 @@
                         <thead>
                             <tr>
                                 <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                                <th data-column-id="invoice_number" data-order="asc">Quote #</th>
+                                <th data-column-id="quote_number" data-order="asc">Quote #</th>
                                 <th data-column-id="reference_number" data-order="asc">Reference #</th>
                                 <th data-column-id="to" data-formatter="to" data-order="asc">Customer</th>
                                 <th data-column-id="date" data-sortable="false">Date</th>
