@@ -14,6 +14,8 @@ if($_SERVER['SERVER_NAME'] == 'dev.apgars-inventory.com') {
 	$config['db'] = 'apgars';
 }
 
+$config['user'] = '';
+$config['pass'] = '';
 /*  
  * Defaults to FALSE. If FALSE, the program continues executing without waiting for a database response. 
  * If TRUE, the program will wait for the database response and throw a MongoCursorException if the update did not succeed.
