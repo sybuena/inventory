@@ -230,7 +230,7 @@ $config['settings_js']   = array(
 	'/assets/js/app/base.js',
 	//'/assets/js/app/dashboard.js',
 	//'/assets/js/app/digong.js',
-	'/assets/js/app/settingsTicket.js',
+	//'/assets/js/app/settingsTicket.js',
 	'/assets/js/app/settings.js'
 );
 

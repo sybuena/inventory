@@ -7,7 +7,7 @@
 	<section id="content">
 		
 	    <div class="container">
-	    	<div class="block-header">
+	    	<div class="block-header pull-left">
                 <h2>Sales Invoice Detail</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -17,7 +17,17 @@
                     </li>
                 </ol>
             </div>
-	      
+            <div class="pull-right m-t-10">
+                <?php if($invoice['status'] == 1) :?>
+                    <button class="btn btn-primary btn-icon-text invoice-approve" invoice-id="<?=$id;?>">
+                        <i class="zmdi zmdi-check"></i> Approve Invoice
+                    </button>
+                    <button class="btn btn-danger btn-icon-text invoice-decline" invoice-id="<?=$id;?>">
+                        <i class="zmdi zmdi-close"></i> Decline Invoice
+                    </button>
+                <?php endif;?>
+            </div>
+            <div class="clearfix"></div>
             <div class="card">
                 <div class="card-header ch-alt">
                     <button class="btn btn-xs <?=$status_class;?>"><?=$status_text;?></button>
@@ -184,25 +194,7 @@
                     </table>
                     
                     <div class="clearfix"></div>
-                    <?php if($invoice['status'] == 1) :?>
-                        <div class="pull-right button-actions">
-                            <button class="btn btn-primary invoice-approve" invoice-id="<?=$id;?>">
-                                Approve Invoice
-                            </button>
-                            <button class="btn btn-danger invoice-decline" invoice-id="<?=$id;?>">
-                                Decline Invoice
-                            </button>
-                        </div>
-                        <div class="clearfix"></div>
-                    <?php endif;?>
                 </div>
-                <footer class="m-t-15 p-20">
-                    <ul class="list-inline text-center list-unstyled">
-                        <li class="m-l-5 m-r-5"><small>support@company.com</small></li>
-                        <li class="m-l-5 m-r-5"><small>00971 452 9900</small></li>
-                        <li class="m-l-5 m-r-5"><small>www.company.com</small></li>
-                    </ul>
-                </footer>
             </div>
 	    </div>
 	</section>

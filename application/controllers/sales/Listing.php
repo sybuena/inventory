@@ -135,7 +135,7 @@ class Listing extends MY_Controller {
         $_POST['other'] = (isset($_POST['other'])) ? $_POST['other'] : array();
 
         $this->sales->create($_POST);
-
+        $this->settings->updateNextNumber('invoice');
         return $this->_returnSuccess();
     }
 

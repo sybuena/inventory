@@ -97,6 +97,9 @@ class Listing extends MY_Controller {
 
         $this->quote->create($_POST);
 
+        //now update numner
+        $this->settings->updateNextNumber('quotation');
+
         return $this->_returnSuccess();
     }
 

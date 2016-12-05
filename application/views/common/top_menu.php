@@ -26,7 +26,7 @@
 	            <li class="dropdown">
 		            <a data-toggle="dropdown" href=""><i class="tm-icon zmdi zmdi-more-vert"></i></a>
 		            <ul class="dropdown-menu dm-icon pull-right">
-		                <li>
+		              <!--   <li>
 		                    <a href="<?=hardLink('/main/logout/0'); ?>">
 		                    	<i class="tm-icon zmdi zmdi-device-hub"></i> Portal
 		                    </a>
@@ -35,10 +35,10 @@
 		                    <a href="<?=hardLink('/accountSettings'); ?>">
 		                    	<i class="tm-icon zmdi zmdi-settings"></i> Account Settings
 		                    </a>
-		                </li>
+		                </li> -->
 		                <li>
-		                    <a href="<?=hardLink('/main/logout'); ?>">
-		                    	<i class="tm-icon zmdi zmdi-power"></i> Sign out
+		                    <a href="/main/logout">
+		                    	<i class="tm-icon zmdi zmdi-power c-red"></i> Sign out
 		                    </a>
 		                </li>
 		            </ul>
