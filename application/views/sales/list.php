@@ -8,7 +8,7 @@
 
 	<section id="content">
 	    <div class="container">
-	        <div class="block-header">
+	        <div class="block-header pull-left">
 	            <h2>Sales Invoice</h2>
                  <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -17,7 +17,12 @@
                     </li>
                 </ol>
             </div>
-          
+            <div class="pull-right m-t-10">
+                <button class="btn bgm-blue btn-icon-text btn-xs" data-toggle="modal" data-target="#workflow-sales">
+                    <i class="zmdi zmdi-help"></i> Status Workflow
+                </button>
+            </div>
+            <div class="clearfix"></div>
             <div class="row">
                <div class="col-sm-3">
                     <div class="mini-charts-item bgm-cyan">
@@ -156,5 +161,5 @@
 
 <?php //include(APPPATH.'/views/purchase/select-item-modal.php'); ?>
 <?php include(APPPATH.'/views/sales/add-invoice-modal.php'); ?>
-
+<?php include(APPPATH.'/views/sales/workflow-sales.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

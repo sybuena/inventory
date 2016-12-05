@@ -3,6 +3,10 @@
 	//for adding modal
 	invoiceModal(0, 0);
     header();
+    //check for possible hash
+    if(isset(window.location.hash.split('#')[1])) {
+        loadDraft(window.location.hash.split('#')[1]);
+    }
 })();
 
 function header() {
@@ -120,7 +124,7 @@ function invoiceModal(id, data) {
     var TABLE_HTML_EDIT  = tableRow(1, 'invoice');
 
     //if making new invoice
-	$('#invoice-list-add-show').unbind('click').bind('click', function() {
+	$('#invoice-list-add-show, #invoice-list-add-show2').unbind('click').bind('click', function() {
         //unset fields
         invoiceNumber.val('').removeAttr('disabled');
         refNumber.val('');
@@ -628,6 +632,23 @@ function getList() {
             }
 
 	    });
+
+        if(total == 0 && $(table+'-search').val() == ''){
+            var FIRST_ENTRY = 
+            '<tr><td colspan="7" class="no-results">'+
+            '<div style="margin-top: 50px;">'+
+                '<i class="fa fa-file-o fa-4x"></i>'+
+                '<h2 style="text-transform: uppercase;">No Sales Invoice Yet!</h2>'+
+                '<p>Be the first to create invoice to get started</p>'+
+                
+                '<button class="btn bgm-blue waves-effect" id="invoice-list-add-show2">Create Invoice</button>'+
+            '</div>'+
+            '</td></tr>';
+
+            $(table+' tbody').html(FIRST_ENTRY);
+            //we have unbind in click so its possible to double call function
+            invoiceModal(0, 0);
+        }
 	    
     });
 

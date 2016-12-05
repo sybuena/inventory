@@ -111,7 +111,7 @@ function purchaseModal(id, data) {
     
 
     //if making new purchase
-	$('#purchase-list-add-show').unbind('click').bind('click', function() {
+	$('#purchase-list-add-show, #purchase-list-add-show2').unbind('click').bind('click', function() {
         //unset fields
         orderNumber.val('').removeAttr('disabled');
         refNumber.val('');
@@ -627,8 +627,23 @@ function getList() {
                 //first build url
                 window.location = '/purchase/detail/?id='+id;
             }
-
 	    });
+         if(total == 0 && $(table+'-search').val() == ''){
+            var FIRST_ENTRY = 
+            '<tr><td colspan="7" class="no-results">'+
+            '<div style="margin-top: 50px;">'+
+                '<i class="fa fa-file-o fa-4x"></i>'+
+                '<h2 style="text-transform: uppercase;">No Purchase Order Yet!</h2>'+
+                '<p>Be the first to create purchase order to get started</p>'+
+                
+                '<button class="btn bgm-blue waves-effect" id="purchase-list-add-show2">Create Purchase Order</button>'+
+            '</div>'+
+            '</td></tr>';
+
+            $(table+' tbody').html(FIRST_ENTRY);
+            //we have unbind in click so its possible to double call function
+            purchaseModal(0, 0);
+        }
 	    
     });
 

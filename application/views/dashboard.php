@@ -13,6 +13,10 @@
 	    <div class="container">
             <div class="block-header">
                 <h2>Dashboard</h2>
+                <ol class="breadcrumb breadcrums2">
+                    <li><a href="/app">Home</a></li>
+                    <li class="active">Dashboard</li>
+                </ol>
             </div>
 
             <div class="row">
@@ -62,13 +66,9 @@
 
                 </div>
 
-                <div class="col-lg-4">
-                    <?php include(APPPATH.'/views/dashboard/zendesk-ticket.php'); ?>
-                </div>
             </div>
         </div>
 	</section>
 </section>
 
-<?php include(APPPATH.'/views/dashboard/zendesk-ticket-modal.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

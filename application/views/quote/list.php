@@ -11,7 +11,7 @@
 
 	<section id="content">
 	    <div class="container">
-	        <div class="block-header">
+	        <div class="block-header pull-left">
 	            <h2>Quotation</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -20,6 +20,12 @@
                     </li>
                 </ol>
             </div>
+            <div class="pull-right m-t-10">
+                <button class="btn bgm-blue btn-icon-text btn-xs" data-toggle="modal" data-target="#workflow-quotation">
+                    <i class="zmdi zmdi-help"></i> Status Workflow
+                </button>
+            </div>
+            <div class="clearfix"></div>
           
             <div class="row">
                <div class="col-sm-3">
@@ -47,7 +53,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <div class="mini-charts-item bgm-lightgreen">
+                    <div class="mini-charts-item bgm-blue">
                         <div class="count pull-left">
                             <small>Accepted</small>
                             <h2>Quote</h2>
@@ -59,7 +65,7 @@
                 </div>
 
                 <div class="col-sm-3">
-                    <div class="mini-charts-item bgm-red">
+                    <div class="mini-charts-item bgm-lightgreen">
                         <div class="count pull-left">
                             <small>Invoiced</small>
                             <h2>Quote</h2>
@@ -159,4 +165,5 @@
 
 
 <?php include(APPPATH.'/views/quote/add-quote-modal.php'); ?>
+<?php include(APPPATH.'/views/quote/workflow-quotation.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

@@ -124,6 +124,39 @@ class Detail extends MY_Controller {
     public function convert($id) {
         //prevent duplicate action
         $row = $this->quote->detail($id);
+        //get next invoice number
+        $invoiceNumber = $this->settings->nextNumber('invoice');
+
+        $invoice = array(
+            'status'            => 2, //mark as draft invoice
+            'customer'          => $row['customer'],
+            'invoice_number'    => $invoiceNumber,
+            'reference_number'  => $row['quote_number'],
+            'date'              => $row['date'],
+            'due_date'          => '',
+            'total_amount'      => $row['total_amount'],
+            'line'              => $row['line'],
+            'service'           => $row['service'],
+            'other'             => $row['other'],
+            'parent_quoatation' => $row['_id']->{'$id'},
+            'from_quotation'    => true
+        );
+
+        //create and return last insert id
+        $insertId = $this->sales->create($invoice);
+        //update the quoatation as invoiced
+        $update['status']   = 4;
+        $update['mark_by']  = loginId();
+        $update['mark_date'] = strtotime('now');
+        
+        //update
+        $this->quote->edit($id, $update);
+
+        //now return what we need to js
+        return $this->_returnData(array(
+            'number' => $invoiceNumber,
+            'id'     => $insertId
+        ));
     }
 
     /* Protected Function

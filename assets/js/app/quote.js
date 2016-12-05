@@ -104,7 +104,7 @@ function quoteModal(id, data) {
     var TABLE_HTML_EDIT  = tableRow(1, 'quote');
 
     //if making new invoice
-	$('#quote-list-add-show').unbind('click').bind('click', function() {
+	$('#quote-list-add-show, #quote-list-add-show2').unbind('click').bind('click', function() {
         //unset fields
         quoteNumber.val('').removeAttr('disabled');
         refNumber.val('');
@@ -588,9 +588,9 @@ function getList() {
                 } else if(row['status_text'] == 2) {
                     return '<button class="btn bgm-cyan btn-xs waves-effect status-table" status="'+row['status_text']+'">Draft</button>';
                 } else if(row['status_text'] == 3) {
-                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Accepted</button>';
+                    return '<button class="btn bgm-blue btn-xs waves-effect status-table" status="'+row['status_text']+'">Accepted</button>';
                 } else if(row['status_text'] == 4) {
-                    return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Invoiced</button>';
+                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Invoiced</button>';
                 }
             }
         },
@@ -610,8 +610,24 @@ function getList() {
             //if still draft
             window.location = '/quote/detail/?id='+id;
 
-
 	    });
+
+        if(total == 0 && $(table+'-search').val() == ''){
+            var FIRST_ENTRY = 
+            '<tr><td colspan="7" class="no-results">'+
+            '<div style="margin-top: 50px;">'+
+                '<i class="fa fa-file-o fa-4x"></i>'+
+                '<h2 style="text-transform: uppercase;">No Quotation Yet!</h2>'+
+                '<p>Be the first to create quatation to get started</p>'+
+                
+                '<button class="btn bgm-blue waves-effect" id="quote-list-add-show2">Create Quotation</button>'+
+            '</div>'+
+            '</td></tr>';
+
+            $(table+' tbody').html(FIRST_ENTRY);
+            //we have unbind in click so its possible to double call function
+            quoteModal(0, 0);
+        }
 	    
     });
 

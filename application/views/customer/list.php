@@ -31,12 +31,12 @@ th[data-column-id="image"] {
                     <li class="active">Contact List</li>
                 </ol>
             </div>
-             <div class="pull-right m-t-10">
+            <div class="pull-right m-t-10">
                 <a class="btn btn-success waves-effect" id="customer-add-modal-show">
                     <i class="zmdi zmdi-plus"></i> Add New
                 </a>
                 
-           </div>
+            </div>
             <div class="clearfix"></div>
             
             <div class="card m-b-0" id="messages-main">
@@ -79,7 +79,7 @@ th[data-column-id="image"] {
                                 </a>
                             </li>
 
-                            <li>
+                            <!-- <li>
                                 <a href="" class="" id="crm-table-list-move" 
                                     data-toggle="tooltip" 
                                     data-placement="top" 
@@ -87,7 +87,7 @@ th[data-column-id="image"] {
                                 >
                                     <i class="zmdi zmdi-folder"></i>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="dropdown">
                                 <a href="" data-toggle="dropdown" aria-expanded="false">
                                     <i class="zmdi zmdi-more-vert"></i>

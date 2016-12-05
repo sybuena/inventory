@@ -10,7 +10,8 @@
 function convertInvoice() {
     $('.quote-convert').unbind('click').bind('click', function() {
         var id = $(this).attr('quote-id');
-        var number = $('#quote-number').html()
+        var number = $('#quote-number').html();
+
         swal({
             title : 'Convert Quote('+number+') as Invoice?',   
             text  : 'This will create new invoice for this quotation',   
@@ -19,28 +20,38 @@ function convertInvoice() {
             confirmButtonText: 'Yes, convert this',   
             cancelButtonText: 'Nope, Im just kidding!',   
             closeOnConfirm: false,   
-            closeOnCancel: true
+            closeOnCancel: true,
 
         },function(isConfirm) {
             if(isConfirm) {  
                 
-                var url = '/quote/detail/action/sent/'+id;
+                var url = '/quote/detail/convert/'+id;
 
                 //loading
                 swal({
-                    title : "Saving...",   
+                    title : "Converting quotation...",   
                     text : "Just a sec! This might take some minutes depending on the items",   
-                    showConfirmButton : false 
+                    showConfirmButton : false,
+                    showLoaderOnConfirm: true,
                 });
 
                 base.
                     setUrl(url).
                     get(function(response) {
                         swal.close();
-                        //success message
-                        base.notification('Successfully Mark as Sent', 'inverse');
 
-                        location.reload();
+                        //success message
+                        setTimeout(function() {
+                             swal({ 
+                                title : "Sweet!", 
+                                text  : "Invoice successfully created ("+response.data['number']+")", 
+                                type  : "success",
+                                confirmButtonText : "Go to invoice"
+                            }, function() {
+                                window.location = '/sales/listing#'+response.data['id'];
+                            })
+                        }, 500);
+                       
                     }
                 );
             } 

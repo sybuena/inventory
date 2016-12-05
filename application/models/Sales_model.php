@@ -47,7 +47,11 @@ class Sales_model extends MY_Model {
         $select = array('company_name', 'account_number');
         $data['customer_info'] = $this->customer->detail($data['customer'], $select);
 
-        return $this->cimongo->insert(self::INVOICE, $data);        
+        $this->cimongo->insert(self::INVOICE, $data);     
+        
+        $object = $this->cimongo->insert_id();
+            
+        return $object->{'$id'};   
     }
 
     /**

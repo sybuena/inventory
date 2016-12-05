@@ -7,7 +7,7 @@
 	<section id="content">
 		
 	    <div class="container">
-	    	<div class="block-header">
+	    	<div class="block-header pull-left">
                 <h2>Sales Quote Detail</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -17,6 +17,28 @@
                     </li>
                 </ol>
             </div>
+            <div class="pull-right m-t-10">
+                <?php if($quote['status'] != 4) : ?>
+                    <!-- IF DRAFT -->
+                    <?php if($quote['status'] == 2) : ?>
+                        <button class="btn bgm-orange btn-icon-text quote-sent" quote-id="<?=$id;?>">
+                            <i class="zmdi zmdi-check"></i> Mark as Sent Quotation
+                        </button>
+                    <!-- IF SENT -->
+                    <?php elseif($quote['status'] == 1) : ?>
+                        <button class="btn bgm-blue btn-icon-text quote-accept" quote-id="<?=$id;?>">
+                            <i class="zmdi zmdi-check"></i> Mark as Accepted Quotation
+                        </button>
+                    <!-- IF ACCEPTED -->
+                    <?php elseif($quote['status'] == 3) : ?>
+                        <button class="btn bgm-lightgreen btn-icon-text quote-convert" quote-id="<?=$id;?>">
+                            <i class="zmdi zmdi-check"></i> Convert Quotation as Invoice
+                        </button>
+                    <?php endif;?>
+                <?php endif;?>
+                
+            </div>
+            <div class="clearfix"></div>
 	      
             <div class="card">
                 <div class="card-header ch-alt">
@@ -204,28 +226,7 @@
                             <p class="c-gray"><?=show($quote['terms'], 'N/A')?></p>
                         </div>
                     </div>
-                    <div class="clearfix"></div>
-                        <?php if($quote['status'] != 4) : ?>
-                            <div class="pull-right button-actions">
-                                <!-- IF DRAFT -->
-                                <?php if($quote['status'] == 2) : ?>
-                                    <button class="btn bgm-orange quote-sent" quote-id="<?=$id;?>">
-                                        Mark as Sent Quotation
-                                    </button>
-                                <!-- IF SENT -->
-                                <?php elseif($quote['status'] == 1) : ?>
-                                    <button class="btn bgm-blue quote-accept" quote-id="<?=$id;?>">
-                                        Mark as Accepted Quotation
-                                    </button>
-                                <!-- IF ACCEPTED -->
-                                <?php elseif($quote['status'] == 3) : ?>
-                                    <button class="btn bgm-lightgreen quote-convert" quote-id="<?=$id;?>">
-                                        Convert Quotation as Invoice
-                                    </button>
-                                <?php endif;?>
-                            </div>
-                        <?php endif;?>
-                    <div class="clearfix"></div>
+                   
 
                 </div>
                 <!-- <footer class="m-t-15 p-20">
