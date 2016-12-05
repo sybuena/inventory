@@ -5,6 +5,7 @@ $config['login_css']   = array(
 	'/assets/css/app.min.1.css',
     '/assets/css/app.min.2.css',
     '/assets/css/login.css',
+    '/assets/css/style.css',
     $vendor.'animate.css/animate.min.css',
     $vendor.'material-design-iconic-font/dist/css/material-design-iconic-font.min.css',
     '/assets/material/css/wizard.css',

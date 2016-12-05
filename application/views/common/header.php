@@ -9,23 +9,19 @@
 
     <!-- Page Loader -->
     <div class="page-loader">
-        <div class="preloader pl-xxl">
+        <!-- <div class="preloader pl-xxl">
             <svg class="pl-circular" viewBox="25 25 50 50">
                <circle class="plc-path" cx="50" cy="50" r="20"></circle>
             </svg>
+        </div> -->
+        <div class="loader-walk">
+            <div></div><div></div><div></div><div></div><div></div>
+            <br/><br/>
         </div>
     </div>
 
     <footer id="footer">
         Copyright &copy; 2016 Apgars
-    
-        <!-- <ul class="f-menu">
-            <li><a href="">Home</a></li>
-            <li><a href="">Dashboard</a></li>
-            <li><a href="">Reports</a></li>
-            <li><a href="">Support</a></li>
-            <li><a href="">Contact</a></li>
-        </ul> -->
     </footer>
 
 </head>
