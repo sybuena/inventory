@@ -34,10 +34,10 @@ th[data-column-id="image"] {
 
             </div>
             <div class="pull-right m-t-10">
-                <a class="btn btn-success waves-effect" id="inventory-add-modal">
+                <a class="btn bgm-blue waves-effect btn-icon-text" id="inventory-add-modal">
                     <i class="zmdi zmdi-plus"></i> Add New
                 </a>
-                <a class="btn btn-success waves-effect" href="/inventory/import" >
+                <a class="btn bgm-blue waves-effect btn-icon-text" href="/inventory/import" >
                     <i class="zmdi zmdi-upload"></i> Import
                 </a>
            </div>

@@ -54,21 +54,16 @@ span.p-info {
         <li class="<?=show($inventory); ?>">
             <a href="/inventory/listing""><i class="zmdi zmdi-store"></i> Inventory </a>
         </li>
-
-        <li class="sub-menu <?=show($sales); ?>">
-            <a href=""><i class="zmdi zmdi-long-arrow-up"></i> Sales </a>
-            <ul style="display: none;">
-                <li><a href="/quote/listing">Quotes</a></li>
-                <li><a href="/sales/listing">Invoices</a></li>
-            </ul>
-        </li>
         
-        <li class="sub-menu <?=show($purchase); ?>">
-            <a href=""><i class="zmdi zmdi-long-arrow-down"></i> Purchases </a>
-            <ul style="display: none;">
-                <li><a href="/purchase/listing">Purchase Order</a></li>
-                <!-- <li><a href="/settings/users">Bills</a></li> -->
-            </ul>
+        <li class="<?=show($purchase); ?> <?=show($purchaseDetail); ?>">
+            <a href="/purchase/listing"><i class="zmdi zmdi-local-shipping"></i> Purchase Order </a>
+        </li>
+
+        <li class="<?=show($quotation); ?>">
+            <a href="/quote/listing"><i class="zmdi zmdi-assignment-o"></i> Quotation </a>
+        </li>
+        <li class="<?=show($sales); ?>">
+            <a href="/sales/listing"><i class="zmdi zmdi-money"></i> Sales Invoice </a>
         </li>
 
         <li class="<?=show($notes); ?>">

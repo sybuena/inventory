@@ -32,7 +32,7 @@ th[data-column-id="image"] {
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-                <a class="btn btn-success waves-effect" id="customer-add-modal-show">
+                <a class="btn bgm-blue waves-effect btn-icon-text" id="customer-add-modal-show">
                     <i class="zmdi zmdi-plus"></i> Add New
                 </a>
                 

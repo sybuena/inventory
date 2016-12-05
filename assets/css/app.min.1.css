@@ -10800,8 +10800,10 @@ h6 small,
 }
 
 .main-menu > li.active > a {
-  color: #262626;
-  background-color: #F4F4F4;
+  /*color: #262626;
+  background-color: #F4F4F4;*/
+      color: white;
+    background-color: #2196f3;
 }
 
 .sub-menu > a {

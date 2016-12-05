@@ -30,7 +30,7 @@ class Detail extends MY_Controller {
         
     	$data['js']       = $this->config->item('quoteDetail_js');
         $data['css']      = $this->config->item('quoteDetail_css');
-        $data['sales']     = 'active';
+        $data['quotation']     = 'active';
         $data['org_name'] = $this->_organization['name'];
         $data['org'] 	  = $this->_organization;
         $data['user']     = loginData();

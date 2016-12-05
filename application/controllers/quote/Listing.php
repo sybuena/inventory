@@ -30,7 +30,7 @@ class Listing extends MY_Controller {
        //prepare variables we need
         $data['js']       = $this->config->item('quote_js');
         $data['css']      = $this->config->item('quote_css');
-        $data['quote']      = 'active';
+        $data['quotation']      = 'active';
         $data['org_name'] = $this->_organization['name'];
         $data['user']     = loginData();
 

@@ -29,7 +29,7 @@ class Detail extends MY_Controller {
     public function index() {
     	$data['js']       = $this->config->item('purchaseDetail_js');
         $data['css']      = $this->config->item('purchaseDetail_css');
-        $data['purchase']      = 'active';
+        $data['purchaseDetail']      = 'active';
         $data['org_name'] = $this->_organization['name'];
         $data['org'] 		= $this->_organization;
         $data['user']     = loginData();
