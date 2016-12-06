@@ -6,7 +6,7 @@
 		activity();
 	});
 
-	//changePhoto();
+	changePhoto();
 })();
 
 function changePhoto() {

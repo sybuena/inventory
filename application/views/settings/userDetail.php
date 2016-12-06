@@ -30,7 +30,7 @@
                                     <i class="zmdi zmdi-camera"></i> <span class="hidden-xs">Update Profile Picture</span>
                                 </a>
                             </div>
-                            <div class="pmo-stat bgc-default">
+                            <div class="pmo-stat bgc-default bgm-blue">
                                 <h2 id="main-user-name" class="m-0 c-white"><?=$info['name'];?></h2>
                                 <span id="main-user-role">
                                     <?=$info['role_name'];?>
@@ -78,13 +78,13 @@
                     </div>
 
                     <div class="pm-body clearfix">
-                        <ul class="tab-nav tn-justified" data-tab-color="amber" role="presentation">
+                        <ul class="tab-nav tn-justified">
                             <li class="active waves-effect">
-                                <a href="#detail-about" aria-controls="detail-about" role="tab" data-toggle="tab">About</a>
+                                <a href="#detail-about" data-toggle="tab">About</a>
                             </li>
 
                             <li class="waves-effect">
-                                <a href="#detail-activity" aria-controls="detail-activity" role="tab" data-toggle="tab">Login Activity</a>
+                                <a href="#detail-activity" data-toggle="tab">Login Activity</a>
                             </li>
                         </ul>
                         
@@ -105,5 +105,5 @@
 
 
 
-<?php //include(APPPATH.'/views/modal/change-photo.php'); ?>
+<?php include('user/change-photo.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>
