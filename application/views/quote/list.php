@@ -1,9 +1,6 @@
 <?php include(APPPATH.'/views/common/header.php'); ?>
 <?php include(APPPATH.'/views/common/top_menu.php'); ?>
-<style>
 
-.box-price h2 {font-size: 34px !important; text-align: right !important;}
-</style>
 <!-- Content -->
 <section id="main" data-layout="layout-1">
 	<?php include(APPPATH.'/views/common/sidebar.php'); ?>
@@ -28,6 +25,7 @@
             <div class="clearfix"></div>
           
             <div class="row">
+
                <div class="col-sm-3">
                     <div class="mini-charts-item bgm-cyan">
                         <div class="count pull-left">
@@ -35,7 +33,7 @@
                             <h2>Quote</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="quote-draft">0</h2>
                         </div>
                     </div>
                 </div>
@@ -47,7 +45,7 @@
                             <h2>Quote</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="quote-sent">0</h2>
                         </div>
                     </div>
                 </div>
@@ -59,7 +57,7 @@
                             <h2>Quote</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="quote-accepted">0</h2>
                         </div>
                     </div>
                 </div>
@@ -71,7 +69,7 @@
                             <h2>Quote</h2>
                         </div>
                         <div class="count box-price">
-                            <h2>0</h2>
+                            <h2 id="quote-invoiced">0</h2>
                         </div>
                     </div>
                 </div>

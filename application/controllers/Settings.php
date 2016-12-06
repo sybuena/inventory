@@ -190,16 +190,15 @@ class Settings extends MY_Controller {
         parent::post();
         
         //check if user is already member
-        if($this->organization->checkIfMember($this->_organization['_id']->{'$id'}, $_POST)) {
+        if($this->organization->checkIfMember(loginOrg(), $_POST)) {
 
             return $this->_returnError(
                 'already_member', 
                 'Email Address is already member of the organization'
             );
         }
-        //this will add member and also create user in zendesk
-        $row = $this->organization
-            ->addMember($this->_organization['_id']->{'$id'}, $_POST);
+        
+        $row = $this->organization->addMember(loginId(), $_POST);
 
         return $this->_returnSuccess();
     }

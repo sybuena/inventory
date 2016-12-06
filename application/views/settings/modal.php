@@ -47,7 +47,7 @@
                             <label>Role <span class="required-text">*</span></label> <small></small>
                             <select class="form-control" id="settings-user-role">
                                 <option value="1">Administrator</option>
-                                <option value="2">Accountant</option>
+                                <option value="2">User</option>
                             </select>
                         </div>
                     </div>

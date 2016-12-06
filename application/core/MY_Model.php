@@ -47,8 +47,8 @@ class MY_Model extends CI_Model {
         
 		parent::__construct();
 
-        $this->_defaultEmail        = 'no-reply@tenelleven.com';;//$this->config->item('default_email');
-        $this->_defaultEmailName    = 'The Tenelleven Team';//$this->config->item('default_email_name');
+        $this->_defaultEmail        = 'no-reply@inventory-apgars.com';
+        $this->_defaultEmailName    = 'The Apgars Team';
 
         $this->_protocol = stripos($_SERVER['SERVER_PROTOCOL'],'https') === true ? 'https://' : 'http://';
 

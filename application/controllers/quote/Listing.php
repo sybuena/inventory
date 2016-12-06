@@ -37,6 +37,45 @@ class Listing extends MY_Controller {
         $this->load->view('quote/list', $data);
     }
 
+    public function calculateHeader() {
+        $where = array(
+            'status' => array('$ne' => 0),
+            'org_id' => loginOrg()
+        );
+        $row = $this->cimongo   
+            ->select(array('total_amount', 'status', 'due_date'))
+            ->get_where(MY_Model::QUOTE, $where)
+            ->result_array();
+
+        $data = array(
+            'draft'   => 0, 
+            'sent'     => 0,
+            'accepted'   => 0,
+            'invoiced'   => 0
+        );
+
+        foreach($row as $v) {
+            if($v['status'] ==  1) {
+                $data['sent'] += $v['total_amount'];
+            }
+            if($v['status'] ==  2) {
+                $data['draft'] += $v['total_amount'];
+            }
+            if($v['status'] ==  3) {
+                $data['accepted'] += $v['total_amount'];
+            }
+            if($v['status'] ==  4) {
+                $data['invoiced'] += $v['total_amount'];
+            }
+        }
+        $data['sent'] = money($data['sent']);
+        $data['draft'] = money($data['draft']);
+        $data['accepted'] = money($data['accepted']);
+        $data['invoiced'] = money($data['invoiced']);
+
+        return $this->_returnData($data);
+    }
+
     /**
      * Get 
      * 

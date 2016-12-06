@@ -1,8 +1,23 @@
 (function() {
 	getList();
-
 	quoteModal(0, 0);
+    header();
 })();
+
+function header() {
+    var url = '/quote/listing/calculateHeader/';
+    base.
+        setUrl(url).
+        get(function(response) {
+
+            $('#quote-draft').html(response.data['draft']);
+            $('#quote-sent').html(response.data['sent']);
+            $('#quote-accepted').html(response.data['accepted']);
+            $('#quote-invoiced').html(response.data['invoiced']);
+        }
+    );
+    return this;
+}
 
 function loadNumber() {
     var number = $('#add-quote-quote-number');

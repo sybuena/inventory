@@ -43,7 +43,7 @@
 
                         <p style="margin-top: 6px;">
                             Cheers,<br>
-                            The Tenelleven Team
+                            The Apgars Team
                         </p>
                     </td>
                   </tr>

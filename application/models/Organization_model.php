@@ -230,12 +230,6 @@ class Organization_model extends MY_Model {
             //send email as create account
             $this->sendInvitation($data, $orgId, $userId, 1);
 
-            //sync this user to zendesk
-            //get the zendesk user id
-            //add update again the user to insert zendesk user id
-            //we need that id to assigning ticket
-            $this->zendesk->createUser($data, $role, $userId);
-
         //else user alread have account
         } else {
             //get user id
