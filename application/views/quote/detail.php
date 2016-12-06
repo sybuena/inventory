@@ -56,14 +56,14 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="" onclick="window.print();">
                                 <i class="zmdi zmdi-print"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
                 
-                <div class="card-body card-padding">
+                <div class="card-body card-padding" id="section-to-print">
                     <div class="row m-b-25">
                         <div class="col-xs-6">
                             <div class="text-left m-l-20">

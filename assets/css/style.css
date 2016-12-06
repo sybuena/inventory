@@ -819,3 +819,16 @@ button.set-up-save-and-complete {
   }
 }
 
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #section-to-print, #section-to-print * {
+      visibility: visible;
+  }
+  #section-to-print {
+      /*position: absolute;*/
+    
+  }
+}
+
