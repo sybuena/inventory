@@ -40,7 +40,7 @@ th[data-column-id="image"] {
                 <a class="btn bgm-blue waves-effect btn-icon-text" href="/inventory/import" >
                     <i class="zmdi zmdi-upload"></i> Import
                 </a>
-           </div>
+            </div>
             <div class="clearfix"></div>
             <div class="card m-b-0" id="messages-main">
                 <div class="ms-menu">

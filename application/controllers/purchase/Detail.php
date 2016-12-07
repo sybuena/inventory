@@ -115,6 +115,9 @@ class Detail extends MY_Controller {
                 if(isset($item['stock']) && !empty($item['stock'])) {
                     $itemStock = ($item['stock'] + $v['quantity']);
                 }
+                //save 1st the log
+                $this->inventory->addQuantityLog($v['id'], $v['quantity'], '', 'purchase', $id);
+
                 //now update to add stock
                 $this->inventory->updateItem($v['id'], array(
                     'stock'         => $itemStock,

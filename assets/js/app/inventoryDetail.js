@@ -15,9 +15,72 @@
 
         getPurchaseTransaction(id);
     });
+
+
+    $('a[href="#detail-quantity-log"]').unbind('click').bind('click', function() {
+
+        getQuantityLog(id);
+    });
 	
 	updateInventory(id);
+    manualAdd(id);
 })();
+
+function manualAdd(id) {
+    var quantity = $('#manual-number');
+    var description = $('#manual-description');
+
+    $('#inventory-add-quantity').unbind('click').bind('click', function() {
+        $('#add-quantity').modal('show');
+        helper.noError(quantity, 1);
+        helper.noError(description, 1);
+        description.val('');
+        quantity.val('');
+
+        return false;
+    });
+
+    $('#add-quantity-save').unbind('click').bind('click', function() {
+        var error = false;
+        
+        (quantity.val() == '' || quantity.val() == 0) ? (error = helper.hasError(quantity, 1)) : helper.noError(quantity, 1);
+        (description.val() == '' ) ? (error = helper.hasError(description, 1)) : helper.noError(description, 1);
+
+        if(!error) {
+            $('#add-quantity-save').
+                html('Saving...').
+                attr('disabled', 'disabled');
+
+            var url = '/inventory/detail/manualAdd/'+id;
+            var data = {
+                'quantity' : quantity.val(),
+                'description' : description.val()
+            };
+
+            base.
+                setUrl(url).
+                setData(data).
+                post(function(response) {
+                    
+                    $('#add-quantity').modal('hide');
+
+                    $('#add-quantity-save').
+                        html('Save').
+                        removeAttr('disabled');
+                    
+                    base.notification('Successfully added quantity', 'inverse');
+
+                    $('#hard-update-stock').html(response.data['stock']);
+
+                }
+            );
+        }
+
+        return false;
+    });
+
+   return false; 
+}
 
 function updateInventory(id) {
 	var bName 		= '#inventory-';
@@ -66,6 +129,39 @@ function updateInventory(id) {
 		}
 	});
 
+}
+
+/**
+ * Inventory Item all purchase transaction
+ * 
+ * @param string
+ * @return this
+ */
+function getQuantityLog(id) {
+    var table = '#inventory-quantity-table';
+    var url = '/inventory/detail/quantityLog/'+id;
+
+    //TABLE LIST
+    base.bootgridAction(table);
+
+    $(table).bootgrid({
+        navigation : 2,
+        css     : base.icon,
+        labels  : base.label,
+        ajax    : true,
+        url     : url,
+    //after the ajax is finish
+    }).on('loaded.rs.jquery.bootgrid', function (e){
+        var total = $(table).bootgrid('getTotalRowCount');
+        
+        //count result
+        $(table+'-count').html(total+' Record(s)');
+    });
+
+    //reload this 
+    $(table).bootgrid('reload');
+
+    return this;
 }
 
 /**

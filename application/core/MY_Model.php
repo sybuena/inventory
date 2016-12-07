@@ -28,6 +28,7 @@ class MY_Model extends CI_Model {
 
     //SETTINGS
     const SETTINGS = 'settings';
+    const QUANTITY_LOG = 'quantity_log';
 
     /* Public Properties
     -------------------------------*/

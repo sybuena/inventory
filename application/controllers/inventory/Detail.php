@@ -58,6 +58,36 @@ class Detail extends MY_Controller {
     }
 
     /**
+     * Manual add inventory
+     * 
+     * @param string
+     * @return json
+     */
+    public function manualAdd($id) {
+        
+        parent::post();
+
+        $inventory = $this->inventory->detail($id, array('stock'));
+        
+        $inventory['stock'] = (isset($inventory['stock']) && !empty($inventory['stock'])) 
+            ? $inventory['stock'] : 0;
+
+        $stock = $inventory['stock'] + $_POST['quantity'];
+        
+        $update = array(
+            'stock' => $stock,
+            'stock_updated_by' => loginId(),
+            'stock_updated_date' => strtotime('now'),
+        );
+        
+        $this->inventory->addQuantityLog($id, $_POST['quantity'], $_POST['description'], 'manual');
+
+        $this->inventory->updateItem($id, $update);
+
+        return $this->_returnData(array('stock' => decim($stock)));
+    }
+
+    /**
      * Update inventory
      * 
      * @param string
@@ -85,6 +115,27 @@ class Detail extends MY_Controller {
         $this->inventory->updateItem($id, $_POST);
         
         return $this->_returnSuccess();
+    }
+
+    /**
+     * Get inventory sales transaction for all inventory status
+     * 
+     * @param string
+     * @return json
+     */
+    public function quantityLog($id) {
+
+        $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
+        $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
+        
+        //get member list
+        $row = $this->inventory->getQuantityList($id, $sort, $search, $offset, $limit);
+
+        $row['current']  = (int)$offset;
+        $row['rowCount'] = (int)$limit;
+
+        //return json
+        return $this->_returnRaw($row);
     }
 
     /**

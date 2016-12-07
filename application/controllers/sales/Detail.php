@@ -115,6 +115,9 @@ class Detail extends MY_Controller {
                 }
                 //minus stock
                 $itemStock = ($item['stock'] - $v['quantity']);
+                //save 1st the log
+                $this->inventory->minusQuantityLog($v['id'], $v['quantity'], '', 'invoice', $id);
+                
                 //now update
                 $this->inventory->updateItem($v['id'], array(
                     'stock'         => $itemStock,

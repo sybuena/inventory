@@ -25,6 +25,149 @@ class Inventory_model extends MY_Model {
 
     /* Public Function
     -------------------------------*/
+    /**
+     * Get list of inventory with pagination
+     * 
+     * @param string 
+     * @param string 
+     * @param array 
+     * @param string 
+     * @param string|int 
+     * @param string|int 
+     * @return array 
+     */
+    public function getQuantityList($id, $offset, $limit) {
+        $where = array(
+            'inventory_id' => $id,
+            'status' => 1,
+            'org_id' => loginOrg()
+        );
+ 
+        $list = $this->cimongo
+            ->order_by(array('_id' => -1))
+            ->get_where(self::QUANTITY_LOG, $where, $limit, ($limit * ($offset - 1)))
+            ->result_array();
+                
+        $row['rows'] = array();
+        
+        foreach($list as $k => $v) {
+            $customer = '<i>n/a</i>';
+
+            if(!empty($v['customer'])) {
+                $info = $this->customer->detail($v['customer']);
+                $customer = $info['first_name'].' '.$info['last_name'];
+            }
+            
+            $current = ($v['operation'] == 'add') ?
+                 decim($v['current'] + $v['delimeter']) : 
+                 decim($v['current'] - $v['delimeter']);
+            
+            $row['rows'][] = array(
+                'date'        => date('m-d-Y', $v['date']),
+                'type'        => ucfirst($v['type']),
+                'number'      => !empty($v['type_number']) ? $v['type_number'] : '<i>n/a</i>',
+                'customer'    => $customer,
+                'description' => !empty($v['description']) ? $v['description'] : '<i>n/a</i>',
+                'add'         => ($v['operation'] == 'add') ? 
+                    '<span class="badge bgm-red">'.decim($v['delimeter']).'</span>' : '',
+                'minus'       => ($v['operation'] == 'minus') ? 
+                    '<span class="badge bgm-green">'.decim($v['delimeter']).'</span>' : '',
+                'prev'        => decim($v['current']),
+                'current'     => $current,
+            );
+        }
+
+        $row['total'] = (int)$this->cimongo
+            ->where($where)
+            ->count_all_results(self::QUANTITY_LOG);
+
+        return $row;
+    }
+
+    /**
+     * Save logs of add quantity
+     * 
+     * @param string
+     * @param int
+     * @param string
+     * @param stirng
+     * @param string
+     * @return this
+     */
+    public function addQuantityLog($inventoryId, $delimeter, $description, $type, $typeId = '') {
+
+        $inventory = $this->detail($inventoryId);
+       
+        if($type == 'manual') {
+            $customer  = '';    
+            $typeNumber = '';    
+        }
+
+        if($type == 'purchase' && !empty($typeId)) {
+            $detail   = $this->purchase->detail($typeId);
+
+            $customer   = $detail['supplier'];
+            $typeNumber = $detail['order_number'];
+        }
+
+        $data = array(
+            'inventory_id' => $inventoryId,
+            'description' => $description,
+            'current'     => $inventory['stock'],
+            'operation'   => 'add',
+            'delimeter'   => $delimeter,  
+            'type_number' => $typeNumber,
+            'type_id'     => $typeId,
+            'type'        => $type,
+            'date'        => strtotime('now'),
+            'customer'    => $customer,
+            'created_by'  => loginId(),
+            'status'      => 1,
+            'org_id'      => loginOrg()
+        );
+
+        $this->cimongo->insert(self::QUANTITY_LOG, $data);
+
+        return $this;
+    }
+
+    public function minusQuantityLog($inventoryId, $delimeter, $description, $type, $typeId = '') {
+
+        $inventory = $this->detail($inventoryId);
+       
+        if($type == 'manual') {
+            $customer  = '';    
+            $typeNumber = '';    
+        }
+
+        if($type == 'invoice' && !empty($typeId)) {
+            $detail   = $this->sales->detail($typeId);
+
+            $customer   = $detail['customer'];
+            $typeNumber = $detail['invoice_number'];
+        }
+        
+        $data = array(
+            'inventory_id' => $inventoryId,
+            'description'  => $description,
+            'current'      => $inventory['stock'],
+            'operation'    => 'minus',
+            'delimeter'    => $delimeter,  
+            'type_number'  => $typeNumber,
+            'type_id'      => $typeId,
+            'type'         => $type,
+            'date'         => strtotime('now'),
+            'customer'     => $customer,
+            'created_by'   => loginId(),
+            'status'       => 1,
+            'org_id'       => loginOrg()
+        );
+
+        $this->cimongo->insert(self::QUANTITY_LOG, $data);
+
+        return $this;
+    }
+
     public function itemPendingSales($id) {
         $where = array(
             'status' => array('$in' => array(1, '1')),

@@ -7,7 +7,7 @@
 	<section id="content">
 		
 	    <div class="container">
-	    	<div class="block-header">
+	    	<div class="block-header pull-left">
                 <h2>Inventory Detail</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -17,7 +17,12 @@
                     </li>
                 </ol>
             </div>
-            
+            <div class="pull-right m-t-10">
+                <button class="btn btn-primary waves-effect btn-icon-text" id="inventory-add-quantity">
+                    <i class="zmdi zmdi-plus"></i> Manual add quantity
+                </button>
+            </div>
+            <div class="clearfix"></div>
             <div class="row">
                 <div class="col-sm-3">
                     <div class="mini-charts-item bgm-teal">
@@ -62,7 +67,7 @@
                             <h2>On Hand</h2>
                         </div>
                         <div class="count box-price">
-                            <h2><?=decim($data['stock']);?></h2>
+                            <h2 id="hard-update-stock"><?=decim($data['stock']);?></h2>
                         </div>
                     </div>
                 </div>
@@ -76,19 +81,24 @@
                         </a>
                     </li>
                     <li class="waves-effect">
+                        <a href="#detail-quantity-log" data-toggle="tab" aria-expanded="true">
+                            Quantity Ledger
+                        </a>
+                    </li>
+                    <li class="waves-effect">
                         <a href="#detail-quatation-log" data-toggle="tab" aria-expanded="true">
-                            Quatation Log
+                            Quotes Transactions
                         </a>
                     </li>
                     <li class="waves-effect">
                         <a href="#detail-sales-log" data-toggle="tab" aria-expanded="true">
-                            Sales Log
+                            Invoices Transactions
                         </a>
                     </li>
 
                     <li class="waves-effect">
                         <a href="#detail-purchases-log" data-toggle="tab">
-                            Purchases Log
+                            Purchases Transactions
                         </a>
                     </li>
                     <!-- <li class="waves-effect">
@@ -101,6 +111,9 @@
                 <div class="tab-content p-t-0">
                     <div class="tab-pane card-body card-padding form-horizontal active" id="detail-about">
                         <?php include('block/basic-information.php');?>
+                    </div>
+                    <div class="tab-pane" id="detail-quantity-log">
+                        <?php include('block/quantity-log.php');?>
                     </div>
                     <div class="tab-pane" id="detail-sales-log">
                         <?php include('block/sales-transaction.php');?>
@@ -119,5 +132,5 @@
 	    </div>
 	</section>
 </section>
-
+<?php include('add-quantity.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>
