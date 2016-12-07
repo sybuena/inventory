@@ -557,6 +557,29 @@ $('#support').click (function() {
             $('.resume-timer-btn').addClass('hidden');
         }
     });
+
+    $('#global-search').autocomplete({
+        serviceUrl      : '/app/search/',
+        //on type something on input box
+        onSearchStart   : function(query) {
+            //show loading
+            $('.dashboard-loading').removeClass('hidden');
+        },
+        //on ajax complete
+        onSearchComplete : function(query, response) {
+            //remove loading
+            $('.dashboard-loading').addClass('hidden');
+        },
+        //on select
+        onSelect: function (response) {
+            
+            if(response.type == 'inventory') {
+                window.location = '/inventory/detail?id='+response['id'];  
+            } else {
+                window.location = '/customer/detail?id='+response['id'];  
+            }
+        }
+    });
     
 
 })();

@@ -27,7 +27,7 @@ function searchDashboard() {
         //on select
         onSelect: function (response) {
             //go to detail page
-            window.location = '/customer/detail/id/'+response['id']
+            window.location = '/customer/detail?id='+response['id'];
         }
     });
 

@@ -73,14 +73,21 @@ class Customer_model extends MY_Model {
 
         foreach($list as $k => $v) {
             if(isset($v['name'])) {
-                $data[$k]['text'] = $v['name'];
-                $data[$k]['value'] = $v['name'];
-                $data[$k]['id'] = $v['_id']->{'$id'};
+                $name = $v['name'];
+                if(!empty($v['account_number'])) {
+                    $name = $v['name'].' ('.$v['account_number'].')';
+                }
             } else {    
-                $data[$k]['text'] = $v['first_name'].' '.$v['last_name'];
-                $data[$k]['value'] = $v['first_name'].' '.$v['last_name'];
-                $data[$k]['id'] = $v['_id']->{'$id'};
+                $name = $v['first_name'].' '.$v['last_name'];
+                if(!empty($v['account_number'])) {
+                    $name = $v['first_name'].' '.$v['last_name'].' ('.$v['account_number'].')';
+                }
             }
+
+            $data[$k]['text'] = $name;
+            $data[$k]['value'] = $name;
+            $data[$k]['type'] = $v['contacts'];
+            $data[$k]['id'] = $v['_id']->{'$id'};
         }
 
         return $data;

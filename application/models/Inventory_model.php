@@ -545,6 +545,34 @@ class Inventory_model extends MY_Model {
                 ->row_array();
         }
     }
+    public function searchGlobal($query, $orgId) {
+
+        $where = array(
+            'status' => 1,
+            'org_id' => $orgId
+        );
+
+        $query = urldecode($query);
+        $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+        $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+        
+        $list = $this->cimongo
+            ->get_where(self::INVENTORY, $where)
+            ->result_array();
+       
+        $data = array();
+
+        foreach($list as $k => $v) {
+            $name = $v['name'].' ('.$v['code'].')';
+            $data[$k]['text'] = $name;
+            $data[$k]['value'] = $name;
+            $data[$k]['type'] = 'inventory';
+            $data[$k]['id'] = $v['_id']->{'$id'};
+            
+        }
+
+        return $data;
+    }
     
     /* Protected Function
     -------------------------------*/

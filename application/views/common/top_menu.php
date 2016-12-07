@@ -18,7 +18,7 @@
 	        		<div class="pull-right" id="chat">
 		        		<div class="chat-search">
 		                    <div class="fg-line">
-		                        <input type="text" class="form-control" placeholder="Search Contact or Inventory">
+		                        <input type="text" class="form-control" id="global-search" placeholder="Search Contact or Inventory">
 		                    </div>
 		                </div>
 	                </div>
