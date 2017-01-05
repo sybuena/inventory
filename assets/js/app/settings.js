@@ -197,9 +197,9 @@ function getMemberList() {
         labels  : base.label,
         navigation 	 	: 2,
         ajax 		 	: true,
-        selection 		: true,
-        multiSelect 	: true,
-        keepSelection 	: true,
+        // selection 		: true,
+        // multiSelect 	: true,
+        // keepSelection 	: true,
 	    url 		 : url,
 	    formatters 	 : {
 	    	active 	: function(column, row) {

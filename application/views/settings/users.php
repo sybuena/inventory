@@ -22,7 +22,7 @@
                     <i class="zmdi zmdi-search"></i>
                 </a>
             </li>
-            <li>
+            <!-- <li>
                 <a id="settings-user-list-delete"
                  data-toggle="tooltip" 
                  data-placement="top"
@@ -30,7 +30,7 @@
                  >
                     <i class="zmdi zmdi-delete"></i>
                 </a>
-            </li>
+            </li> -->
             <li>
                 <a id="settings-user-list-refresh" 
                  data-toggle="tooltip" 

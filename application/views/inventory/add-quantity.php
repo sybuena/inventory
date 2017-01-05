@@ -20,7 +20,7 @@
                     <div class="col-sm-12 m-b-20">
                         <div class="form-group">    
                             <label>Quantity/ Stock <span class="required-text">*</span></label>
-                            <input type="text" class="form-control fg-input" id="manual-number" placeholder="How many do you want to add?">
+                            <input type="text" class="form-control fg-input numeric" id="manual-number" placeholder="How many do you want to add? in numeric">
                         </div>
                     </div>
 

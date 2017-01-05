@@ -214,9 +214,8 @@ class Login extends MY_Controller {
 
             return $this->_returnSuccess('');
         }
-         
-
     }
+    
     /**
      * Send email notification to email address
      * to reset password

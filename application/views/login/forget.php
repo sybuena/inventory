@@ -26,6 +26,6 @@
 
 <ul class="login-navigation">
     <li data-block="#l-login" class="bgm-green">Login</li>
-    <li data-block="#l-register" class="bgm-red">Register</li>
+    <!-- <li data-block="#l-register" class="bgm-red">Register</li> -->
 </ul>
 	

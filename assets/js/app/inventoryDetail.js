@@ -27,6 +27,7 @@
 })();
 
 function manualAdd(id) {
+
     var quantity = $('#manual-number');
     var description = $('#manual-description');
 

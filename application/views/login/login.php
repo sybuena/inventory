@@ -60,6 +60,6 @@
 <a class="btn btn-login btn-danger btn-float" id="login-button-submit"><i class="zmdi zmdi-arrow-forward"></i></a>
 
 <ul class="login-navigation">
-    <li data-block="#l-register" class="bgm-red">Register</li>
+    <!-- <li data-block="#l-register" class="bgm-red">Register</li> -->
     <li data-block="#l-forget-password" class="bgm-orange">Forgot Password?</li>
 </ul>
