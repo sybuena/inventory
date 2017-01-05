@@ -110,10 +110,9 @@ class Settings extends MY_Controller {
         $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
         $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
         $search = (isset($_POST['searchPhrase']) && !empty($_POST['searchPhrase'])) ? $_POST['searchPhrase'] : '';
-        $orgId = $this->_organization['_id']->{'$id'};
 
         //get member list
-        $row = $this->organization->getMember($orgId, $_POST['sort'], $search, $offset, $limit);
+        $row = $this->organization->getMember($_POST['sort'], $search, $offset, $limit);
 
         $row['current']  = (int)$offset;
         $row['rowCount'] = (int)$limit;
@@ -198,7 +197,7 @@ class Settings extends MY_Controller {
             );
         }
         
-        $row = $this->organization->addMember(loginId(), $_POST);
+        $row = $this->organization->addMember($_POST);
 
         return $this->_returnSuccess();
     }

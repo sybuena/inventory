@@ -185,8 +185,8 @@ class Organization_model extends MY_Model {
      * @param string
      * @return bool
      */
-    public function addMember($orgId, $data) {
-
+    public function addMember($data) {
+        $orgId = loginOrg();
         //check first if this user has already have account in system
         $check = $this->cimongo
             ->select(array('_id', 'organization'))
@@ -282,13 +282,15 @@ class Organization_model extends MY_Model {
      * @param int
      * @return array
      */
-    public function getMember($orgId, $order, $search, $offset, $limit) {
+    public function getMember($order, $search, $offset, $limit) {
+        $orgId = loginOrg();
         $where = array(
             'status'       => 1,
             'organization' => array(
                 '$elemMatch' => array('id' => $orgId)
             )
         );
+
         //search query
         if(!empty($search)) {
             $query = urldecode($search);
