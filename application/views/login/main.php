@@ -2,8 +2,9 @@
 
 <body class="login-content">
 	<!-- Login -->
+	
 	<div class="lc-block <?=$login; ?>" id="l-login" >
-		<img src="http://apgars.com.ph/wp-content/uploads/2016/10/circle-logo.png"/ width="100px">
+		<img src="/assets/img/circle-logo.png"/ width="100px">
 		<h3 class="m-b-20">Welcome To Apgars</h3>
 		<?php include(APPPATH.'/views/login/login.php'); ?>
 	</div>

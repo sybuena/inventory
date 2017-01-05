@@ -83,8 +83,16 @@ class Purchase_model extends MY_Model {
         //search query
         if(!empty($search)) {
             $query = urldecode($search);
-            $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
-            $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+             if(strstr($query, '-')) {
+                $explode = explode('-', $query);
+                if(isset($explode[1]) && $explode[1] != '0') {
+                    $where['status'] =  array('$in' => array((int) $explode[1], (string) $explode[1]));
+                }
+                
+            } else {
+                $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+                $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            }
         }
 
         $select = array('status', 'order_number', 'reference_number', 'date', 'due_date', 'total_amount', 'supplier_info');
