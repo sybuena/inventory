@@ -393,7 +393,7 @@ function purchaseModal(id, data) {
 
         $('#add-purchase-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(isset(id)) {
                 line.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
@@ -406,7 +406,7 @@ function purchaseModal(id, data) {
 
         $('#add-purchase-service-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(isset(id)) {
                 service.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
