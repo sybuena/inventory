@@ -100,6 +100,40 @@
             <span class="col-sm-1"></span>
         </div>
 
+        <div class="form-group m-b-20">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-8">
+                <div class="alert alert-info alert-dismissible">
+                    <p><b>Note on updateing Purchase/Sales Cost: </b></p>
+                    <p>
+                        Editing <b>Purchase Cost</b> and <b>Sales Cost</b> will not affect the inventory price that has been attached on purchase, sales and quotation. Only the new purchase, sales or quotation will be affected for the new purchase/sales cost updates.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group m-b-20">
+            <label class="col-sm-3 control-label textlabel">
+                Purchase Cost
+            </label>
+            <div class="col-sm-8">
+                <div class="fg-line">
+                    <input type="text" class="form-control numeric" id="inventory-purchase-cost" value="<?=$data['cost']; ?>">
+                </div>
+            </div>
+        </div>
+
+         <div class="form-group m-b-20">
+            <label class="col-sm-3 control-label textlabel">
+                Sales Cost
+            </label>
+            <div class="col-sm-8">
+                <div class="fg-line">
+                    <input type="text" class="form-control numeric" id="inventory-sales-cost" value="<?=$data['sales']; ?>">
+                </div>
+            </div>
+        </div>
+
         <div class="form-group m-t-30">
             <span class="col-sm-3"></span>
             <div class="col-sm-8">

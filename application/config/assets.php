@@ -17,12 +17,12 @@ $config['login_js']    = array(
     $vendor.'bootstrap/dist/js/bootstrap.min.js',
     $vendor.'Waves/dist/waves.min.js',
     $vendor.'bootstrap-sweetalert/lib/sweet-alert.min.js',
+    '/assets/js/jquery.numeric.min.js',
     '/assets/js/functions.js',
     '/assets/js/pwstrength.js',
     '/assets/js/app/base.js',
     '/assets/js/app/login.js',
     '/assets/material/js/libs/wizard/jquery.bootstrap.wizard.min.js',
-    
    	// '/assets/material/js/core/demo/DemoFormWizard.js'
 );  
 
@@ -67,6 +67,7 @@ $config['landing_js']  = array(
    	'/assets/js/moment.min.js',
    	'/assets/js/functions.js',
    	'/assets/js/demo.js',
+   	'/assets/js/jquery.numeric.min.js',
    	//APP JS
    	'/assets/js/app/base.js',
    	// '/assets/js/app/login.js',
@@ -123,7 +124,7 @@ $config['digong_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
-
+	'/assets/js/jquery.numeric.min.js',
 	
 	//APP JS
 	'/assets/js/app/base.js',
@@ -175,6 +176,7 @@ $config['accountSettings_js']   = array(
 	'/assets/js/charts.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/accountSettings.js',
@@ -229,6 +231,7 @@ $config['settings_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	//'/assets/js/app/dashboard.js',
@@ -303,6 +306,7 @@ $config['userDetail_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/userDetail.js',
@@ -338,6 +342,7 @@ $config['settingsUser_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/settingsUser.js',
@@ -374,6 +379,7 @@ $config['crm_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/crm.js'
@@ -413,6 +419,7 @@ $config['crmDetail_js']   = array(
 	'/assets/vendors/autocomplete/jquery.autocomplete.min.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/crmDetail.js',
@@ -449,6 +456,7 @@ $config['inventory_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/inventory.js'
@@ -468,6 +476,7 @@ $config['inventoryDetail_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/inventoryDetail.js'
@@ -488,6 +497,7 @@ $config['inventoryImport_js']   = array(
 	'/assets/js/timer.jquery.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/inventoryImport.js'
@@ -525,6 +535,7 @@ $config['sales_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/sales.js'
@@ -562,6 +573,7 @@ $config['salesDetail_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/salesDetail.js'
@@ -599,6 +611,7 @@ $config['notes_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/notes.js'
@@ -636,6 +649,7 @@ $config['purchase_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/purchase.js'
@@ -673,6 +687,7 @@ $config['purchaseDetail_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/purchaseDetail.js'
@@ -710,6 +725,7 @@ $config['quote_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/quote.js'
@@ -731,6 +747,7 @@ $config['quoteDetail_js']   = array(
 	'/assets/vendors/select2/select2.js',
 	'/assets/js/functions.js',
 	'/assets/js/demo.js',
+	'/assets/js/jquery.numeric.min.js',
 	//APP JS
 	'/assets/js/app/base.js',
 	'/assets/js/app/quoteDetail.js'

@@ -18,9 +18,20 @@
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-                <button class="btn btn-primary waves-effect btn-icon-text" id="inventory-add-quantity">
-                    <i class="zmdi zmdi-plus"></i> Manual add quantity
-                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                        Adjustments
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li id="inventory-add-quantity">
+                            <a href="#"><i class="zmdi zmdi-plus"></i> Add quantity</a>
+                        </li>
+                        <li id="inventory-minus-quantity">
+                            <a href="#"><i class="zmdi zmdi-minus"></i> Remove quantity</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="clearfix"></div>
             <div class="row">
@@ -133,4 +144,5 @@
 	</section>
 </section>
 <?php include('add-quantity.php'); ?>
+<?php include('minus-quantity.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

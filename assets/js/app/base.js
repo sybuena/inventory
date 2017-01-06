@@ -582,9 +582,13 @@ $('#support').click (function() {
         });
     }
 
-    $(document).on("input", ".numeric", function() {
-        this.value = this.value.replace(/[^\d\.\-]/g,'');
-    });
+    // $(document).on("input", ".numeric", function() {
+    //     this.value = this.value.replace(/[^\d\.\-]/g,'');
+    // });
+
+    if($('input.numeric')[0]) {
+        $('input.numeric').numeric();
+    }
     
 
 })();

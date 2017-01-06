@@ -24,7 +24,64 @@
 	
 	updateInventory(id);
     manualAdd(id);
+    manualMinus(id);
 })();
+
+function manualMinus(id) {
+
+    var quantity = $('#manual-number-minus');
+    var description = $('#manual-description-minus');
+
+    $('#inventory-minus-quantity').unbind('click').bind('click', function() {
+        $('#minus-quantity').modal('show');
+        helper.noError(quantity, 1);
+        helper.noError(description, 1);
+        description.val('');
+        quantity.val('');
+
+        return false;
+    });
+
+    $('#minus-quantity-save').unbind('click').bind('click', function() {
+        var error = false;
+        
+        (quantity.val() == '' || quantity.val() == 0) ? (error = helper.hasError(quantity, 1)) : helper.noError(quantity, 1);
+        (description.val() == '' ) ? (error = helper.hasError(description, 1)) : helper.noError(description, 1);
+
+        if(!error) {
+            $('#minus-quantity-save').
+                html('Saving...').
+                attr('disabled', 'disabled');
+
+            var url = '/inventory/detail/manualMinus/'+id;
+            var data = {
+                'quantity' : quantity.val(),
+                'description' : description.val()
+            };
+
+            base.
+                setUrl(url).
+                setData(data).
+                post(function(response) {
+                    
+                    $('#minus-quantity').modal('hide');
+
+                    $('#minus-quantity-save').
+                        html('Save').
+                        removeAttr('disabled');
+                    
+                    base.notification('Successfully removed quantity', 'inverse');
+
+                    $('#hard-update-stock').html(response.data['stock']);
+                }
+            );
+        }
+
+        return false;
+    });
+
+   return false; 
+}
 
 function manualAdd(id) {
 
@@ -92,6 +149,9 @@ function updateInventory(id) {
 	var category  	= $(bName+'category');
 	var description	= $(bName+'description');
 
+    var purchaseCost = $(bName+'purchase-cost');
+    var salesCost = $(bName+'sales-cost');
+
 	var save = $(bName+'update');
 
 	save.unbind('click').bind('click', function() {
@@ -109,6 +169,8 @@ function updateInventory(id) {
 				'location'		: location.val(),
 				'category'		: category.val(),
 				'description'	: description.val(),
+                'cost'          : purchaseCost.val(),
+                'sales'         : salesCost.val(),
 			}
 
 			save.
@@ -125,6 +187,7 @@ function updateInventory(id) {
 						removeAttr('disabled');
 
 					base.notification('Inventory Successfully Updated', 'inverse');
+                    window.location.reload();
 				}
 			);
 		}

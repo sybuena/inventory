@@ -58,6 +58,36 @@ class Detail extends MY_Controller {
     }
 
     /**
+     * Manual minus inventory
+     * 
+     * @param string
+     * @return json
+     */
+    public function manualMinus($id) {
+        
+        parent::post();
+
+        $inventory = $this->inventory->detail($id, array('stock'));
+        
+        $inventory['stock'] = (isset($inventory['stock']) && !empty($inventory['stock'])) 
+            ? $inventory['stock'] : 0;
+
+        $stock = $inventory['stock'] - $_POST['quantity'];
+        
+        $update = array(
+            'stock' => $stock,
+            'stock_updated_by' => loginId(),
+            'stock_updated_date' => strtotime('now'),
+        );
+        
+        $this->inventory->minusQuantityLog($id, $_POST['quantity'], $_POST['description'], 'manual');
+
+        $this->inventory->updateItem($id, $update);
+
+        return $this->_returnData(array('stock' => decim($stock)));
+    }
+
+    /**
      * Manual add inventory
      * 
      * @param string
