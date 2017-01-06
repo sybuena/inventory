@@ -62,6 +62,10 @@
                 <dt>Account Number</dt>
                 <dd id="detail-customer-basic-account_number-1"><?=show($customer['account_number']);?></dd>
             </dl>
+            <dl class="dl-horizontal">
+                <dt>Tin Number</dt>
+                <dd id="detail-customer-basic-tin_number-1"><?=show($customer['tin_number']);?></dd>
+            </dl>
 
             <dl class="dl-horizontal">
                 <dt>Primary Person Firstname</dt>
@@ -93,6 +97,14 @@
                 <dd>
                     <div class="fg-line">
                         <input type="text" class="form-control" id="detail-customer-basic-account_number-2">
+                    </div>
+                </dd>
+            </dl>
+            <dl class="dl-horizontal">
+                <dt class="p-t-10">Tin Number</dt>
+                <dd>
+                    <div class="fg-line">
+                        <input type="text" class="form-control" id="detail-customer-basic-tin_number-2">
                     </div>
                 </dd>
             </dl>

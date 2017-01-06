@@ -45,21 +45,23 @@
                     <button class="btn btn-xs <?=$status_class;?>"><?=$status_text;?></button>
 
                     <ul class="lv-actions actions">
-                        <li>
-                            <a class="quote-edit" quote-id="<?=$id;?>">
-                                <i class="zmdi zmdi-edit"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a class="quote-delete" quote-id="<?=$id;?>">
-                                <i class="zmdi zmdi-delete"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="" onclick="window.print();">
-                                <i class="zmdi zmdi-print"></i>
-                            </a>
-                        </li>
+                        <?php if($quote['status'] != 4) : ?>
+                            <li>
+                                <a class="quote-edit" quote-id="<?=$id;?>">
+                                    <i class="zmdi zmdi-edit"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="quote-delete" quote-id="<?=$id;?>">
+                                    <i class="zmdi zmdi-delete"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" onclick="window.print();">
+                                    <i class="zmdi zmdi-print"></i>
+                                </a>
+                            </li>
+                        <?php endif;?>
                     </ul>
                 </div>
                 

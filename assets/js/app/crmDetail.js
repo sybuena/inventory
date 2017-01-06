@@ -226,7 +226,7 @@ function editSummary() {
 
 function editBasic() {
 
-	var fields   = ['company_name', 'account_number', 'first_name', 'last_name', 'title', ];
+	var fields   = ['company_name', 'account_number', 'first_name', 'last_name', 'title', 'tin_number'];
 	var required = ['company_name', 'firstname', 'lastname'];
 	var baseElem = '#detail-customer-basic-';
 	var special = {

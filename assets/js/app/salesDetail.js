@@ -2,7 +2,34 @@
 	approve();
 	decline();
 	deleteInvoice();
+    printPdf();
+
 })();
+
+function printPdf() {
+    $('#invoice-print').unbind('click').bind('click', function() {
+        
+        var frame = $('#report-frame');
+        swal({
+            title : 'Just a Moment!', 
+            text : 'Generating PDF forms...',
+            showConfirmButton : false
+        });
+
+        frame.prop('src', function(){
+            //Set their src attribute to the value of data-src
+            return $(this).data('src');
+        }).load(function() {
+
+            document.getElementById('report-frame').contentWindow.print();    
+            swal.close();
+        });
+        
+
+        return false;
+    });
+    return this;
+}
 
 function deleteInvoice() {
 

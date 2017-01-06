@@ -141,6 +141,7 @@ function addContacts() {
 	var companyName 	= $(addCustomer+'company-name');
 	var accountNumber 	= $(addCustomer+'account-number');
 	var group 			= $(addCustomer+'group');
+	var tin 			= $(addCustomer+'tin-number');
 	//primary person
 	var firstname 	= $(addCustomer+'firstname');
 	var lastname 	= $(addCustomer+'lastname');
@@ -247,6 +248,7 @@ function addContacts() {
 				'company_name' 	 : companyName.val(),
 				'account_number' : accountNumber.val(),
 				'group' 	 	 : group.val(),
+				'tin_number'     : tin.val(),
 				//primary person
 				'first_name' 	: firstname.val(),
 				'last_name' 	: lastname.val(),

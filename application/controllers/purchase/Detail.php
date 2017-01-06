@@ -79,7 +79,8 @@ class Detail extends MY_Controller {
             $data['status_text'] = 'Declined Purchase Order';
             $data['status_class'] = 'bgm-red';
         }
-        
+        $data['pdfLink'] = '/forms/purchase/'.$id;
+
     	$this->load->view('purchase/detail', $data);
     }
 

@@ -80,6 +80,8 @@ class Detail extends MY_Controller {
             $data['status_class'] = 'bgm-red';
         }
 
+        $data['pdfLink'] = '/forms/invoice/'.$id;
+
     	$this->load->view('sales/detail', $data);
     }
 

@@ -51,6 +51,12 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">    
+                                    <label>Tin Number </label>
+                                    <input type="text" class="form-control fg-input" id="add-customer-tin-number" placeholder="Company tin number">
+                                </div>
+                            </div>
                         </div>
                         <br/>
                         <h4 class="contact-modal-title">Primary Person</h4>

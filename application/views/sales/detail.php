@@ -39,12 +39,15 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" onclick="window.print();">
+                            <a href="" id="invoice-print">
                                 <i class="zmdi zmdi-print"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
+
+                <!-- dont load yet the PDF so dont put to src attribute -->
+                <iframe id="report-frame" class="hide" data-src="<?=$pdfLink; ?>" allowfullscreen webkitallowfullscreen></iframe>
                 
                 <div class="card-body card-padding" id="section-to-print">
                     <div class="row m-b-25">

@@ -59,12 +59,16 @@
                             </a>
                         </li>
                         <li>
-                            <a href="" onclick="window.print();">
+                            <a href="" id="purchase-print">
                                 <i class="zmdi zmdi-print"></i>
                             </a>
                         </li>
                     </ul>
                 </div>
+
+                <!-- dont load yet the PDF so dont put to src attribute -->
+                <iframe id="report-frame" class="hide" data-src="<?=$pdfLink; ?>" allowfullscreen webkitallowfullscreen></iframe>
+                
                 
                 <div class="card-body card-padding" id="section-to-print">
                     <div class="row m-b-25">
@@ -78,7 +82,7 @@
                                 <span class="text-muted">
                                     Ref Number : <?=show($purchase['reference_number'], 'N/A'); ?><br>
                                     Date : <?=show($purchase['date'], 'N/A'); ?><br>
-                                    Due Date : <?=show($purchase['due_date'], 'N/A'); ?><br>
+                                    Delivery Date : <?=show($purchase['due_date'], 'N/A'); ?><br>
                                 </span>
 
                             </div>
