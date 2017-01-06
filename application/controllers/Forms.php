@@ -68,7 +68,7 @@ class Forms extends MY_Controller {
     		'info' => $row
     	);
        	$html = $this->load->view('pdf/purchase/purchase', $data, true);
-       	//echo $html;
+       	
        	$this->mpdf
             ->setTitle('Purchase Order')
             ->setHtml($html)
