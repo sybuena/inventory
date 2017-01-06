@@ -54,7 +54,7 @@ th[data-column-id="image"] {
                     </div>
 
                 </div>
-                <div class="ms-body">
+                <div class="ms-body" style="height: 100%">
                     <div class="lv-header-alt clearfix m-b-5">
                         <h2 class="lvh-label hidden-xs"><span id="crm-table-list-total">19,453</span> Record(s)</h2>
                         

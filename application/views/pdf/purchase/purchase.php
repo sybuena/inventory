@@ -56,7 +56,7 @@
 				Supplier : <?=$supplier['company_name'];?><br>
 				Address : <?=$supplier['address'].' '.$supplier['city'].', '.$supplier['province'];?> <br>
 				Tel No : <?=$supplier['mobile'];?><br>
-				Attn : <br>
+				Attn : <?=$info['attention'];?><br>
 				Code : <?=$supplier['account_number'];?><br>
 			</p>
 		</div>

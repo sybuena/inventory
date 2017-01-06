@@ -87,10 +87,14 @@ span.icons {
                         </a>
                         <p class="m-l-20">
                             - Required fields :
-                            <i>(Name, Type, Code)</i>
+                            <i><b>(Name, Type, Code)</b></i>
+                        </p>
+                        <p class="m-l-20">
+                            - Required fields for Type:
+                            <i><b>(Item, Service)</b></i>
                         </p>
                     </div>
-                    <h1 class="h1-font-20 step">Step 2. Copy your contacts into the template</h1>
+                    <h1 class="h1-font-20 step">Step 2. Copy your inventory into the template</h1>
                     <div class="m-l-30">
                         <p>
                             Export your import from your old system as a comma separated list. Using Excel or another spreadsheet editor, copy and paste your import from the exported file into the provided template. Make sure the import data you copy matches the column headings provided in the template.
