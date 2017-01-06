@@ -57,7 +57,7 @@ th[data-column-id="image"] {
                     </div>
 
                 </div>
-                <div class="ms-body">
+                <div class="ms-body" style="height: 100%;">
                     <div class="lv-header-alt clearfix m-b-5">
                         <h2 class="lvh-label hidden-xs"><span id="inventory-table-total">19,453</span> Records</h2>
                         
@@ -67,25 +67,7 @@ th[data-column-id="image"] {
                         </div>
                         
                         <ul class="lv-actions actions">
-                            <!-- <li>
-                                <a href="" class="" id="inventory-add-modal"
-                                    data-toggle="tooltip" 
-                                    data-placement="right" 
-                                    data-original-title="Add New"
-                                >
-                                    <i class="zmdi zmdi-plus"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/inventory/import" class=""
-                                    data-toggle="tooltip" 
-                                    data-placement="right" 
-                                    data-original-title="Import"
-                                >
-                                    <i class="zmdi zmdi-upload"></i>
-                                </a>
-                            </li>
- -->
+                           
                             <li>
                                 <a href="" class="lvh-search-trigger"
                                     data-toggle="tooltip" 
@@ -93,6 +75,15 @@ th[data-column-id="image"] {
                                     data-original-title="Search Items"
                                 >
                                     <i class="zmdi zmdi-search"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="" class="" id="inventory-move" 
+                                    data-toggle="tooltip" 
+                                    data-placement="right" 
+                                    data-original-title="Moved Selected Item(s)"
+                                >
+                                    <i class="zmdi zmdi-folder"></i>
                                 </a>
                             </li>
                             <li>
@@ -134,5 +125,6 @@ th[data-column-id="image"] {
 </section>
 
 <?php include(APPPATH.'/views/inventory/add-category-modal.php'); ?>
+<?php include(APPPATH.'/views/inventory/move-inventory.php'); ?>
 <?php include(APPPATH.'/views/inventory/add-inventory-modal.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

@@ -38,6 +38,33 @@ class Listing extends MY_Controller {
     }
 
     /**
+     * Moved batch item
+     * 
+     * @return json
+     */
+    public function move($categoryId) {
+        
+        parent::post();
+        if($categoryId != 0) {
+            //now get group name
+            $group = $this->inventory->getCategotyDetail($categoryId, array('name'));
+            $data['category'] = array(
+                'id'    => $categoryId,
+                'name'  => $group['name']
+            );
+        } else {
+            $data['category'] = '';
+        }
+
+        foreach($_POST['list'] as $v) {
+
+            $this->inventory->updateItem($v, $data);
+        }
+
+        return $this->_returnSuccess();
+    }
+
+    /**
      * Delete batch item
      * 
      * @return json

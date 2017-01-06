@@ -109,6 +109,7 @@ class Import extends MY_Controller {
                 $hasError = true;
                 $message[] = '<b>"Type"</b> field cannot be empty';
             }
+            $v['Type'] = ucfirst($v['Type']);
             if(!in_array($v['Type'], array('Item', 'Service'))) {
           //  if($v['Type'] != 'Item' || $v['Type'] != 'Service') {
                 $hasError = true;

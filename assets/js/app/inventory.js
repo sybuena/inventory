@@ -8,8 +8,88 @@
 	addItem(table);
 	searchItem(table);
 	deleteItem(table);
-	
+	moveItem(table);
+
 })();
+
+function moveItem(table) {
+	$('#inventory-move').unbind('click').bind('click', function() {
+    	var list = $(table).bootgrid('getSelectedRows');
+
+        //if no selected from listing
+        if(list.length == 0) {
+            swal({
+                title : 'Dude, Really?',
+                text : 'You did not select any item from the list',
+                type : 'warning',
+                confirmButtonText: 'Return to listing'
+            }); 
+            return false;
+        }
+        
+        $('#move-inventory').modal('show');
+
+        var category = $('#move-inventory-category');
+        var url 	 = '/inventory/listing/getCategoryList/';
+        var OPTION   = '<option value="[VALUE]">[TEXT]</option>';
+        
+        category.html('').attr('disabled', 'disabled').parent().find('small').html(' <i>(Loading Items...)</i>');
+        base.
+        	setUrl(url).
+        	get(function(response) {
+        		
+        		category.removeAttr('disabled').parent().find('small').html('');
+
+        		category.append(OPTION.
+    				replace('[VALUE]', 0).
+    				replace('[TEXT]', 'None')
+    			);
+
+        		helper.loop(response.data, function(i) {
+        			category.append(OPTION.
+        				replace('[VALUE]', response.data[i]['_id']['$id']).
+        				replace('[TEXT]', response.data[i]['name'])
+        			);
+        		});
+        	}
+        );
+
+        var save =  $('#move-inventory-save');
+
+        save.unbind('click').bind('click', function() {
+        	
+        	var data = {'list' : $(table).bootgrid('getSelectedRows')};
+
+   			var url = '/inventory/listing/move/'+category.val();
+   			save.
+   				html('Saving...').
+   				attr('disabled', 'disabled');
+
+   			base.
+   				setUrl(url).
+   				setData(data).
+   				post(function(response) {
+   					save.
+   						html('Save').
+   						removeAttr('disabled');
+   					//success message
+   					base.notification('Item successfully moved. ', 'inverse'); 
+   					//reload the table
+   					$(table).bootgrid('reload');
+   					$(table).bootgrid('deselect');
+   					
+   					$('#move-inventory').modal('hide');
+   				}
+   			);
+
+        	return false;
+        });
+
+        return false;
+    });
+
+    return this;
+}
 
 function searchItem(table) {
 
