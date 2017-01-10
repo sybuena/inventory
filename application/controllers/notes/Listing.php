@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 //include(APPPATH.'controllers/Main.php');
 
-class Notes extends MY_Controller {
+class Listing extends MY_Controller {
 	
 	/* Constants
     -------------------------------*/
@@ -41,6 +41,64 @@ class Notes extends MY_Controller {
         
 		$this->load->view('notes/list', $data);
 	}
+
+    public function detail($id) {
+        $where = array('_id' => new MongoId($id));
+        $data = $this->cimongo
+            ->get_where(MY_Model::NOTES, $where)
+            ->row_array();
+
+        return $this->_returnData($data);
+    }
+
+    public function delete() {
+        
+        parent::post();
+        
+        foreach($_POST['items'] as $v) {
+
+            $data = array(
+                'status'        => 0,
+                'date_deleted'  => strtotime('now'),
+                'deleted_by'    => loginId()
+            );
+
+            $this->cimongo
+                ->where(array('_id' => new MongoId($v)))
+                ->update(MY_Model::NOTES, $data);
+        }
+
+        return $this->_returnSuccess();
+    }
+
+    public function edit($id) {
+        parent::post();
+
+        $_POST['date_updated'] = strtotime('now');
+
+        $this->cimongo
+            ->where(array('_id' => new MongoId($id)))
+            ->update(MY_Model::NOTES, $_POST);
+
+        return $this->_returnSuccess();
+    }
+
+    /**
+     * Add Notes
+     *
+     * @return this;
+     */
+    public function add() {
+        parent::post();
+        $_POST['date_created'] = strtotime('now');
+        $_POST['status'] = 1;
+        $_POST['created_by'] = loginId();
+        $_POST['org_id'] = loginOrg();
+        
+        $this->cimongo->insert(MY_Model::NOTES, $_POST);
+
+        return $this->_returnSuccess();
+    }
 
     /**
      * Get notes

@@ -494,6 +494,10 @@ class Organization_model extends MY_Model {
         return;
     }
     
+    public function resend($data, $orgId, $userId) {
+        return $this->sendInvitation($data, $orgId, $userId);
+    }
+
     /* Protected Function
     -------------------------------*/
     protected function sendInvitation($data, $orgId, $userId, $type = 1) {
@@ -518,7 +522,7 @@ class Organization_model extends MY_Model {
             //EMAIL CONTENT
             $html    = $this->load->view('emails/createAccount', $row, TRUE); 
             $subject = 'Invitation to Access Organization';
-
+            
         } else {
             //send invitation 
             //now we need to send email invitation

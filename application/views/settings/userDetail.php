@@ -7,7 +7,7 @@
 
     <section id="content">
         <div class="container">
-            <div class="block-header">
+            <div class="block-header pull-left">
                 <h2>User Detail</h2>
                  <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
@@ -17,6 +17,14 @@
                     </li>
                 </ol>
             </div>
+            <div class="pull-right">
+                <?php if($info['active'] != 1) :?>
+                    <button class="btn btn-primary waves-effect btn-icon-text" id="user-resend">
+                        <i class="fa fa-envelope"></i> Resend Invitation
+                    </button>
+                <?php endif; ?>
+            </div>
+            <div class="clearfix"></div>
             <div class="card">
                 
                 <div id="profile-main">

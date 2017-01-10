@@ -33,6 +33,21 @@ class UserDetail extends MY_Controller {
     }
 
     /**
+     * Resend email invitation to user
+     * 
+     * @param string
+     * @return json
+     */
+    public function resend($id) {
+    
+        $data = $this->user->detail($id);
+
+        $this->organization->resend($data, loginOrg(), $id);
+
+        return $this->_returnSuccess();
+    } 
+
+    /**
      * Load the data of the user
      * 
      * @param  id

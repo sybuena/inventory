@@ -7,7 +7,55 @@
 	});
 
 	changePhoto();
+	
+	resendInvitation();
+
 })();
+
+function resendInvitation() {
+
+	$('#user-resend').unbind('click').bind('click', function() {
+
+		swal({
+            title : 'Resend Invitation?',   
+            text  : 'You are about to resend email invitation to this user',   
+            type  : 'info',   
+            showCancelButton: true,   
+            confirmButtonText: 'Yes, resend email!',   
+            cancelButtonText: 'No, Im just kidding!',   
+            closeOnConfirm: false,   
+            closeOnCancel: true
+
+        },function(isConfirm) {
+            if(isConfirm) {  
+                var id = window.location.href.split('/').slice(-1).pop();
+                var url  = '/userDetail/resend/'+id;
+                
+                //loading
+                swal({
+                    title : "Resending invitation",   
+                    text : "Just a sec! This might take some minutes depending on the items",   
+                    showConfirmButton : false 
+                });
+
+                base.
+                    setUrl(url).
+                    get(function(response) {
+                    	swal.close();
+                        //success message
+                        swal('Success!', 'Invitation successfully resend', 'success'); 
+                        //reload the table
+                        $('#settings-user-list').bootgrid('reload');
+                    }
+                );
+            } 
+        });
+		return this;
+	});
+
+	return false
+}
+
 
 function changePhoto() {
 

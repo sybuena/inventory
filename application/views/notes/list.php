@@ -88,7 +88,9 @@
                                 <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
                                 <th data-column-id="title" data-order="asc">Title</th>
                                 <th data-column-id="date" data-order="asc">Date</th>
-                                <th data-column-id="status_text" data-formatter="status_text" data-sortable="false">Status</th>
+                                <th data-column-id="type" data-order="asc" data-formatter="type">Type</th>
+                                <th data-column-id="amount" data-align="right">Amount</th>
+                                <th data-column-id="created_by">Created By</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -102,7 +104,7 @@
 	    </div>
 	</section>
 </section>
-
+<?php include('add-notes.php'); ?>
 <?php include(APPPATH.'/views/purchase/select-item-modal.php'); ?>
 <?php include(APPPATH.'/views/purchase/add-purchase-modal.php'); ?>
 

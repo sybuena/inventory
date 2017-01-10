@@ -47,18 +47,24 @@ class Notes_model extends MY_Model {
         if(!empty($search)) {
             $query = urldecode($search);
             $where['$or'][]['title'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
-            $where['$or'][]['content'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['description'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['amount'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
         }
 
         $list  = $this->cimongo
             ->order_by($order)
             ->get_where(self::NOTES, $where, $limit, ($limit * ($offset - 1)))
             ->result_array();
-
+       // pre($list);exit;
         foreach($list as $k => $v) {
             //change name of status
             $list[$k]['status_text'] = $v['status'];
             $list[$k]['id'] = $v['_id']->{'$id'};
+            $list[$k]['amount'] = decim(!isset($v['amount']) || empty($v['amount']) ? 0 : $v['amount']);
+            
+            $user = $this->user->detail($v['created_by']);
+
+            $list[$k]['created_by'] = $user['first_name'].' '.$user['last_name'];
             unset($list[$k]['status']);
         }      
 
