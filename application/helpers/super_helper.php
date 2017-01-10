@@ -1,5 +1,7 @@
 <?php //-->
-
+function hasValue($value) {
+    return (isset($value) && !empty($value)) ? true : false;
+}
 function getOrgImage($data) {
 
     if(!isset($data['image']) || empty($data['image'])) {

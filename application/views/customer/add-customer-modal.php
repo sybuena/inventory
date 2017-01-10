@@ -59,26 +59,29 @@
                             </div>
                         </div>
                         <br/>
-                        <h4 class="contact-modal-title">Primary Person</h4>
+                        <h4 class="contact-modal-title">
+                            Primary Person 
+                            <small><i>(If there is any contact person)</i></small>
+                        </h4>
 
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">    
-                                    <label>Firstname <span class="required-text">*</span></label>
+                                    <label>Firstname </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-firstname" placeholder="eg. Juan">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">    
-                                    <label>Lastname <span class="required-text">*</span></label>
+                                    <label>Lastname </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-lastname" placeholder="eg. Dela Cruz">
                                 </div>
                             </div>
 
                             <div class="col-sm-6">
                                 <div class="form-group">    
-                                    <label>Email Address <span class="required-text">*</span></label>
+                                    <label>Email Address </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-email" placeholder="example@example.com">
                                 </div>
                             </div>
@@ -107,21 +110,21 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">    
-                                    <label>City <span class="required-text">*</span></label>
+                                    <label>City </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-city" placeholder="eg. Uraro City">
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">    
-                                    <label>Province/ Region <span class="required-text">*</span></label>
+                                    <label>Province/ Region </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-province" placeholder="eg. Metro Manila">
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">    
-                                    <label>ZIP/ Postal <span class="required-text">*</span></label>
+                                    <label>ZIP/ Postal </label>
                                     <input type="text" class="form-control fg-input" id="add-customer-zip" placeholder="eg. 1234">
                                 </div>
                             </div>

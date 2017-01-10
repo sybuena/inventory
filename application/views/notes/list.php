@@ -10,13 +10,19 @@
 
 	<section id="content">
 	    <div class="container">
-	        <div class="block-header">
+	        <div class="block-header pull-left">
 	            <h2>Notes</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
                     <li class="active">Notes List</li>
                 </ol>
             </div>
+             <div class="pull-right m-t-10">
+                <a class="btn bgm-blue waves-effect btn-icon-text" id="notes-list-add-show">
+                    <i class="zmdi zmdi-plus"></i> Add New
+                </a>
+            </div>
+            <div class="clearfix"></div>
 
             <div class="card m-b-0" id="messages-main">
                 
@@ -29,7 +35,7 @@
                     </div>
                     
                     <ul class="lv-actions actions">
-                        <li class="user-admin">
+                        <!-- <li class="user-admin">
                             <a id="notes-list-add-show" 
                              data-toggle="tooltip" 
                              data-placement="top"
@@ -37,7 +43,7 @@
                              class="rotate-image">
                                 <i class="zmdi zmdi-plus"></i>
                             </a>
-                        </li>
+                        </li> -->
                         <li>
                             <a href="" class="lvh-search-trigger" data-toggle="tooltip" data-placement="top" data-original-title="Search Item">
                                 <i class="zmdi zmdi-search"></i>

@@ -41,10 +41,10 @@ function addNotes() {
         type.val(0);
         desc.val('');
 
-        helper.noError(title, '');
-        helper.noError(date, '');
-        helper.noError(amount, '');
-        helper.noError(type, '');
+        helper.noError(title, 1);
+        helper.noError(date, 1);
+        helper.noError(amount, 1);
+        helper.noError(type, 1);
 
         return false;
     });

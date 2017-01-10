@@ -226,14 +226,14 @@ function addContacts() {
 		
 		//check for required fields
 		(companyName.val() == '') ? (error = helper.hasError(companyName, 1)) : helper.noError(companyName, 1);
-		(firstname.val() == '') ? (error = helper.hasError(firstname, 1)) : helper.noError(firstname, 1);
-		(lastname.val() == '') ? (error = helper.hasError(lastname, 1)) : helper.noError(lastname, 1);
-		(email.val() == '') ? (error = helper.hasError(email, 1)): helper.noError(email, 1);
+		// (firstname.val() == '') ? (error = helper.hasError(firstname, 1)) : helper.noError(firstname, 1);
+		// (lastname.val() == '') ? (error = helper.hasError(lastname, 1)) : helper.noError(lastname, 1);
+		// (email.val() == '') ? (error = helper.hasError(email, 1)): helper.noError(email, 1);
 		(address.val() == '') ? (error = helper.hasError(address, 1)) : helper.noError(address, 1);
-		(city.val() == '') ? (error = helper.hasError(city, 1)) : helper.noError(city, 1);
-		(province.val() == '') ? (error = helper.hasError(province, 1)) : helper.noError(province, 1);
-		(zip.val() == '') ? (error = helper.hasError(zip, 1)) : helper.noError(zip, 1);
-		(country.val() == '') ? (error = helper.hasError(country, 1)) : helper.noError(country, 1);
+		// (city.val() == '') ? (error = helper.hasError(city, 1)) : helper.noError(city, 1);
+		// (province.val() == '') ? (error = helper.hasError(province, 1)) : helper.noError(province, 1);
+		// (zip.val() == '') ? (error = helper.hasError(zip, 1)) : helper.noError(zip, 1);
+		//(country.val() == '') ? (error = helper.hasError(country, 1)) : helper.noError(country, 1);
 		
 		//if no empty fields
 		if(!error) {

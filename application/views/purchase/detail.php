@@ -98,10 +98,25 @@
                                 <span class="text-muted">
                                     <address>
                                         <?=$purchase['supplier']['address']; ?>
-                                        <br>
-                                        <?=$purchase['supplier']['city'].', '.
-                                            $purchase['supplier']['province'].' ('.
-                                            $purchase['supplier']['zip'].')'; ?>
+                                        
+                                        <?php 
+                                            $found = false;
+                                            if(hasValue($purchase['supplier']['city'])) {
+                                                $found = true;
+                                                echo $purchase['supplier']['city'];
+                                            }
+                                            if(hasValue($purchase['supplier']['province'])) {
+                                                $found = true;
+                                                echo $purchase['supplier']['province'];
+                                            }
+                                            if(hasValue($purchase['supplier']['zip'])) {
+                                                $found = true;
+                                                echo ' ('.$purchase['supplier']['zip'].')'; 
+                                            }
+                                            if($found) {
+                                                echo '<br>';
+                                            }
+                                        ?>
                                         <br>
                                         <?=$purchase['supplier']['country']; ?>
                                     </address>
