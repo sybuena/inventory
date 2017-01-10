@@ -37,12 +37,14 @@ class Notes_model extends MY_Model {
      * @param string|int 
      * @return array 
      */
-    public function getList($order, $search, $offset, $limit) {
+    public function getList($type = 'all', $order, $search, $offset, $limit) {
         $where = array(
             'status' => array('$ne' => 0),
             'org_id' => loginOrg()
         );
-        
+        if($type != 'all') {
+            $where['type'] = $type;
+        }
         //search query
         if(!empty($search)) {
             $query = urldecode($search);
@@ -50,12 +52,14 @@ class Notes_model extends MY_Model {
             $where['$or'][]['description'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
             $where['$or'][]['amount'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
         }
+        
+        $order['date_created'] = 'desc';
 
         $list  = $this->cimongo
             ->order_by($order)
             ->get_where(self::NOTES, $where, $limit, ($limit * ($offset - 1)))
             ->result_array();
-       // pre($list);exit;
+       
         foreach($list as $k => $v) {
             //change name of status
             $list[$k]['status_text'] = $v['status'];

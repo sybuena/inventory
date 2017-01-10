@@ -105,7 +105,7 @@ class Listing extends MY_Controller {
      * 
      * @return json
      */
-    public function getList() {
+    public function getList($type = 'all') {
 
         $sort   = (isset($_POST['sort'])) ? $_POST['sort'] : array();
         $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
@@ -114,7 +114,7 @@ class Listing extends MY_Controller {
             $_POST['searchPhrase'] : '';
 
         //get member list
-        $row = $this->notes->getList($sort, $search, $offset, $limit);
+        $row = $this->notes->getList($type, $sort, $search, $offset, $limit);
 
         $row['current']  = (int)$offset;
         $row['rowCount'] = (int)$limit;

@@ -1,7 +1,27 @@
 (function() {
-	getList();
+	getList('all');
     addNotes();
+    sortByType();
 })();
+
+function sortByType() {
+    $('#notes-table-list-type li').unbind('click').bind('click', function() {
+         //remove active
+        $('#notes-table-list-type li').removeClass('active');
+        //then make the current link page
+        $(this).addClass('active');
+        //hide dropdown 
+        $(this).closest(".dropdown-menu").prev().dropdown("toggle");
+        //parse 
+        var type = $('#notes-table-list-type li.active a').attr('type');
+        $('#notes-table-list').bootgrid('destroy');
+        getList(type);
+
+        return false;
+    });
+
+    return this;
+}
 
 function addNotes() {
     var title = $('#add-notes-title');
@@ -73,9 +93,11 @@ function addNotes() {
     return this;
 }
 
-function getList() {
+function getList(type) {
 	var table = '#notes-table-list';
-	var url = '/notes/listing/getList/';
+	var url = '/notes/listing/getList/'+type;
+
+    console.log(url);
 
     //TABLE LIST
     base.

@@ -59,6 +59,24 @@
                         </li>
 
                         <li class="dropdown">
+                            <a href="" data-toggle="dropdown" >
+                                <i class="zmdi zmdi-sort-amount-desc"></i>
+                            </a>
+                            
+                            <ul class="dropdown-menu dropdown-menu-right" id="notes-table-list-type">
+                                <li class="active">
+                                    <a href="" type="all">All Type</a>
+                                </li>
+                                <li>
+                                    <a href="" type="expense">Expense</a>
+                                </li>
+                                <li>
+                                    <a href="" type="notes">Notes</a>
+                                </li>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
                             <a href="" data-toggle="dropdown" aria-expanded="false">
                                 <i class="zmdi zmdi-more-vert"></i>
                             </a>
@@ -86,9 +104,9 @@
                         <thead>
                             <tr>
                                 <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                                <th data-column-id="title" data-order="asc">Title</th>
-                                <th data-column-id="date" data-order="asc">Date</th>
-                                <th data-column-id="type" data-order="asc" data-formatter="type">Type</th>
+                                <th data-column-id="title" >Title</th>
+                                <th data-column-id="date" >Date</th>
+                                <th data-column-id="type" data-formatter="type">Type</th>
                                 <th data-column-id="amount" data-align="right">Amount</th>
                                 <th data-column-id="created_by">Created By</th>
                             </tr>
