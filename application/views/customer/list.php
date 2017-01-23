@@ -119,7 +119,7 @@ th[data-column-id="image"] {
                             <thead>
                                 <tr>
                                     <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                                    <th data-column-id="image" data-sortable="false"></th>
+                                    <!-- <th data-column-id="image" data-sortable="false"></th> -->
                                     <th data-column-id="name" data-order="asc" data-formatter="name_format">Contacts</th>
                                     <th data-column-id="email">Email</th>
                                     <th data-column-id="group" data-sortable="false">Group</th>
