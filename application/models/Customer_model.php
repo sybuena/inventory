@@ -172,12 +172,12 @@ class Customer_model extends MY_Model {
     public function createCustomer($post) {
 
         //check if email is already in the system
-        if($this->checkEmail($post['email'])) {
-            return array(
-                'message'       => 'duplicate_email',
-                'long_message'  => 'Email address already in the system'
-            );
-        }
+        // if($this->checkEmail($post['email'])) {
+        //     return array(
+        //         'message'       => 'duplicate_email',
+        //         'long_message'  => 'Email address already in the system'
+        //     );
+        // }
         //check if there is group
         if(!empty($post['group'])) {
             //now get group name
