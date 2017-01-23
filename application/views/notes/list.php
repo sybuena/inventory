@@ -11,10 +11,10 @@
 	<section id="content">
 	    <div class="container">
 	        <div class="block-header pull-left">
-	            <h2>Notes</h2>
+	            <h2>Daily Expense</h2>
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
-                    <li class="active">Notes List</li>
+                    <li class="active">Daily Expense List</li>
                 </ol>
             </div>
              <div class="pull-right m-t-10">
@@ -35,15 +35,6 @@
                     </div>
                     
                     <ul class="lv-actions actions">
-                        <!-- <li class="user-admin">
-                            <a id="notes-list-add-show" 
-                             data-toggle="tooltip" 
-                             data-placement="top"
-                             data-original-title="Add"
-                             class="rotate-image">
-                                <i class="zmdi zmdi-plus"></i>
-                            </a>
-                        </li> -->
                         <li>
                             <a href="" class="lvh-search-trigger" data-toggle="tooltip" data-placement="top" data-original-title="Search Item">
                                 <i class="zmdi zmdi-search"></i>
@@ -74,12 +65,42 @@
                                     <a href="" type="all">All Type</a>
                                 </li>
                                 <li>
-                                    <a href="" type="expense">Expense</a>
+                                    <a href="" type="Rent">Rent</a>
                                 </li>
                                 <li>
-                                    <a href="" type="notes">Notes</a>
+                                    <a href="" type="Utilities">Utilities</a>
                                 </li>
+                                <li>
+                                    <a href="" type="Fees">Fees</a>
                                 </li>
+                                <li>
+                                    <a href="" type="Wages">Wages</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Taxes">Taxes</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Interest">Interest</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Supplies">Supplies</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Maintenance">Maintenance</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Travel">Travel</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Meals and Entertainment">Meals and Entertainment</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Training">Training</a>
+                                </li>
+                                <li>
+                                    <a href="" type="Others">Others</a>
+                                </li>
+
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -110,10 +131,10 @@
                         <thead>
                             <tr>
                                 <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                                <th data-column-id="title" >Title</th>
                                 <th data-column-id="date" >Date</th>
-                                <th data-column-id="type" data-formatter="type">Type</th>
-                                <th data-column-id="amount" data-align="right">Amount</th>
+                                <th data-column-id="category" data-formatter="category">Category</th>
+                                <th data-column-id="reference">Reference</th>
+                                <th data-column-id="total_amount" data-align="right">Total Amount</th>
                                 <th data-column-id="created_by">Created By</th>
                             </tr>
                         </thead>

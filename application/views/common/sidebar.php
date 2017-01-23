@@ -67,7 +67,7 @@ span.p-info {
         </li>
 
         <li class="<?=show($notes); ?>">
-            <a href="/notes/listing"><i class="zmdi zmdi-calendar-note"></i> Notes </a>
+            <a href="/notes/listing"><i class="zmdi zmdi-calendar-note"></i> Daily Expense </a>
         </li>
 
         <li class="<?=show($settings); ?>">

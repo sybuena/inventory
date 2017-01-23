@@ -43,7 +43,7 @@ class Notes_model extends MY_Model {
             'org_id' => loginOrg()
         );
         if($type != 'all') {
-            $where['type'] = $type;
+            $where['category'] = $type;
         }
         //search query
         if(!empty($search)) {
@@ -64,7 +64,7 @@ class Notes_model extends MY_Model {
             //change name of status
             $list[$k]['status_text'] = $v['status'];
             $list[$k]['id'] = $v['_id']->{'$id'};
-            $list[$k]['amount'] = decim(!isset($v['amount']) || empty($v['amount']) ? 0 : $v['amount']);
+            $list[$k]['totalAmount'] = decim(!isset($v['totalAmount']) || empty($v['amount']) ? 0 : $v['totalAmount']);
             
             $user = $this->user->detail($v['created_by']);
 

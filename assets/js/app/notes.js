@@ -24,27 +24,36 @@ function sortByType() {
 }
 
 function addNotes() {
-    var title = $('#add-notes-title');
-    var amount = $('#add-notes-amount');
-    var date  = $('#add-notes-date');
-    var type  = $('#add-notes-type');
-    var desc  = $('#add-notes-description');
-    var save = $('.add-notes-save');
+    //fields
+    var date        = $('#expense-date');
+    var category    = $('#expense-category');
+    var partNumber  = $('#expense-part-number');
+    var reference   = $('#expense-reference');
+    var unitPrice   = $('#expense-unit-price');
+    var totalAmount = $('#expense-total-amount');
+    var supplier    = $('#expense-supplier');
+    var customer    = $('#expense-customer');
+    var desc        = $('#expense-description');
+
+    var save = $('.expense-save');
 
     $('#notes-list-add-show').unbind('click').bind('click', function() {
         $('#add-notes .modal-title').html('Add Notes');
         $('#add-notes').modal('show');
-        $('.add-notes-save').attr('id', '');
-        title.val('');
+        save.attr('id', '');
+
         date.val('');
-        amount.val('');
-        type.val(0);
+        category.val(0);
+        partNumber.val('');
+        reference.val('');
+        unitPrice.val('');
+        totalAmount.val('');
+        supplier.val('');
+        customer.val('');
         desc.val('');
 
-        helper.noError(title, 1);
         helper.noError(date, 1);
-        helper.noError(amount, 1);
-        helper.noError(type, 1);
+        helper.noError(category, 1);
 
         return false;
     });
@@ -52,19 +61,29 @@ function addNotes() {
     save.unbind('click').bind('click', function() {
         var error = false;
 
-        (title.val() == '') ? (error = helper.hasError(title, 1)) : helper.noError(title, '');
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, '');
-        (type.val() == 0) ? (error = helper.hasError(type, 1)) : helper.noError(type, '');
+        (category.val() == 0) ? (error = helper.hasError(category, 1)) : helper.noError(category, '');
+        // (partNumber.val() == '') ? (error = helper.hasError(partNumber, 1)) : helper.noError(partNumber, '');
+        // (reference.val() == '') ? (error = helper.hasError(reference, 1)) : helper.noError(reference, '');
+        // (unitPrice.val() == '') ? (error = helper.hasError(unitPrice, 1)) : helper.noError(unitPrice, '');
+        // (totalAmount.val() == '') ? (error = helper.hasError(totalAmount, 1)) : helper.noError(totalAmount, '');
+        // (supplier.val() == '') ? (error = helper.hasError(supplier, 1)) : helper.noError(supplier, '');
+        // (customer.val() == '') ? (error = helper.hasError(customer, 1)) : helper.noError(customer, '');
+        // (desc.val() == '') ? (error = helper.hasError(desc, 1)) : helper.noError(desc, '');
         
         if(!error) {
-            var id = $('.add-notes-save').attr('id');
+            var id = save.attr('id');
             var url = (id != '') ? '/notes/listing/edit/'+id :'/notes/listing/add/';
             
             var data = {
-                'title' : title.val(),
                 'date' : date.val(),
-                'type' : type.val(),
-                'amount' : amount.val(),
+                'category' : category.val(),
+                'partNumber' : partNumber.val(),
+                'reference' : reference.val(),
+                'unitPrice' : unitPrice.val(),
+                'totalAmount' : totalAmount.val(),
+                'supplier' : supplier.val(),
+                'customer' : customer.val(),
                 'description' : desc.val(),
             };
             save.
@@ -97,7 +116,6 @@ function getList(type) {
 	var table = '#notes-table-list';
 	var url = '/notes/listing/getList/'+type;
 
-    console.log(url);
 
     //TABLE LIST
     base.
@@ -145,14 +163,44 @@ function getList(type) {
                 setUrl(url).
                 get(function(response) {
                     swal.close();
+
                     $('#add-notes').modal('show');
-                    
-                    $('#add-notes-title').val(response.data['title']);
-                    $('#add-notes-amount').val(response.data['amount']);
-                    $('#add-notes-date').val(response.data['date']);
-                    $('#add-notes-type').val(response.data['type']);
-                    $('#add-notes-description').val(response.data['description']);
-                    $('.add-notes-save').attr('id', response.data['_id']['$id']);
+                    //prepare variables
+                    var date        = $('#expense-date');
+                    var category    = $('#expense-category');
+                    var partNumber  = $('#expense-part-number');
+                    var reference   = $('#expense-reference');
+                    var unitPrice   = $('#expense-unit-price');
+                    var totalAmount = $('#expense-total-amount');
+                    var supplier    = $('#expense-supplier');
+                    var customer    = $('#expense-customer');
+                    var desc        = $('#expense-description');
+                    //unset fields first
+                    date.val('');
+                    category.val(0);
+                    partNumber.val('');
+                    reference.val('');
+                    unitPrice.val('');
+                    totalAmount.val('');
+                    supplier.val('');
+                    customer.val('');
+                    desc.val('');
+
+                    helper.noError(date, 1);
+                    helper.noError(category, 1);
+
+
+                    date.val(response.data['date']);
+                    category.val(response.data['category']);
+                    partNumber.val(response.data['partNumber']);
+                    reference.val(response.data['reference']);
+                    unitPrice.val(response.data['unitPrice']);
+                    totalAmount.val(response.data['totalAmount']);
+                    supplier.val(response.data['supplier']);
+                    customer.val(response.data['customer']);
+                    desc.val(response.data['description']);
+
+                    $('.expense-save').attr('id', response.data['_id']['$id']);
                     
                 }
             );
