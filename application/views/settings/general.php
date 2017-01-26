@@ -104,6 +104,37 @@ h3.general-settings {
             </div>
         </div>
     </div>
+     <div class="row m-l-m-b m-b-20">
+        <div class="col-sm-5">
+            <h3 class="general-settings">Job ORder Prefix & Sequence</h3>
+            <small>Define the number to be used when creating your next job order.<br/> 
+            Number will automatically increment for each new document you create.</small>
+        </div>
+
+        <div class="col-sm-7 m-t-15">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group"> 
+                        <div class="fg-line">
+                            <label style="width: 200px !important;">Job Order prefix <span class="required-text">*</span></label>
+                            <input type="text" class="form-control gen-loading" id="gen-job-order-prefix">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group"> 
+                        <div class="fg-line">
+                            <label style="width: 200px !important;">Job Order next number <span class="required-text">*</span></label>
+                            <input type="text" class="form-control gen-loading" id="gen-job-order-seq">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
     <div class="m-t-30 form-group">
         <span class="col-sm-3"></span>
         <div class="col-sm-8">

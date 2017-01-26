@@ -28,14 +28,16 @@ class Listing extends MY_Controller {
     -------------------------------*/
     public function index() {
        //prepare variables we need
-        $data['js']       = $this->config->item('quote_js');
-        $data['css']      = $this->config->item('quote_css');
-        $data['quotation']      = 'active';
+        $data['js']       = $this->config->item('jobOrder_js');
+        $data['css']      = $this->config->item('jobOrder_css');
+        $data['jobOrder']      = 'active';
         $data['org_name'] = $this->_organization['name'];
         $data['user']     = loginData();
 
-        $this->load->view('quote/list', $data);
+        $this->load->view('jobOrder/list', $data);
     }
+
+
 
     public function calculateHeader() {
         $where = array(
@@ -90,7 +92,7 @@ class Listing extends MY_Controller {
             $_POST['searchPhrase'] : '';
 
         //get member list
-        $row = $this->quote->getList($sort, $search, $offset, $limit);
+        $row = $this->jobOrder->getList($sort, $search, $offset, $limit);
 
         $row['current']  = (int)$offset;
         $row['rowCount'] = (int)$limit;
@@ -107,16 +109,8 @@ class Listing extends MY_Controller {
      */
     public function draftDetail($id) {
         //detail of quote 
-        $row = $this->quote->detail($id);
+        $row = $this->jobOrder->detail($id);
         //then get item name
-        if(!empty($row['line'])) {
-            foreach($row['line'] as $k => $v) {
-                $name = $this->inventory->detail($v['id'], array('code', 'name'));
-                //well format
-                $row['line'][$k]['name'] = '('.$name['code'].') '.$name['name'];
-            }
-        }
-
         if(!empty($row['service'])) {
             foreach($row['service'] as $k => $v) {
                 $name = $this->inventory->detail($v['id'], array('code', 'name'));
@@ -137,15 +131,14 @@ class Listing extends MY_Controller {
     public function add() {
 
         parent::post(); 
-        
-        $_POST['line'] = (isset($_POST['line'])) ? $_POST['line'] : array();
+       
         $_POST['service'] = (isset($_POST['service'])) ? $_POST['service'] : array();
         $_POST['other'] = (isset($_POST['other'])) ? $_POST['other'] : array();
 
-        $this->quote->create($_POST);
+        $this->jobOrder->create($_POST);
 
         //now update numner
-        $this->settings->updateNextNumber('quotation');
+        $this->settings->updateNextNumber('job_order');
 
         return $this->_returnSuccess();
     }
@@ -164,7 +157,7 @@ class Listing extends MY_Controller {
         $_POST['service'] = (isset($_POST['service'])) ? $_POST['service'] : array();
         $_POST['other'] = (isset($_POST['other'])) ? $_POST['other'] : array();
 
-        $this->quote->edit($id, $_POST);
+        $this->jobOrder->edit($id, $_POST);
 
         return $this->_returnSuccess();
     }

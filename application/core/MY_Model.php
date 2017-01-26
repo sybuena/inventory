@@ -25,6 +25,7 @@ class MY_Model extends CI_Model {
     const INVOICE           = 'invoice';
     const QUOTE             = 'quote';
     const NOTES             = 'notes';
+    const JOB_ORDER         = 'job_order';
 
     //SETTINGS
     const SETTINGS = 'settings';

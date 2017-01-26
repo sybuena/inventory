@@ -68,10 +68,14 @@ class Settings extends MY_Controller {
 
         $_POST['quotation']['digit'] = strlen($_POST['quotation']['sequence']);
         $_POST['quotation']['next'] = +$_POST['quotation']['sequence'];
+
+        $_POST['job_order']['digit'] = strlen($_POST['job_order']['sequence']);
+        $_POST['job_order']['next'] = +$_POST['job_order']['sequence'];
         
         unset($_POST['invoice']['sequence']);
         unset($_POST['purchase_order']['sequence']);
         unset($_POST['quotation']['sequence']);
+        unset($_POST['job_order']['sequence']);
 
         $this->settings->update($_POST);
         
@@ -92,7 +96,9 @@ class Settings extends MY_Controller {
         $data['purchase_order']['next'] = sprintf('%0'.$data['purchase_order']['digit'].'d', $data['purchase_order']['next']);
         $data['quotation']['next'] = 
             sprintf('%0'.$data['quotation']['digit'].'d', $data['quotation']['next']);
-        
+        $data['job_order']['next'] = 
+            sprintf('%0'.$data['job_order']['digit'].'d', $data['job_order']['next']);
+            
         return $this->_returnData($data);
     }
 

@@ -40,6 +40,9 @@ function saveFinancial() {
 	var poSeq  = $(bName+'po-seq');
 	var quoPre = $(bName+'quote-prefix');
 	var quoSeq = $(bName+'quote-seq');
+	var joPre = $(bName+'job-order-prefix');
+	var joSeq = $(bName+'job-order-seq');
+	
 	var button = $(bName+'update');
 
 	button.unbind('click').bind('click', function() {
@@ -50,6 +53,8 @@ function saveFinancial() {
 		(poSeq.val() == '') ? (error = helper.hasError(poSeq, 2)) : helper.noError(poSeq, 2);
 		(quoPre.val() == '') ? (error = helper.hasError(quoPre, 2)) : helper.noError(quoPre, 2);
 		(quoSeq.val() == '') ? (error = helper.hasError(quoSeq, 2)) : helper.noError(quoSeq, 2);
+		(joPre.val() == '') ? (error = helper.hasError(joPre, 2)) : helper.noError(joPre, 2);
+		(joSeq.val() == '') ? (error = helper.hasError(joSeq, 2)) : helper.noError(joSeq, 2);
 		
 		if(!error) {
 			var url = '/settings/updateSequence/';
@@ -65,6 +70,10 @@ function saveFinancial() {
 				'quotation' : {
 					'prefix'   : quoPre.val(),
 					'sequence' : quoSeq.val()
+				},
+				'job-order' : {
+					'prefix'   : joPre.val(),
+					'sequence' : joSeq.val()
 				}
 			};
 			
@@ -420,6 +429,9 @@ function getGeneralSettings() {
 
 			$('#gen-quote-prefix').val(response.data['quotation']['prefix']);
 			$('#gen-quote-seq').val(response.data['quotation']['next']);
+
+			$('#gen-job-order-prefix').val(response.data['job_order']['prefix']);
+			$('#gen-job-order-seq').val(response.data['job_order']['next']);
 		}
 	);
 

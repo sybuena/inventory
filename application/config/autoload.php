@@ -138,6 +138,7 @@ $autoload['model'] = array(
 	'Purchase_model'    => 'purchase',
 	'Sales_model'    	=> 'sales',
 	'Quote_model'    	=> 'quote',
+	'JobOrder_model'    	=> 'jobOrder',
 	'Customer_model'	=> 'customer',
 	'Inventory_model'	=> 'inventory',
 	'Activity_model'	=> 'activity',

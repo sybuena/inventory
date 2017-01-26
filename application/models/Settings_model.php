@@ -43,7 +43,7 @@ class Settings_model extends MY_Model {
         $where = array('org_id' => loginOrg());
 
         $list =  $this->cimongo
-            ->select(array('invoice', 'purchase_order', 'quotation'))
+            ->select(array('invoice', 'purchase_order', 'quotation', 'job_order'))
             ->get_where(self::SETTINGS, $where)
             ->row_array();
 
@@ -52,7 +52,7 @@ class Settings_model extends MY_Model {
              $where = array('org_id' => loginOrg());
 
             $list =  $this->cimongo
-                ->select(array('invoice', 'purchase_order', 'quotation'))
+                ->select(array('invoice', 'purchase_order', 'quotation', 'job_order'))
                 ->get_where(self::SETTINGS, $where)
                 ->row_array();
         }
@@ -107,6 +107,11 @@ class Settings_model extends MY_Model {
             ),
             'quotation' => array(
                 'prefix' => 'QUO',
+                'digit'  => 6,
+                'next'   => 1
+            ),
+            'job_order' => array(
+                'prefix' => 'JO',
                 'digit'  => 6,
                 'next'   => 1
             ),

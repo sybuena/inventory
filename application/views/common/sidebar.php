@@ -65,6 +65,9 @@ span.p-info {
         <li class="<?=show($sales); ?>">
             <a href="/sales/listing"><i class="zmdi zmdi-money"></i> Sales Invoice </a>
         </li>
+        <li class="<?=show($jobOrder); ?>">
+            <a href="/jobOrder/listing"><i class="zmdi zmdi-assignment-account"></i> Job Order </a>
+        </li>
 
         <li class="<?=show($notes); ?>">
             <a href="/notes/listing"><i class="zmdi zmdi-calendar-note"></i> Daily Expense </a>
