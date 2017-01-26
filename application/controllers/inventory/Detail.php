@@ -50,8 +50,9 @@ class Detail extends MY_Controller {
         $data['type']  = array(
             'item', 'service' 
         );
+        $data['inJobOrder'] = $this->inventory->itemJobOrder($id);
         $data['inQuatation'] = $this->inventory->itemQuantation($id);
-        $data['salesPending'] = $this->inventory->itemQuantation($id);
+        $data['salesPending'] = $this->inventory->itemPendingSales($id);
         $data['purchasePending']  = $this->inventory->itemPendingPurchase($id);
         
         $this->load->view('inventory/detail', $data);

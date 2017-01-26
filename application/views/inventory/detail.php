@@ -8,7 +8,10 @@
 		
 	    <div class="container">
 	    	<div class="block-header pull-left">
-                <h2>Inventory Detail</h2>
+                <h2 class="f-20"><?php echo $data['name'].'<i>#'.$data['code'].'</i>'; ?>
+                    <button class="btn bgm-blue btn-xs"><?=ucfirst($data['type']);?></button>
+                </h2>
+
                 <ol class="breadcrumb breadcrums2">
                     <li><a href="/app">Home</a></li>
                     <li><a href="/inventory/listing">Inventory List</a></li>
@@ -18,20 +21,22 @@
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
-                        Adjustments
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li id="inventory-add-quantity">
-                            <a href="#"><i class="zmdi zmdi-plus"></i> Add quantity</a>
-                        </li>
-                        <li id="inventory-minus-quantity">
-                            <a href="#"><i class="zmdi zmdi-minus"></i> Remove quantity</a>
-                        </li>
-                    </ul>
-                </div>
+                <?php if($data['type'] == 'item') :?>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-primary dropdown-toggle waves-effect" data-toggle="dropdown" aria-expanded="false">
+                            Adjustments
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu">
+                            <li id="inventory-add-quantity">
+                                <a href="#"><i class="zmdi zmdi-plus"></i> Add quantity</a>
+                            </li>
+                            <li id="inventory-minus-quantity">
+                                <a href="#"><i class="zmdi zmdi-minus"></i> Remove quantity</a>
+                            </li>
+                        </ul>
+                    </div>
+                <?php endif;?>
             </div>
             <div class="clearfix"></div>
             <div class="row">
@@ -51,7 +56,7 @@
                     <div class="mini-charts-item bgm-green">
                         <div class="count pull-left">
                             <small>In Pending</small>
-                            <h2>Sales</h2>
+                            <h2>Invoice</h2>
                         </div>
                         <div class="count box-price">
                             <h2><?=decim($salesPending);?></h2>
@@ -70,19 +75,32 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="col-sm-3">
-                    <div class="mini-charts-item bgm-blue">
-                        <div class="count pull-left">
-                            <small>Quantity</small>
-                            <h2>On Hand</h2>
-                        </div>
-                        <div class="count box-price">
-                            <h2 id="hard-update-stock"><?=decim($data['stock']);?></h2>
+                <?php if($data['type'] == 'item') :?>
+                    <div class="col-sm-3">
+                        <div class="mini-charts-item bgm-blue">
+                            <div class="count pull-left">
+                                <small>Quantity</small>
+                                <h2>On Hand</h2>
+                            </div>
+                            <div class="count box-price">
+                                <h2 id="hard-update-stock"><?=decim($data['stock']);?></h2>
+                            </div>
                         </div>
                     </div>
-                </div>
-
+                <?php endif;?>
+                <?php if($data['type'] == 'service') :?>
+                    <div class="col-sm-3">
+                        <div class="mini-charts-item bgm-cyan">
+                            <div class="count pull-left">
+                                <small>In</small>
+                                <h2>Job Order</h2>
+                            </div>
+                            <div class="count box-price">
+                                <h2><?=decim($inJobOrder);?></h2>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif;?>
             </div>
             <div class="card">
                 <ul class="tab-nav tn-justified">
@@ -91,11 +109,13 @@
                             Detail
                         </a>
                     </li>
-                    <li class="waves-effect">
-                        <a href="#detail-quantity-log" data-toggle="tab" aria-expanded="true">
-                            Quantity Ledger
-                        </a>
-                    </li>
+                    <?php if($data['type'] == 'item') :?>
+                        <li class="waves-effect">
+                            <a href="#detail-quantity-log" data-toggle="tab" aria-expanded="true">
+                                Quantity Ledger
+                            </a>
+                        </li>
+                    <?php endif;?>
                     <li class="waves-effect">
                         <a href="#detail-quatation-log" data-toggle="tab" aria-expanded="true">
                             Quotes Transactions
@@ -112,11 +132,13 @@
                             Purchases Transactions
                         </a>
                     </li>
-                    <li class="waves-effect">
-                        <a href="#detail-job-order-log" data-toggle="tab">
-                            Job Order Transactions
-                        </a>
-                    </li>
+                    <?php if($data['type'] == 'service') :?>
+                        <li class="waves-effect">
+                            <a href="#detail-job-order-log" data-toggle="tab">
+                                Job Order Transactions
+                            </a>
+                        </li>
+                    <?php endif;?>
                     <!-- <li class="waves-effect">
                         <a href="#detail-notes" data-toggle="tab">
                             Notes & Activity

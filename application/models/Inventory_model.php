@@ -172,18 +172,54 @@ class Inventory_model extends MY_Model {
         $where = array(
             'status' => array('$in' => array(1, '1')),
             'org_id' => loginOrg(),
-            'line'   => array('$elemMatch' => array('id' => $id))
+          //  'line'   => array('$elemMatch' => array('id' => $id))
+        );
+        $where['$or'][]['line'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
+        );
+        $where['$or'][]['service'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
         );
 
         $list = $this->cimongo
-            ->select(array('line'))
-            ->get_where(self::SALES, $where)
+            ->select(array('line', 'service'))
+            ->get_where(self::INVOICE, $where)
             ->result_array(); 
 
         $count = 0;
 
         foreach($list as $v) {
             foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+            foreach($v['service'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+        }
+
+        return $count;
+    }
+
+    public function itemJobOrder($id) {
+        $where = array(
+            'status' => array('$nin' => array('0', 0, 4, '4')),
+            'org_id' => loginOrg(),
+            'service'   => array('$elemMatch' => array('id' => $id))
+        );
+
+        $list = $this->cimongo
+            ->select(array('service'))
+            ->get_where(self::JOB_ORDER, $where)
+            ->result_array(); 
+            
+        $count = 0;
+
+        foreach($list as $v) {
+            foreach($v['service'] as $val) {
                 $count += ($val['id'] == $id) ? $val['quantity'] : 0;
             }
         }
@@ -193,13 +229,23 @@ class Inventory_model extends MY_Model {
 
     public function itemQuantation($id) {
         $where = array(
-            'status' => array('$ne' => 0),
+            'status' => array('$nin' => array('0', 0, 4, '4')),
             'org_id' => loginOrg(),
-            'line'   => array('$elemMatch' => array('id' => $id))
+        );
+
+        $where['$or'][]['line'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
+        );
+        $where['$or'][]['service'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
         );
 
         $list = $this->cimongo
-            ->select(array('line'))
+            ->select(array('line', 'service'))
             ->get_where(self::QUOTE, $where)
             ->result_array(); 
 
@@ -207,6 +253,9 @@ class Inventory_model extends MY_Model {
 
         foreach($list as $v) {
             foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+            foreach($v['service'] as $val) {
                 $count += ($val['id'] == $id) ? $val['quantity'] : 0;
             }
         }
@@ -218,11 +267,20 @@ class Inventory_model extends MY_Model {
         $where = array(
             'status' => array('$in' => array(1, '1')),
             'org_id' => loginOrg(),
-            'line'   => array('$elemMatch' => array('id' => $id))
+        );
+        $where['$or'][]['line'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
+        );
+        $where['$or'][]['service'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
         );
 
         $list = $this->cimongo
-            ->select(array('line'))
+            ->select(array('line', 'service'))
             ->get_where(self::PURCHASE, $where)
             ->result_array(); 
         
@@ -230,6 +288,9 @@ class Inventory_model extends MY_Model {
 
         foreach($list as $v) {
             foreach($v['line'] as $val) {
+                $count += ($val['id'] == $id) ? $val['quantity'] : 0;
+            }
+            foreach($v['service'] as $val) {
                 $count += ($val['id'] == $id) ? $val['quantity'] : 0;
             }
         }
