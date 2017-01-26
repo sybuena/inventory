@@ -20,6 +20,11 @@
 		getQuatationTransaction(id);
 	});
 
+    $('a[href="#detail-job-order-log"]').unbind('click').bind('click', function() {
+
+        getJobOrderTransaction(id);
+    });
+
 })();
 
 /**
@@ -88,6 +93,67 @@ function getPurchaseTransaction(id) {
     return this;
 }
 
+function getJobOrderTransaction(id) {
+    var table = '#customer-job-order-table';
+    var url = '/customer/detail/jobOrder/'+id;
+
+    //TABLE LIST
+    base.bootgridAction(table);
+
+    $(table).bootgrid({
+        navigation : 2,
+        css     : base.icon,
+        labels  : base.label,
+        ajax            : true,
+        url             : url,
+        selection       : true,
+        multiSelect     : true,
+        keepSelection   : true,
+        formatters      : {
+            to     : function(column, row) {
+                if(row['customer_info']['account_number'] != '') {
+                    return '<p>'+row['customer_info']['company_name']+
+                    '<br><small style="font-weight: 300;">#'+row['customer_info']['account_number']+'</small><p>';  
+                } else {
+                    return '<p>'+row['customer_info']['company_name']+
+                    '<br><small style="font-weight: 300;"></small><p>';
+                }
+            },
+            status_text : function(column, row) {
+
+                if(row['status_text'] == 1) {
+                    return '<button class="btn bgm-orange btn-xs waves-effect status-table" status="'+row['status_text']+'">Sent</button>';
+                } else if(row['status_text'] == 2) {
+                    return '<button class="btn bgm-cyan btn-xs waves-effect status-table" status="'+row['status_text']+'">Draft</button>';
+                } else if(row['status_text'] == 3) {
+                    return '<button class="btn bgm-blue btn-xs waves-effect status-table" status="'+row['status_text']+'">Accepted</button>';
+                } else if(row['status_text'] == 4) {
+                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Invoiced</button>';
+                }
+            }
+        },
+    //after the ajax is finish
+    }).on('loaded.rs.jquery.bootgrid', function (e){
+        var total = $(table).bootgrid('getTotalRowCount');
+        
+        //count result
+        $(table+'-count').html(total+' Record(s)');
+
+        $(table+' tbody tr .text-left, '+table+' tbody tr .text-right').unbind('click').bind('click', function(e) {
+            var id = $(this).parent().data('row-id');
+
+            //first build url
+            window.location = '/jobOrder/detail/?id='+id;
+        });
+        
+    });
+
+    //reload this 
+    $(table).bootgrid('reload');
+
+    return this;
+}
+
 /**
  * Get all sales transaction of inventory
  * 
@@ -123,13 +189,13 @@ function getQuatationTransaction(id) {
             status_text : function(column, row) {
 
                 if(row['status_text'] == 1) {
-                    return '<button class="btn bgm-orange btn-xs waves-effect status-table" status="'+row['status_text']+'">Pending</button>';
+                    return '<button class="btn bgm-orange btn-xs waves-effect status-table" status="'+row['status_text']+'">Sent</button>';
                 } else if(row['status_text'] == 2) {
                     return '<button class="btn bgm-cyan btn-xs waves-effect status-table" status="'+row['status_text']+'">Draft</button>';
                 } else if(row['status_text'] == 3) {
-                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Approved</button>';
+                    return '<button class="btn bgm-blue btn-xs waves-effect status-table" status="'+row['status_text']+'">Accepted</button>';
                 } else if(row['status_text'] == 4) {
-                    return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Declined</button>';
+                    return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Invoiced</button>';
                 }
             }
         },

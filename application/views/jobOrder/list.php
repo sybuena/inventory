@@ -18,7 +18,7 @@
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-                <button class="btn bgm-blue btn-icon-text btn-xs" data-toggle="modal" data-target="#workflow-quotation">
+                <button class="btn bgm-blue btn-icon-text btn-xs" data-toggle="modal" data-target="#workflow">
                     <i class="zmdi zmdi-help"></i> Status Workflow
                 </button>
             </div>
@@ -33,7 +33,7 @@
                             <h2>Job Order</h2>
                         </div>
                         <div class="count box-price">
-                            <h2 id="quote-draft">0</h2>
+                            <h2 id="job-order-draft">0</h2>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                             <h2>Job Order</h2>
                         </div>
                         <div class="count box-price">
-                            <h2 id="quote-sent">0</h2>
+                            <h2 id="job-order-sent">0</h2>
                         </div>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             <h2>Job Order</h2>
                         </div>
                         <div class="count box-price">
-                            <h2 id="quote-accepted">0</h2>
+                            <h2 id="job-order-accepted">0</h2>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                             <h2>Job Order</h2>
                         </div>
                         <div class="count box-price">
-                            <h2 id="quote-invoiced">0</h2>
+                            <h2 id="job-order-invoiced">0</h2>
                         </div>
                     </div>
                 </div>
@@ -162,5 +162,5 @@
 </section>
 
 <?php include(APPPATH.'/views/jobOrder/add-job-order-modal.php'); ?>
-<?php include(APPPATH.'/views/quote/workflow-quotation.php'); ?>
+<?php include(APPPATH.'/views/jobOrder/workflow.php'); ?>
 <?php include(APPPATH.'/views/common/footer.php'); ?>

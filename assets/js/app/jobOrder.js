@@ -1,7 +1,23 @@
 (function() {
 	jobOrderModal(0, 0);
 	getList();
+	header();
 })();
+
+function header() {
+    var url = '/jobOrder/listing/calculateHeader/';
+    base.
+        setUrl(url).
+        get(function(response) {
+
+            $('#job-order-draft').html(response.data['draft']);
+            $('#job-order-sent').html(response.data['sent']);
+            $('#job-order-accepted').html(response.data['accepted']);
+            $('#job-order-invoiced').html(response.data['invoiced']);
+        }
+    );
+    return this;
+}
 
 function jobOrderModal(id, data) {
     var baseId      = '#add-job-order-';

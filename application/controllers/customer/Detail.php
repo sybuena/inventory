@@ -70,6 +70,23 @@ class Detail extends MY_Controller {
         return $this->_returnRaw($row);
     }
 
+    public function jobOrder($id) {
+
+        $sort   = (isset($_POST['sort'])) ? $_POST['sort'] : array();
+        $offset = (isset($_POST['current'])) ? $_POST['current'] : parent::OFFSET;
+        $limit  = (isset($_POST['rowCount'])) ? $_POST['rowCount'] : parent::LIMIT;
+        $search = (isset($_POST['searchPhrase']) && !empty($_POST['searchPhrase'])) ? $_POST['searchPhrase'] : '';
+
+        //get member list
+        $row = $this->jobOrder->getCustomerJobOrder($id, $sort, $search, $offset, $limit);
+
+        $row['current']  = (int)$offset;
+        $row['rowCount'] = (int)$limit;
+
+        //return json
+        return $this->_returnRaw($row);
+    }
+
     /**
      * Get customer sales transaction for all inventory status
      * 

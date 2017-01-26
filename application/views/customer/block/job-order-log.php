@@ -1,9 +1,9 @@
 <div class="listview lv-bordered lv-lg">
     <div class="lv-header-alt clearfix m-b-5">
-        <h2 class="lvh-label hidden-xs" id="inventory-quotation-table-count">0 Record(s)</h2>
+        <h2 class="lvh-label hidden-xs" id="customer-job-order-table-count">0 Record(s)</h2>
         
         <div class="lvh-search">
-            <input type="text" placeholder="Start typing..." class="lvhs-input" id="inventory-quotation-table-search">
+            <input type="text" placeholder="Start typing..." class="lvhs-input" id="customer-job-order-table-search">
             <i class="lvh-search-close">×</i>
         </div>
         
@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li>
-                <a id="inventory-quotation-table-refresh" 
+                <a id="customer-job-order-table-refresh" 
                  data-toggle="tooltip" 
                  data-placement="top" 
                  data-original-title="Refresh Table" >
@@ -30,7 +30,7 @@
                     <i class="zmdi zmdi-sort-amount-desc"></i>
                 </a>
                 
-                <ul class="dropdown-menu dropdown-menu-right" id="inventory-quotation-table-status">
+                <ul class="dropdown-menu dropdown-menu-right" id="customer-job-order-table-status">
                     <li class="active">
                         <a href="" status="0">All Status</a>
                     </li>
@@ -53,7 +53,7 @@
                     <i class="zmdi zmdi-more-vert"></i>
                 </a>
                 
-                <ul class="dropdown-menu dropdown-menu-right" id="inventory-quotation-table-page">
+                <ul class="dropdown-menu dropdown-menu-right" id="customer-job-order-table-page">
                     <li class="active">
                         <a href="" page="10">10 per page</a>
                     </li>
@@ -76,13 +76,12 @@
     </div>
 
     <div class="table-responsive">
-        <table id="inventory-quotation-table" class="table-condensed table-hover">
+        <table id="customer-job-order-table" class="table-condensed table-hover">
             <thead>
                 <tr>
                     <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
-                    <th data-column-id="quote_number" data-order="asc">Quote #</th>
+                    <th data-column-id="job_order_number" data-order="asc">Job Order #</th>
                     <th data-column-id="reference_number" data-order="asc">Reference #</th>
-                    <th data-column-id="to" data-formatter="to" data-order="asc">Customer</th>
                     <th data-column-id="date" data-sortable="false">Date</th>
                     <th data-column-id="due_date" data-sortable="false">Expiry</th>
                     <th data-column-id="total_amount" data-sortable="false" data-align="right">Amount</th>

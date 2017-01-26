@@ -204,10 +204,15 @@ class Sales_model extends MY_Model {
         $where = array(
             'status' => array('$ne' => 0),
             'org_id' => loginOrg(),
-            'line'   => array(
-                '$elemMatch' => array(
-                    'id' => $id
-                )
+        );
+        $where['$or'][]['line'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
+        );
+        $where['$or'][]['service'] = array(
+            '$elemMatch' => array(
+                'id' => $id
             )
         );
         
@@ -264,10 +269,15 @@ class Sales_model extends MY_Model {
         $where = array(
             'status' => array('$ne' => 0),
             'org_id' => loginOrg(),
-            'line'   => array(
-                '$elemMatch' => array(
-                    'id' => $id
-                )
+        );
+        $where['$or'][]['line'] = array(
+            '$elemMatch' => array(
+                'id' => $id
+            )
+        );
+        $where['$or'][]['service'] = array(
+            '$elemMatch' => array(
+                'id' => $id
             )
         );
         
@@ -287,7 +297,7 @@ class Sales_model extends MY_Model {
             }
         }
         
-        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        $select = array('status', 'job_order_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
         
         $list  = $this->cimongo
             ->order_by($order)
@@ -344,7 +354,7 @@ class Sales_model extends MY_Model {
             }
         }
         
-        $select = array('status', 'invoice_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
+        $select = array('status', 'quote_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');
         
         $list  = $this->cimongo
             ->order_by($order)

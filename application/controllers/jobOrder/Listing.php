@@ -46,7 +46,7 @@ class Listing extends MY_Controller {
         );
         $row = $this->cimongo   
             ->select(array('total_amount', 'status', 'due_date'))
-            ->get_where(MY_Model::QUOTE, $where)
+            ->get_where(MY_Model::JOB_ORDER, $where)
             ->result_array();
 
         $data = array(

@@ -114,6 +114,11 @@
                                 Purchases Log
                             </a>
                         </li>
+                        <li class="waves-effect">
+                            <a href="#detail-job-order-log" data-toggle="tab">
+                                Job Order Log
+                            </a>
+                        </li>
                         <!-- <li class="waves-effect">
                        		<a href="#detail-notes" data-toggle="tab">
                                 Notes & Activity
@@ -133,6 +138,9 @@
                         </div>
                         <div role="tabpanel" class="tab-pane" id="detail-purchases-log">
                         	<?php include('block/purchase-log.php'); ?>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="detail-job-order-log">
+                            <?php include('block/job-order-log.php'); ?>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="detail-notes">
                         	<?php include('detail-notes.php'); ?>
