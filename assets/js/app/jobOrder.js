@@ -552,16 +552,16 @@ function getList() {
             '<tr><td colspan="7" class="no-results">'+
             '<div style="margin-top: 50px;">'+
                 '<i class="fa fa-file-o fa-4x"></i>'+
-                '<h2 style="text-transform: uppercase;">No Quotation Yet!</h2>'+
-                '<p>Be the first to create quatation to get started</p>'+
+                '<h2 style="text-transform: uppercase;">No Job Order Yet!</h2>'+
+                '<p>Be the first to create job order to get started</p>'+
                 
-                '<button class="btn bgm-blue waves-effect" id="quote-list-add-show2">Create Quotation</button>'+
+                '<button class="btn bgm-blue waves-effect" id="job-order-list-add-show2">Create Job Order</button>'+
             '</div>'+
             '</td></tr>';
 
             $(table+' tbody').html(FIRST_ENTRY);
             //we have unbind in click so its possible to double call function
-           // quoteModal(0, 0);
+            jobOrderModal(0, 0);
         }
 	    
     });

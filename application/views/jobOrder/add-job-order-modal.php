@@ -118,13 +118,13 @@
                     <div class="col-sm-12">
                         <div class="form-group">    
                             <label>Title</label>
-                            <input type="text" class="form-control fg-input" id="add-job-order-title" placeholder="Add optional title for this sales quotation" />
+                            <input type="text" class="form-control fg-input" id="add-job-order-title" placeholder="Add optional title for this job order" />
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="form-group">    
                             <label>Summary/Note</label>
-                            <textarea rows="3" class="form-control fg-input" id="add-job-order-summary" placeholder="Summary or Note you want to add in this sales quotation"></textarea>
+                            <textarea rows="3" class="form-control fg-input" id="add-job-order-summary" placeholder="Summary or Note you want to add in this job order"></textarea>
                         </div>
                     </div>
                     <div class="col-sm-6">
