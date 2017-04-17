@@ -134,7 +134,7 @@
                                 <th data-column-id="date" >Date</th>
                                 <th data-column-id="category" data-formatter="category">Category</th>
                                 <th data-column-id="reference">Reference</th>
-                                <th data-column-id="total_amount" data-align="right">Total Amount</th>
+                                <th data-column-id="totalAmount" data-align="right">Total Amount</th>
                                 <th data-column-id="created_by">Created By</th>
                             </tr>
                         </thead>

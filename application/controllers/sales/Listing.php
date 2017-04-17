@@ -117,6 +117,15 @@ class Listing extends MY_Controller {
             }
         }
 
+        //then get item name
+        if(!empty($row['service'])) {
+            foreach($row['service'] as $k => $v) {
+                $name = $this->inventory->detail($v['id'], array('code', 'name'));
+                //well format
+                $row['service'][$k]['name'] = '('.$name['code'].') '.$name['name'];
+            }
+        }
+
         return $this->_returnData($row); 
     }
 

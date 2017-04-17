@@ -506,6 +506,10 @@ class Inventory_model extends MY_Model {
             if($v['type'] == 'service') {
                 $type = '<button class="btn bgm-red btn-xs waves-effect">Service</button>';
             }
+            $stock = isset($v['stock']) && $v['stock'] != 0 ? number_format($v['stock'], 2) : '<i class="c-red">0.00</i>';
+            if($v['type'] == 'service') {
+                $stock = '<i class="c-red">N/A</i>';
+            }
             $row['rows'][$k] = array( 
                 'id'        => $v['_id']->{'$id'},
                 'code'      => $v['code'],
@@ -514,7 +518,7 @@ class Inventory_model extends MY_Model {
                 'category'  => isset($v['category']['name']) ? $v['category']['name'] : '<i>None</i>',
                 'cost'      => isset($v['cost']) && !empty($v['cost']) ? money($v['cost']) : money('0.00'),
                 'sales'     => isset($v['sales']) && !empty($v['sales']) ? money($v['sales']) : money('0.00'),
-                'stock'  => isset($v['stock']) ? number_format($v['stock'], 2) : '0.00'
+                'stock'  => $stock
             );
         }
       

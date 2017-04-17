@@ -64,8 +64,9 @@ class Notes_model extends MY_Model {
             //change name of status
             $list[$k]['status_text'] = $v['status'];
             $list[$k]['id'] = $v['_id']->{'$id'};
-            $list[$k]['totalAmount'] = decim(!isset($v['totalAmount']) || empty($v['amount']) ? 0 : $v['totalAmount']);
-            
+            $list[$k]['totalAmount'] = decim(!isset($v['totalAmount']) || empty($v['totalAmount']) ? 0 : $v['totalAmount']);
+            $list[$k]['reference'] = isset($v['reference'])  && !empty($v['reference']) ? $v['reference'] : '<i>N/A</i>';
+
             $user = $this->user->detail($v['created_by']);
 
             $list[$k]['created_by'] = $user['first_name'].' '.$user['last_name'];

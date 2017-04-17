@@ -18,8 +18,10 @@ if($_SERVER['SERVER_NAME'] == 'dev.apgars-inventory.com') {
 //else DEFAULT LOCAL
 } else {
 	$config['db'] = 'apgars';
-	$config['user'] = 'super';
-	$config['pass'] = 'f0ll0wm3d0wn2th3riv3r';
+	// $config['user'] = 'super';
+	// $config['pass'] = 'f0ll0wm3d0wn2th3riv3r';
+	$config['user'] = '';
+	$config['pass'] = '';
 	$dbFlag = FALSE;
 }
 

@@ -71,7 +71,7 @@ function saveFinancial() {
 					'prefix'   : quoPre.val(),
 					'sequence' : quoSeq.val()
 				},
-				'job-order' : {
+				'job_order' : {
 					'prefix'   : joPre.val(),
 					'sequence' : joSeq.val()
 				}

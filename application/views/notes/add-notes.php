@@ -70,14 +70,21 @@ description, -->
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
+                        <div class="form-group">    
+                            <label>Quantity</label>
+                            <input type="text" class="form-control fg-input numeric" placeholder="0.00" id="expense-quantity">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
                         <div class="form-group">    
                             <label>Unit Price</label>
                             <input type="text" class="form-control fg-input numeric" placeholder="0.00" id="expense-unit-price">
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-4">
                         <div class="form-group">    
                             <label>Total Amount</label>
                             <input type="text" class="form-control fg-input numeric" placeholder="0.00" id="expense-total-amount">

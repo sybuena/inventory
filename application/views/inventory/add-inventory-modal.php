@@ -55,7 +55,7 @@
 
                             <div class="col-sm-6">
                                 <div class="form-group">    
-                                    <label>Code</label> <span class="required-text">*</span></label>
+                                    <label>Part No/ Code</label> <span class="required-text">*</span></label>
                                     <input type="text" class="form-control fg-input" id="add-inventory-code" placeholder="Code indicator of form this inventory">
                                 </div>
                             </div>
@@ -72,7 +72,7 @@
                             <div class="col-sm-6">
                                 <div class="form-group">    
                                     <label>Location </label>
-                                    <input type="text" class="form-control fg-input" id="add-inventory-name" placeholder="Inventory Location">
+                                    <input type="text" class="form-control fg-input" id="add-inventory-location" placeholder="Inventory Location">
                                 </div>
                             </div>
 

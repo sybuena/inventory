@@ -29,6 +29,7 @@ function addNotes() {
     var category    = $('#expense-category');
     var partNumber  = $('#expense-part-number');
     var reference   = $('#expense-reference');
+    var quantity    = $('#expense-quantity');
     var unitPrice   = $('#expense-unit-price');
     var totalAmount = $('#expense-total-amount');
     var supplier    = $('#expense-supplier');
@@ -38,7 +39,7 @@ function addNotes() {
     var save = $('.expense-save');
 
     $('#notes-list-add-show').unbind('click').bind('click', function() {
-        $('#add-notes .modal-title').html('Add Notes');
+        $('#add-notes .modal-title').html('Add Expense');
         $('#add-notes').modal('show');
         save.attr('id', '');
 
@@ -46,6 +47,7 @@ function addNotes() {
         category.val(0);
         partNumber.val('');
         reference.val('');
+        quantity.val('');
         unitPrice.val('');
         totalAmount.val('');
         supplier.val('');
@@ -80,6 +82,7 @@ function addNotes() {
                 'category' : category.val(),
                 'partNumber' : partNumber.val(),
                 'reference' : reference.val(),
+                'quantity' : quantity.val(),
                 'unitPrice' : unitPrice.val(),
                 'totalAmount' : totalAmount.val(),
                 'supplier' : supplier.val(),
@@ -150,7 +153,7 @@ function getList(type) {
     	$(table+'-count').html(total+' Record(s)');
 
         $(table+' td.text-left, '+table+' td.text-right').unbind('click').bind('click', function() {
-            $('#add-notes .modal-title').html('Edit/View Notes');
+            $('#add-notes .modal-title').html('Edit/View Expense');
             swal({
                 title : "Loading item...",   
                 text : "Just a sec! This might take some minutes depending on the items",   
@@ -170,6 +173,7 @@ function getList(type) {
                     var category    = $('#expense-category');
                     var partNumber  = $('#expense-part-number');
                     var reference   = $('#expense-reference');
+                    var quantity   = $('#expense-quantity');
                     var unitPrice   = $('#expense-unit-price');
                     var totalAmount = $('#expense-total-amount');
                     var supplier    = $('#expense-supplier');
@@ -180,6 +184,7 @@ function getList(type) {
                     category.val(0);
                     partNumber.val('');
                     reference.val('');
+                    quantity.val('');
                     unitPrice.val('');
                     totalAmount.val('');
                     supplier.val('');
@@ -194,6 +199,7 @@ function getList(type) {
                     category.val(response.data['category']);
                     partNumber.val(response.data['partNumber']);
                     reference.val(response.data['reference']);
+                    quantity.val(response.data['quantity']);
                     unitPrice.val(response.data['unitPrice']);
                     totalAmount.val(response.data['totalAmount']);
                     supplier.val(response.data['supplier']);

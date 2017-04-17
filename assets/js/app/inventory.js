@@ -234,6 +234,7 @@ function addItem(table) {
 	//basic info
 	var name = $(addInv+'name');
 	var code = $(addInv+'code');
+	var location = $(addInv+'location');
 	var type = $(addInv+'type');
 	var category = $(addInv+'category');
 	var description = $(addInv+'description');
@@ -247,6 +248,7 @@ function addItem(table) {
 		name.val('');
 		code.val('');
 		type.val(0);
+		location.val('');
 		description.val('');
 		sales.val('');
 		cost.val('');
@@ -306,6 +308,7 @@ function addItem(table) {
 				'name' 	 		: name.val(),
 				'code'   		: code.val(),
 				'type'  		: type.val(),
+				'location'  		: location.val(),
 				'category'  	: category.val(),
 				'description'  	: description.val(),
 				'sales'  		: sales.val(),
@@ -384,7 +387,7 @@ function getCategory(table) {
 			$('.inventory-group-list a').unbind('clik').bind('click', function() {
 				$('.inventory-group-list a').removeClass('active');
 				$(this).addClass('active');
-
+				
 				getList($(this).attr('id'), table);
 			});
 		}	
@@ -410,11 +413,11 @@ function getList(type, table) {
             name_format 	: function(column, row) {
             	if(row['code'] != '') {
 	                return '<p>'+row['name']+
-	                '<br><small style="font-weight: 300;">#'+row['code']+'</small><p>';
+	                '<br><small style="font-weight: 800;">Part No : '+row['code']+'</small><p>';
 	                       
             	} else {
             		return '<p>'+row['name']+
-	                '<br><small style="font-weight: 300;"></small><p>';
+	                '<br><small style="font-weight: 800;">Part No : </small><p>';
 	                    
             	}
             },

@@ -157,7 +157,9 @@ function invoiceModal(id, data) {
         date.val(data['date']);
         dueDate.val(data['due_date']);
         total.val(data['total_amount']);
-        
+        $(baseId+'table tbody').html('');
+        $(baseId+'service-table tbody').html('');
+        $(baseId+'other-table tbody').html('');
         if(isset(data['line'])) {
             //loop line item
             helper.loop(data['line'], function(i) {
@@ -212,6 +214,7 @@ function invoiceModal(id, data) {
         }
 
         if(isset(data['service'])) {
+            
             //loop line service
             helper.loop(data['service'], function(i) {
                 
