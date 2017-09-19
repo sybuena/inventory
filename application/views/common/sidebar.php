@@ -72,10 +72,11 @@ span.p-info {
         <li class="<?=show($notes); ?>">
             <a href="/notes/listing"><i class="zmdi zmdi-calendar-note"></i> Daily Expense </a>
         </li>
-
-        <li class="<?=show($settings); ?>">
-            <a href="/settings"><i class="zmdi zmdi-settings"></i> Settings </a>
-        </li> 
+        <?php if(isAdmin()) :?>
+            <li class="<?=show($settings); ?>">
+                <a href="/settings"><i class="zmdi zmdi-settings"></i> Settings </a>
+            </li> 
+        <?php endif; ?>
        
     </ul>
 </aside>

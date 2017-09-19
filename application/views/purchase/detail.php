@@ -36,15 +36,17 @@
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-            <?php if($purchase['status'] == 1) :?>
-                
-                <button class="btn btn-primary btn-icon-text purchase-approve" purchase-id="<?=$id;?>">
-                    <i class="zmdi zmdi-check"></i> Approve Purchase
-                </button>
-                <button class="btn btn-danger btn-icon-text purchase-decline" purchase-id="<?=$id;?>">
-                    <i class="zmdi zmdi-close"></i> Decline Purchase
-                </button>
-                
+            <?php if(isAdmin()):?>
+                <?php if($purchase['status'] == 1) :?>
+                    
+                    <button class="btn btn-primary btn-icon-text purchase-approve" purchase-id="<?=$id;?>">
+                        <i class="zmdi zmdi-check"></i> Approve Purchase
+                    </button>
+                    <button class="btn btn-danger btn-icon-text purchase-decline" purchase-id="<?=$id;?>">
+                        <i class="zmdi zmdi-close"></i> Decline Purchase
+                    </button>
+                    
+                <?php endif;?>
             <?php endif;?>
            </div>
            <div class="clearfix"></div>

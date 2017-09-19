@@ -1,4 +1,23 @@
 <?php //-->
+function isAdmin() {
+     $CI =& get_instance();
+    $user = $CI->session->userdata('has_login');
+    
+
+    $role = 'Administrator';
+    
+    if(isset($user['organization']) || !empty($user['organization'])) {
+        foreach($user['organization'] as $v) {
+            if($v['role'] == 2) {
+                $role = 'User';
+                break;
+            }
+        }
+    }
+    return $role == 'Administrator' ? true : false;
+    
+}
+
 function hasValue($value) {
     return (isset($value) && !empty($value)) ? true : false;
 }
@@ -205,7 +224,7 @@ function loginData() {
         if(isset($user['organization']) || !empty($user['organization'])) {
             foreach($user['organization'] as $v) {
                 if($v['role'] == 2) {
-                    $user['user_role'] = 'Accountant';
+                    $user['user_role'] = 'User';
                 }
             }
         }

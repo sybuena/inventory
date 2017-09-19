@@ -18,13 +18,15 @@
                 </ol>
             </div>
             <div class="pull-right m-t-10">
-                <?php if($invoice['status'] == 1) :?>
-                    <button class="btn btn-primary btn-icon-text invoice-approve" invoice-id="<?=$id;?>">
-                        <i class="zmdi zmdi-check"></i> Approve Invoice
-                    </button>
-                    <button class="btn btn-danger btn-icon-text invoice-decline" invoice-id="<?=$id;?>">
-                        <i class="zmdi zmdi-close"></i> Decline Invoice
-                    </button>
+                <?php if(isAdmin()):?>
+                    <?php if($invoice['status'] == 1) :?>
+                        <button class="btn btn-primary btn-icon-text invoice-approve" invoice-id="<?=$id;?>">
+                            <i class="zmdi zmdi-check"></i> Approve Invoice
+                        </button>
+                        <button class="btn btn-danger btn-icon-text invoice-decline" invoice-id="<?=$id;?>">
+                            <i class="zmdi zmdi-close"></i> Decline Invoice
+                        </button>
+                    <?php endif;?>
                 <?php endif;?>
             </div>
             <div class="clearfix"></div>
