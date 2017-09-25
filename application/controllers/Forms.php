@@ -61,12 +61,12 @@ class Forms extends MY_Controller {
                 $row['service'][$k]['name'] = '('.$name['code'].') '.$name['name'];
             }
         }
-    	//pre($row);exit;
-
+    	
     	$data = array(
     		'supplier' => $this->customer->detail($row['supplier']),
     		'info' => $row
     	);
+        
        	$html = $this->load->view('pdf/purchase/purchase', $data, true);
        	
        	$this->mpdf

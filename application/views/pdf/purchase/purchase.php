@@ -37,7 +37,7 @@
 		</style>
 	</head>
 	<body>
-		<img src="http://dev.apgars-inventory.com/assets/img/circle-logo.png" style="width:100px">
+		<img src="http://apgars-inventory.com/assets/img/circle-logo.png" style="width:100px">
 		<div class="header center pull-left" style="margin-top: -98px">
 			<h3>Aquarian Power Generation And Repair Services</h3>
 			<p class="f-s-10">
@@ -56,6 +56,7 @@
 				Supplier : <?=$supplier['company_name'];?><br>
 				Address : <?=$supplier['address'].' '.$supplier['city'].', '.$supplier['province'];?> <br>
 				Tel No : <?=$supplier['mobile'];?><br>
+				Fax No : <?=$supplier['fax'];?><br>
 				Attn : <?=$info['attention'];?><br>
 				Code : <?=$supplier['account_number'];?><br>
 			</p>
@@ -80,6 +81,7 @@
 					<th width="300" class="center">DESCRIPTION</th>
 					<th width="50" class="center">QTY</th>
 					<th width="150" class="center">UNIT PRICE</th>
+					<th width="150" class="center">DISCOUNT</th>
 					<th width="150" class="center">TOTAL PRICE</th>
 				<tr>
 			</thead>
@@ -90,6 +92,7 @@
 						<td><?=$v['description']?></td>
 						<td><?=$v['quantity']?></td>
 						<td class="t-r"><?=money($v['rate'])?></td>
+						<td class="t-r"><?=money($v['disc'])?></td>
 						<td class="t-r"><?=money($v['amount'])?></td>
 					</tr>
 				<?php endforeach;?>
@@ -99,6 +102,7 @@
 						<td><?=$v['description']?></td>
 						<td><?=$v['quantity']?></td>
 						<td class="t-r"><?=money($v['rate'])?></td>
+						<td class="t-r"><?=money($v['disc'])?></td>
 						<td class="t-r"><?=money($v['amount'])?></td>
 					</tr>
 				<?php endforeach;?>
@@ -108,6 +112,7 @@
 						<td><?=$v['description']?></td>
 						<td><?=$v['quantity']?></td>
 						<td class="t-r"><?=money($v['rate'])?></td>
+						<td class="t-r"><?=money($v['disc'])?></td>
 						<td class="t-r"><?=money($v['amount'])?></td>
 					</tr>
 				<?php endforeach;?>

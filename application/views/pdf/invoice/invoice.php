@@ -37,7 +37,7 @@
 		</style>
 	</head>
 	<body>
-		<img src="http://dev.apgars-inventory.com/assets/img/circle-logo.png" style="width:100px">
+		<img src="http://apgars-inventory.com/assets/img/circle-logo.png" style="width:100px">
 		<div class="header center pull-left" style="margin-top: -98px">
 			<h3>Aquarian Power Generation And Repair Services</h3>
 			<p class="f-s-10">
