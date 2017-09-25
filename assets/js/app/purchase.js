@@ -159,6 +159,7 @@ function purchaseModal(id, data) {
                     replace('[RATE]',       data['line'][i]['rate']).
                     replace('[QUANTITY]',   data['line'][i]['quantity']).
                     replace('[AMOUNT]',     data['line'][i]['amount']).
+                    replace('[DISC]',       data['line'][i]['disc']).
                     replace('[ID]',         data['line'][i]['id'])
 
                 ).find('.add-purchase-search-item').select2({
@@ -211,6 +212,7 @@ function purchaseModal(id, data) {
                     replace('[DESC]',       data['service'][i]['description']).
                     replace('[RATE]',       data['service'][i]['rate']).
                     replace('[QUANTITY]',   data['service'][i]['quantity']).
+                    replace('[DISC]',       data['service'][i]['disc']).
                     replace('[AMOUNT]',     data['service'][i]['amount']).
                     replace('[ID]',         data['service'][i]['id'])
 
@@ -264,6 +266,7 @@ function purchaseModal(id, data) {
                     replace('[DESC]',       data['other'][i]['description']).
                     replace('[RATE]',       data['other'][i]['rate']).
                     replace('[QUANTITY]',   data['other'][i]['quantity']).
+                    replace('[DISC]',       data['other'][i]['disc']).
                     replace('[AMOUNT]',     data['other'][i]['amount']).
                     replace('[ID]',         data['other'][i]['id'])
 
@@ -399,6 +402,7 @@ function purchaseModal(id, data) {
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
                     'quantity'      : $(this).find('.add-purchase-body-quantity input').val(),
                     'rate'          : $(this).find('.add-purchase-body-rate input').val(),
+                    'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
             }
@@ -412,6 +416,7 @@ function purchaseModal(id, data) {
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
                     'quantity'      : $(this).find('.add-purchase-body-quantity input').val(),
                     'rate'          : $(this).find('.add-purchase-body-rate input').val(),
+                    'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
             }
@@ -425,6 +430,7 @@ function purchaseModal(id, data) {
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
                     'quantity'      : $(this).find('.add-purchase-body-quantity input').val(),
                     'rate'          : $(this).find('.add-purchase-body-rate input').val(),
+                    'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
             }
@@ -551,7 +557,8 @@ function purchaseModal(id, data) {
             calculateTotal();
             return false;
         });
-         $('.add-purchase-body-disc input').unbind('keyup').bind('keyup', function() {
+         
+        $('.add-purchase-body-disc input').unbind('keyup').bind('keyup', function() {
             
             //get variables we need
             var costRate = $(this).parent().parent().find('.add-purchase-body-rate input').val();

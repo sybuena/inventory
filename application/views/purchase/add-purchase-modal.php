@@ -105,6 +105,7 @@
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Disc</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>
@@ -127,6 +128,7 @@
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Disc</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>

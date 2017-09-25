@@ -140,6 +140,7 @@
                                 <th class="c-gray">DESCRIPTION</th>
                                 <th class="c-gray">UNIT PRICE</th>
                                 <th class="c-gray">QUANTITY</th>
+                                <th class="c-gray">DISCOUNT</th>
                                 <th class="highlight">TOTAL</th>
                             </tr>
                         </thead>
@@ -157,6 +158,7 @@
                                     
                                     <td><?php echo money($v['rate']); ?></td>
                                     <td><?php echo $v['quantity']; ?></td>
+                                    <td><?php echo money($v['disc']); ?></td>
                                     <td class="highlight text-right"><?php echo money($v['amount']); ?></td>
                                 </tr>
                             <?php endforeach;?>
@@ -170,6 +172,7 @@
                                 <th class="c-gray">DESCRIPTION</th>
                                 <th class="c-gray">UNIT PRICE</th>
                                 <th class="c-gray">QUANTITY</th>
+                                <th class="c-gray">DISCOUNT</th>
                                 <th class="highlight">TOTAL</th>
                             </tr>
                         </thead>
@@ -187,6 +190,7 @@
                                     
                                     <td><?php echo money($v['rate']); ?></td>
                                     <td><?php echo $v['quantity']; ?></td>
+                                    <td><?php echo money($v['disc']); ?></td>
                                     <td class="highlight text-right"><?php echo money($v['amount']); ?></td>
                                 </tr>
                             <?php endforeach;?>
@@ -200,6 +204,7 @@
                                 <th class="c-gray">DESCRIPTION</th>
                                 <th class="c-gray">UNIT PRICE</th>
                                 <th class="c-gray">QUANTITY</th>
+                                <th class="c-gray">DISCOUNT</th>
                                 <th class="highlight">TOTAL</th>
                             </tr>
                         </thead>
@@ -217,6 +222,7 @@
                                     
                                     <td><?php echo money($v['rate']); ?></td>
                                     <td><?php echo $v['quantity']; ?></td>
+                                    <td><?php echo money($v['disc']); ?></td>
                                     <td class="highlight text-right"><?php echo money($v['amount']); ?></td>
                                 </tr>
                             <?php endforeach;?>
