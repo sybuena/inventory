@@ -41,8 +41,7 @@
 		<div class="header center pull-left" style="margin-top: -98px">
 			<h3>Aquarian Power Generation And Repair Services</h3>
 			<p class="f-s-10">
-				Unit 2, G/F Dona Lolita Bldg. 298 J. Teodora St., 10th Ave.,<br>
-				Brgy. 062, Caloocan City<br>
+				56 - B Luna St. Bangkulasi, Navotas City 1485 Philippines<br>
 				Tel Nos. (0632) 709-7927 / 986-4619; Fax No. (0632) 990-1896<br>
 				<b><u>www.apgars.com.ph</u></b> <br>
 			</p>
@@ -56,7 +55,6 @@
 				Supplier : <?=$supplier['company_name'];?><br>
 				Address : <?=$supplier['address'].' '.$supplier['city'].', '.$supplier['province'];?> <br>
 				Tel No : <?=$supplier['mobile'];?><br>
-				Fax No : <?=$supplier['fax'];?><br>
 				Attn : <?=$info['attention'];?><br>
 				Code : <?=$supplier['account_number'];?><br>
 			</p>
@@ -65,7 +63,7 @@
 			<p class="f-s-12">
 				Date : <?=$info['date']; ?><br>
 				Terms : <br>
-				Fax No : <br>
+				Fax No : <?=$supplier['fax'];?><br>
 				Reference : <?=$info['reference_number']; ?><br>
 				Delivery : <?=$info['due_date']; ?><br>
 			</p>
@@ -118,13 +116,20 @@
 				<?php endforeach;?>
 				<tr>
 					<td colspan="2"> <b>Grand Total Php</b> </td>
-					<td colspan="3" class="t-r">
+					<td colspan="4" class="t-r">
 						<?=money($info['total_amount'])?>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 		
+		<div style="width: 80%">
+			<p class="f-s-12">INSTRUCTION :</p>
+			<p class="f-s-8">
+				<?=$info['instruction'];?>
+			</p>
+		</div>
+
 		<div style="width: 80%">
 			<p class="f-s-12">NOTE :</p>
 			<p class="f-s-10">
@@ -134,7 +139,13 @@
 		</div>
 		<div>
 			<p class="f-s-12">Prepared By :</p>
+			<br>
 			<p class="f-s-12">Requested By :</p>
+			<br>
+			<p class="f-s-12">Approved By :</p>
 		</div>
+		
+			
+		
 	</body>
 </html>
