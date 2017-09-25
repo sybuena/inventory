@@ -378,6 +378,9 @@ function tableRow(forEdit, text) {
             '<td class="add-'+text+'-body-rate">'+
                 '<input type="text" class="no-border" value="[RATE]" placeholder="Add Rate" />'+
             '</td>'+
+            '<td class="add-'+text+'-body-disc">'+
+                '<input type="text" class="no-border" value="[DISC]" placeholder="Discount" />'+
+            '</td>'+
             '<td  class="add-'+text+'-body-amount">'+
                 '<input type="text" class="no-border" value="[AMOUNT]" placeholder="Total Amount" disabled="disabled"/>'+
             '</td>'+
@@ -401,6 +404,9 @@ function tableRow(forEdit, text) {
             '</td>'+
             '<td class="add-'+text+'-body-rate">'+
                 '<input type="text" class="no-border" placeholder="Add Rate" />'+
+            '</td>'+
+            '<td class="add-'+text+'-body-disc">'+
+                '<input type="text" class="no-border" placeholder="Discount" />'+
             '</td>'+
             '<td  class="add-'+text+'-body-amount">'+
                 '<input type="text" class="no-border" placeholder="Total Amount" disabled="disabled"/>'+

@@ -2,7 +2,7 @@
 	editSummary();
 	editBasic();
 	editContact();
-
+    console.log('x');
 	var id = getUrlParameter('id')
 	
 	$('a[href="#detail-sales-log"]').unbind('click').bind('click', function() {
@@ -304,12 +304,13 @@ function editBasic() {
 }
 
 function editContact() {
-	var fields 		= ['email', 'mobile', 'phone', 'facebook', 'twitter', 'skype'];
+	var fields 		= ['email', 'mobile', 'fax', 'phone', 'facebook', 'twitter', 'skype'];
 	var required 	= ['email'];
 	var baseElem 	= '#detail-customer-contact-';
 	var special 	= {
 		'#main-customer-mobile' 	: 'mobile',
 		'#main-customer-phone' 		: 'phone',
+        '#main-customer-fax'      : 'fax',
 		'#main-customer-email' 		: 'email',
 		'#main-customer-facebook' 	: 'facebook',
 		'#main-customer-twitter' 	: 'twitter',
@@ -363,7 +364,7 @@ function baseEdit(baseElem, fields, required, special) {
 		//if no error found
 		if(!error) {
 			//show loading in button
-			$(SAVE_BUTTON).html('Saving...').attr('disabled', 'disabled');
+			$(SAVE_BUTTON).html('Saving...').attr('disabled', 'disabled'); console.log(data);
 			//now do ajax
 			base.
 				setUrl(url).

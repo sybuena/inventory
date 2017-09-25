@@ -139,18 +139,26 @@
                             </div>
                             
 
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <div class="form-group">    
                                     <label>Phone number</label>
                                     <input type="text" class="form-control fg-input" id="add-customer-phone-number">
                                 </div>
                             </div>
-                            <div class="col-sm-6">
+
+                            <div class="col-sm-4">
                                 <div class="form-group">    
                                     <label>Mobile number</label>
                                     <input type="text" class="form-control fg-input" id="add-customer-mobile-number" placeholder="">
                                 </div>
                             </div>
+                            <div class="col-sm-4">
+                                <div class="form-group">    
+                                    <label>Fax number</label>
+                                    <input type="text" class="form-control fg-input" id="add-customer-fax-number">
+                                </div>
+                            </div>
+                            
                             <div class="col-sm-6">
                                 <div class="form-group">    
                                     <label>Facebook</label>

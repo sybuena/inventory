@@ -156,6 +156,7 @@ function addContacts() {
 	//contact info
 	var phoneNumber  = $(addCustomer+'phone-number');
 	var mobileNumber = $(addCustomer+'mobile-number');
+	var faxNumber 	 = $(addCustomer+'fax-number');
 	var facebook 	 = $(addCustomer+'facebook');
 	var twitter 	 = $(addCustomer+'twitter');
 	var skype 		 = $(addCustomer+'skype');
@@ -178,6 +179,7 @@ function addContacts() {
 		zip.val('');
 		phoneNumber.val('');
 		mobileNumber.val('');
+		faxNumber.val('');
 		facebook.val('');
 		twitter.val('');
 		skype.val('');
@@ -263,6 +265,7 @@ function addContacts() {
 				//contact info
 				'phone' 	: phoneNumber.val(),
 				'mobile' 	: mobileNumber.val(),
+				'fax' 		: faxNumber.val(),
 				'facebook' 	: facebook.val(),
 				'twitter' 	: twitter.val(),
 				'skype' 	: skype.val(),

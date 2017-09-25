@@ -174,6 +174,10 @@
                 <dd id="detail-customer-contact-mobile-1"><?=show($customer['mobile'],1 );?></dd>
             </dl>
             <dl class="dl-horizontal">
+                <dt>Fax Number</dt>
+                <dd id="detail-customer-contact-fax-1"><?=show($customer['fax'],1 );?></dd>
+            </dl>
+            <dl class="dl-horizontal">
                 <dt>Phone Number</dt>
                 <dd id="detail-customer-contact-phone-1"><?=show($customer['phone'],1 );?></dd>
             </dl>
@@ -206,6 +210,15 @@
                 <dd>
                     <div class="fg-line">
                         <input type="text" class="form-control" placeholder="ex. 0936-650-3992" id="detail-customer-contact-mobile-2">
+                    </div>
+                </dd>
+            </dl>
+
+            <dl class="dl-horizontal">
+                <dt class="p-t-10">Fax Number</dt>
+                <dd>
+                    <div class="fg-line">
+                        <input type="text" class="form-control" placeholder="" id="detail-customer-contact-fax-2">
                     </div>
                 </dd>
             </dl>

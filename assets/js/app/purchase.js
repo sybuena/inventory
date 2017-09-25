@@ -508,17 +508,22 @@ function purchaseModal(id, data) {
         $('.add-purchase-body-quantity input').unbind('keyup').bind('keyup', function() {
             
             //get variables we need
-            var quantity = $(this).val();
             var costRate = $(this).parent().parent().find('.add-purchase-body-rate input').val();
+            var quantity = $(this).parent().parent().find('.add-purchase-body-quantity input').val();
+            var disc     = $(this).parent().parent().find('.add-purchase-body-disc input').val();
             
             quantity = (quantity == '') ? 0 : quantity;
             costRate = (costRate == '') ? 0 : costRate;
+            disc = (disc == '') ? 0 : disc;
 
-            var amount   = parseFloat(parseFloat(costRate) * quantity).toFixed(2);
+            var amount   = parseFloat(parseFloat(quantity) * costRate).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
 
-            $(this).parent().parent().find('.add-purchase-body-amount input').val(amount);
+            $(this).parent().parent().find('.add-purchase-body-amount input').val(withDisc);
             $(this).parent().parent().find('.add-purchase-body-rate input').val(costRate);
+            $(this).parent().parent().find('.add-purchase-body-disc input').val(disc);
             $(this).parent().parent().find('.add-purchase-body-quantity input').val(quantity);
+        
             calculateTotal();
             
             return false;
@@ -527,23 +532,48 @@ function purchaseModal(id, data) {
         $('.add-purchase-body-rate input').unbind('keyup').bind('keyup', function() {
             
             //get variables we need
-            var costRate = $(this).val();
+            var costRate = $(this).parent().parent().find('.add-purchase-body-rate input').val();
             var quantity = $(this).parent().parent().find('.add-purchase-body-quantity input').val();
+            var disc     = $(this).parent().parent().find('.add-purchase-body-disc input').val();
             
             quantity = (quantity == '') ? 0 : quantity;
             costRate = (costRate == '') ? 0 : costRate;
+            disc = (disc == '') ? 0 : disc;
 
             var amount   = parseFloat(parseFloat(quantity) * costRate).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
 
-            $(this).parent().parent().find('.add-purchase-body-amount input').val(amount);
+            $(this).parent().parent().find('.add-purchase-body-amount input').val(withDisc);
             $(this).parent().parent().find('.add-purchase-body-rate input').val(costRate);
+            $(this).parent().parent().find('.add-purchase-body-disc input').val(disc);
             $(this).parent().parent().find('.add-purchase-body-quantity input').val(quantity);
         
             calculateTotal();
-            
-
             return false;
         });
+         $('.add-purchase-body-disc input').unbind('keyup').bind('keyup', function() {
+            
+            //get variables we need
+            var costRate = $(this).parent().parent().find('.add-purchase-body-rate input').val();
+            var quantity = $(this).parent().parent().find('.add-purchase-body-quantity input').val();
+            var disc     = $(this).parent().parent().find('.add-purchase-body-disc input').val();
+            
+            quantity = (quantity == '') ? 0 : quantity;
+            costRate = (costRate == '') ? 0 : costRate;
+            disc = (disc == '') ? 0 : disc;
+
+            var amount   = parseFloat(parseFloat(quantity) * costRate).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
+
+            $(this).parent().parent().find('.add-purchase-body-amount input').val(withDisc);
+            $(this).parent().parent().find('.add-purchase-body-rate input').val(costRate);
+            $(this).parent().parent().find('.add-purchase-body-disc input').val(disc);
+            $(this).parent().parent().find('.add-purchase-body-quantity input').val(quantity);
+        
+            calculateTotal();
+            return false;
+        });
+
 
         return this;
     }
