@@ -150,7 +150,7 @@ function markAccepted() {
 function deleteQuote() {
 
 	$('.quote-delete').unbind('click').bind('click', function() {
-		var id = $(this).attr('invoice-id');
+		var id = $(this).attr('quote-id');
 
 		swal({
             title : 'Delete Sales Quote?',   

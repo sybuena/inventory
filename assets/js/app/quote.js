@@ -401,7 +401,7 @@ function quoteModal(id, data) {
 
         $('#add-quote-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(typeof id != 'undefined') {
                 line.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-quote-body-description input').val(),
@@ -409,12 +409,17 @@ function quoteModal(id, data) {
                     'rate'          : $(this).find('.add-quote-body-rate input').val(),
                     'amount'        : $(this).find('.add-quote-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 
         $('#add-quote-service-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(typeof id != 'undefined') {
                 service.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-quote-body-description input').val(),

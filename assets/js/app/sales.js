@@ -403,7 +403,7 @@ function invoiceModal(id, data) {
 
         $('#add-invoice-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(typeof id != 'undefined') { 
                 line.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-invoice-body-description input').val(),
@@ -411,12 +411,17 @@ function invoiceModal(id, data) {
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 
         $('#add-invoice-service-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(id != '') {
+            if(typeof id != 'undefined') { 
                 service.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-invoice-body-description input').val(),
@@ -424,6 +429,11 @@ function invoiceModal(id, data) {
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 

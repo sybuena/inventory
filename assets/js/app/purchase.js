@@ -106,8 +106,8 @@ function purchaseModal(id, data) {
     var addOther    = $(baseId+'add-other');
     
     //HTML
-    var TABLE_HTML  = tableRow(0, 'purchase');
-    var TABLE_HTML_EDIT  = tableRow(1, 'purchase');
+    var TABLE_HTML  = tableRowDisc(0, 'purchase');
+    var TABLE_HTML_EDIT  = tableRowDisc(1, 'purchase');
     
 
     //if making new purchase
@@ -396,7 +396,7 @@ function purchaseModal(id, data) {
 
         $('#add-purchase-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(isset(id)) {
+            if(typeof id != 'undefined') { 
                 line.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
@@ -405,12 +405,17 @@ function purchaseModal(id, data) {
                     'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 
         $('#add-purchase-service-table tbody tr').each(function() {
             var id = $(this).attr('id');
-            if(isset(id)) {
+            if(typeof id != 'undefined') { 
                 service.push({
                     'id'            : id,
                     'description'   : $(this).find('.add-purchase-body-description input').val(),
@@ -419,6 +424,11 @@ function purchaseModal(id, data) {
                     'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 

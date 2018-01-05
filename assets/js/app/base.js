@@ -362,7 +362,7 @@ function isset(data) {
     return (typeof data !== 'undefined') ? true : false;
 }
 
-function tableRow(forEdit, text) {
+function tableRowDisc(forEdit, text) {
     if(forEdit) {
         return  '<tr id="[ID]">'+
             '<td class="add-'+text+'-body-item">'+
@@ -370,19 +370,19 @@ function tableRow(forEdit, text) {
                 '<input type="text" class="form-control fg-input add-'+text+'-search-item">'+
             '</td>'+
             '<td class="add-'+text+'-body-description">'+
-                '<input type="text" class="no-border" value="[DESC]" placeholder="Add Description"/>'+
+                '<input type="text" class="no-border form-control" value="[DESC]" placeholder="Add Description"/>'+
             '</td>'+
             '<td class="add-'+text+'-body-quantity">'+
-                '<input type="text" class="no-border" value="[QUANTITY]" placeholder="Add Quantity" />'+
+                '<input type="text" class="no-border form-control" value="[QUANTITY]" placeholder="Add Quantity" />'+
             '</td>'+
             '<td class="add-'+text+'-body-rate">'+
-                '<input type="text" class="no-border" value="[RATE]" placeholder="Add Rate" />'+
+                '<input type="text" class="no-border form-control" value="[RATE]" placeholder="Add Rate" />'+
             '</td>'+
             '<td class="add-'+text+'-body-disc">'+
-                '<input type="text" class="no-border" value="[DISC]" placeholder="Discount" />'+
+                '<input type="text" class="no-border form-control" value="[DISC]" placeholder="Discount" />'+
             '</td>'+
             '<td  class="add-'+text+'-body-amount">'+
-                '<input type="text" class="no-border" value="[AMOUNT]" placeholder="Total Amount" disabled="disabled"/>'+
+                '<input type="text" class="no-border form-control" value="[AMOUNT]" placeholder="Total Amount" disabled="disabled"/>'+
             '</td>'+
             '<td class="">'+
                 '<button class="btn bgm-red waves-effect btn-xs add-'+text+'-body-close">'+
@@ -397,19 +397,73 @@ function tableRow(forEdit, text) {
                 '<input type="text" class="form-control fg-input add-'+text+'-search-item">'+
             '</td>'+
             '<td class="add-'+text+'-body-description">'+
-                '<input type="text" class="no-border" placeholder="Add Description"/>'+
+                '<input type="text" class="no-border form-control" placeholder="Add Description"/>'+
             '</td>'+
             '<td class="add-'+text+'-body-quantity">'+
-                '<input type="text" class="no-border" placeholder="Add Quantity" />'+
+                '<input type="text" class="no-border form-control" placeholder="Add Quantity" />'+
             '</td>'+
             '<td class="add-'+text+'-body-rate">'+
-                '<input type="text" class="no-border" placeholder="Add Rate" />'+
+                '<input type="text" class="no-border form-control" placeholder="Add Rate" />'+
             '</td>'+
             '<td class="add-'+text+'-body-disc">'+
-                '<input type="text" class="no-border" placeholder="Discount" />'+
+                '<input type="text" class="no-border form-control" placeholder="Discount" />'+
             '</td>'+
             '<td  class="add-'+text+'-body-amount">'+
-                '<input type="text" class="no-border" placeholder="Total Amount" disabled="disabled"/>'+
+                '<input type="text" class="no-border form-control" placeholder="Total Amount" disabled="disabled"/>'+
+            '</td>'+
+            '<td class="">'+
+                '<button class="btn bgm-red waves-effect btn-xs add-'+text+'-body-close">'+
+                    '<i class="fa fa-times"></i>'+
+                '</button>'+
+            '</td>'+
+        '</tr>';
+    }
+}
+
+function tableRow(forEdit, text) {
+    if(forEdit) {
+        return  '<tr id="[ID]">'+
+            '<td class="add-'+text+'-body-item">'+
+                //'[ITEM_NAME]'+
+                '<input type="text" class="form-control fg-input add-'+text+'-search-item">'+
+            '</td>'+
+            '<td class="add-'+text+'-body-description">'+
+                '<input type="text" class="no-border form-control" value="[DESC]" placeholder="Add Description"/>'+
+            '</td>'+
+            '<td class="add-'+text+'-body-quantity">'+
+                '<input type="text" class="no-border" form-control value="[QUANTITY]" placeholder="Add Quantity" />'+
+            '</td>'+
+            '<td class="add-'+text+'-body-rate">'+
+                '<input type="text" class="no-border form-control" value="[RATE]" placeholder="Add Rate" />'+
+            '</td>'+
+            
+            '<td  class="add-'+text+'-body-amount">'+
+                '<input type="text" class="no-border form-control" value="[AMOUNT]" placeholder="Total Amount" disabled="disabled"/>'+
+            '</td>'+
+            '<td class="">'+
+                '<button class="btn bgm-red waves-effect btn-xs add-'+text+'-body-close">'+
+                    '<i class="fa fa-times"></i>'+
+                '</button>'+
+            '</td>'+
+        '</tr>';
+    } else {
+        return '<tr>'+
+            '<td class="add-'+text+'-body-item">'+
+                //'[ITEM_NAME]'+
+                '<input type="text" class="form-control fg-input add-'+text+'-search-item">'+
+            '</td>'+
+            '<td class="add-'+text+'-body-description">'+
+                '<input type="text" class="no-border form-control" placeholder="Add Description"/>'+
+            '</td>'+
+            '<td class="add-'+text+'-body-quantity">'+
+                '<input type="text" class="no-border form-control" placeholder="Add Quantity" />'+
+            '</td>'+
+            '<td class="add-'+text+'-body-rate">'+
+                '<input type="text" class="no-border form-control" placeholder="Add Rate" />'+
+            '</td>'+
+            
+            '<td  class="add-'+text+'-body-amount">'+
+                '<input type="text" class="no-border form-control" placeholder="Total Amount" disabled="disabled"/>'+
             '</td>'+
             '<td class="">'+
                 '<button class="btn bgm-red waves-effect btn-xs add-'+text+'-body-close">'+
