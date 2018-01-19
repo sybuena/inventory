@@ -110,6 +110,10 @@ function getGravatar($email, $s = 80, $d = 'identicon', $r = 'g', $img = false, 
 
 function money($num, $sign = '₱') {
     
+    if(empty($num)) {
+        return '0.00';
+    }
+
     return $sign.' '.decim2($num);
 }
 
