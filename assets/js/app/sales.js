@@ -447,13 +447,18 @@ function invoiceModal(id, data) {
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 
         //check for error
         (customer.val() == 0) ? (error = helper.hasError(customer, 1)) : helper.noError(customer, 1);
         (invoiceNumber.val() == '') ? (error = helper.hasError(invoiceNumber, 1)) : helper.noError(invoiceNumber, 1);
-        (refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
+        //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
         (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);

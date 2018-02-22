@@ -434,6 +434,7 @@ function purchaseModal(id, data) {
 
         $('#add-purchase-other-table tbody tr').each(function() {
             var name = $(this).find('.add-purchase-body-item input').val();
+            
             if(name != '') {
                 other.push({
                     'name'          : name,
@@ -443,6 +444,10 @@ function purchaseModal(id, data) {
                     'disc'          : $(this).find('.add-purchase-body-disc input').val(),
                     'amount'        : $(this).find('.add-purchase-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
         

@@ -309,6 +309,11 @@ function jobOrderModal(id, data) {
                     'rate'          : $(this).find('.add-job-order-body-rate input').val(),
                     'amount'        : $(this).find('.add-job-order-body-amount input').val(),
                 });
+                $(this).removeClass('has-error');
+            //else if there is empty item from searc
+            } else {
+                $(this).addClass('has-error');
+                error = true;
             }
         });
 
