@@ -12,6 +12,9 @@
 # Turn on URL rewriting
 RewriteEngine On
 
+# JS/CSS auto-versioning rewrites
+RewriteRule ^(.*)\.[0-9]{10}\.(css|js)$ $1.$2 [L] 
+
 # If your website begins from a folder e.g localhost/my_project then 
 # you have to change it to: RewriteBase /my_project/
 # If your site begins from the root e.g. example.local/ then

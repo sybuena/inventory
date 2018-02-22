@@ -23,8 +23,12 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- This shit is for the CSS on Login page -->
-    <?php loadAssets($css, 'css'); ?>
+    <?php //loadAssets($css, 'css'); ?>
 
+    <?php foreach ($css as $key => $value) : ?>
+            <link href="<?=auto_version($value);?>" rel="stylesheet">
+    <?php endforeach; ?>
+    
     <!-- Page Loader -->
     <div class="page-loader">
         <!-- <div class="preloader pl-xxl">
