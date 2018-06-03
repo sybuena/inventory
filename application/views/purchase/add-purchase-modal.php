@@ -143,7 +143,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-6"></div>
+                    
                     <div class="col-sm-6">
                         <div class="form-group">    
                             <label>Attention</label>
@@ -153,6 +153,34 @@
                         <div class="form-group">    
                             <label>Instruction </label>
                             <input type="text" class="form-control fg-input" id="add-purchase-instruction" placeholder="If there is a special instruction for this purchase order">
+                        </div>
+                        <div class="form-group">    
+                            <label>Terms</label>
+                            <textarea rows="3" class="form-control fg-input" id="add-purchase-terms">
+                            </textarea> 
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="col-sm-6">
+                        <div class="form-group">    
+                            <label>Code:</label>
+                            <input type="text" class="form-control fg-input" placeholder="" id="add-purchase-code">
+                        </div>
+
+                        <div class="form-group">    
+                            <label>Prepared By:</label>
+                            <input type="text" class="form-control fg-input" placeholder="" id="add-purchase-prepared">
+                        </div>
+                    
+                        <div class="form-group">    
+                            <label>Requested By:</label>
+                            <input type="text" class="form-control fg-input" placeholder="" id="add-purchase-requested">
+                        </div>
+                    
+                        <div class="form-group">    
+                            <label>Approved By:</label>
+                            <input type="text" class="form-control fg-input" placeholder="" id="add-purchase-approved">
                         </div>
                     </div>
                 </div>

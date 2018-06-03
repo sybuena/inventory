@@ -139,10 +139,19 @@
 		</div>
 		<div>
 			<p class="f-s-12">Prepared By :</p>
+			<p class="f-s-8">
+				<?=$info['prepared'];?>
+			</p>
 			<br>
 			<p class="f-s-12">Requested By :</p>
+			<p class="f-s-8">
+				<?=$info['requested'];?>
+			</p>
 			<br>
 			<p class="f-s-12">Approved By :</p>
+			<p class="f-s-8">
+				<?=$info['approved'];?>
+			</p>
 		</div>
 		
 			

@@ -246,7 +246,27 @@
                     
                     <div class="p-25 row">
                         
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Code</h4>
+                            <p class="c-gray"><?=show($purchase['Code'], 'N/A')?></p>
+                        </div>
+
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Prepared</h4>
+                            <p class="c-gray"><?=show($purchase['prepared'], 'N/A')?></p>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Requested</h4>
+                            <p class="c-gray"><?=show($purchase['requested'], 'N/A')?></p>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Approved</h4>
+                            <p class="c-gray"><?=show($purchase['approved'], 'N/A')?></p>
+                        </div>
+
+                        
+
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Delivery Address</h4>
                             <address>
                                 <?=$org['address']; ?>
@@ -262,14 +282,23 @@
                             <b>Mobile :</b> <?=show($org['Mobile'], 'N/A'); ?><br>
                             <b>Email :</b> <?=show($org['email'], 'N/A'); ?>
                         </div>
-                        <div class="col-lg-4">
+
+
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Terms</h4>
+                            <p class="c-gray"><?=show($purchase['Terms'], 'N/A')?></p>
+                        </div>
+
+
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Attention</h4>
                             <p class="c-gray"><?=show($purchase['attention'], 'N/A')?></p>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Instruction</h4>
                             <p class="c-gray"><?=show($purchase['instruction'], 'N/A')?></p>
                         </div>
+                        
                     </div>
                 </div>
                 

@@ -120,8 +120,8 @@ function invoiceModal(id, data) {
     var addOther    = $(baseId+'add-other');
 
     //HTML
-    var TABLE_HTML  = tableRow(0, 'invoice');
-    var TABLE_HTML_EDIT  = tableRow(1, 'invoice');
+    var TABLE_HTML  = tableRowDisc(0, 'invoice');
+    var TABLE_HTML_EDIT  = tableRowDisc(0, 'invoice');
 
     //if making new invoice
 	$('#invoice-list-add-show, #invoice-list-add-show2').unbind('click').bind('click', function() {
@@ -169,6 +169,7 @@ function invoiceModal(id, data) {
                     replace('[RATE]',       data['line'][i]['rate']).
                     replace('[QUANTITY]',   data['line'][i]['quantity']).
                     replace('[AMOUNT]',     data['line'][i]['amount']).
+                    replace('[DISC]',       data['line'][i]['disc']).
                     replace('[ID]',         data['line'][i]['id'])
 
                 ).find('.add-invoice-search-item').select2({
@@ -223,6 +224,7 @@ function invoiceModal(id, data) {
                     replace('[RATE]',       data['service'][i]['rate']).
                     replace('[QUANTITY]',   data['service'][i]['quantity']).
                     replace('[AMOUNT]',     data['service'][i]['amount']).
+                    replace('[DISC]',       data['service'][i]['disc']).
                     replace('[ID]',         data['service'][i]['id'])
 
                 ).find('.add-invoice-search-item').select2({
@@ -276,6 +278,7 @@ function invoiceModal(id, data) {
                     replace('[RATE]',       data['other'][i]['rate']).
                     replace('[QUANTITY]',   data['other'][i]['quantity']).
                     replace('[AMOUNT]',     data['other'][i]['amount']).
+                    replace('[DISC]',       data['other'][i]['disc']).
                     replace('[ID]',         data['other'][i]['id'])
 
                 ).find('.add-invoice-search-item').val(data['other'][i]['name']);
@@ -409,6 +412,7 @@ function invoiceModal(id, data) {
                     'description'   : $(this).find('.add-invoice-body-description input').val(),
                     'quantity'      : $(this).find('.add-invoice-body-quantity input').val(),
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
+                    'disc'          : $(this).find('.add-invoice-body-disc input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
                 $(this).removeClass('has-error');
@@ -427,6 +431,7 @@ function invoiceModal(id, data) {
                     'description'   : $(this).find('.add-invoice-body-description input').val(),
                     'quantity'      : $(this).find('.add-invoice-body-quantity input').val(),
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
+                    'disc'          : $(this).find('.add-invoice-body-disc input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
                 $(this).removeClass('has-error');
@@ -445,6 +450,7 @@ function invoiceModal(id, data) {
                     'description'   : $(this).find('.add-invoice-body-description input').val(),
                     'quantity'      : $(this).find('.add-invoice-body-quantity input').val(),
                     'rate'          : $(this).find('.add-invoice-body-rate input').val(),
+                    'disc'          : $(this).find('.add-invoice-body-disc input').val(),
                     'amount'        : $(this).find('.add-invoice-body-amount input').val(),
                 });
                 $(this).removeClass('has-error');
@@ -460,7 +466,7 @@ function invoiceModal(id, data) {
         (invoiceNumber.val() == '') ? (error = helper.hasError(invoiceNumber, 1)) : helper.noError(invoiceNumber, 1);
         //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
-        (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
+        //(dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
 
         //if all is correct
@@ -533,14 +539,18 @@ function invoiceModal(id, data) {
             //get variables we need
             var quantity = $(this).val();
             var salesRate = $(this).parent().parent().find('.add-invoice-body-rate input').val();
+            var disc     = $(this).parent().parent().find('.add-invoice-body-disc input').val();
             
             quantity = (quantity == '') ? 0 : quantity;
             salesRate = (salesRate == '') ? 0 : salesRate;
-
+            disc = (disc == '') ? 0 : disc;
+            
             var amount   = parseFloat(parseFloat(salesRate) * quantity).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
 
-            $(this).parent().parent().find('.add-invoice-body-amount input').val(amount);
+            $(this).parent().parent().find('.add-invoice-body-amount input').val(withDisc);
             $(this).parent().parent().find('.add-invoice-body-rate input').val(salesRate);
+            $(this).parent().parent().find('.add-invoice-body-disc input').val(disc);
             $(this).parent().parent().find('.add-invoice-body-quantity input').val(quantity);
             calculateTotal();
             
@@ -552,14 +562,18 @@ function invoiceModal(id, data) {
             //get variables we need
             var salesRate = $(this).val();
             var quantity = $(this).parent().parent().find('.add-invoice-body-quantity input').val();
-            
+            var disc     = $(this).parent().parent().find('.add-invoice-body-disc input').val();
+
             quantity = (quantity == '') ? 0 : quantity;
             salesRate = (salesRate == '') ? 0 : salesRate;
+            disc = (disc == '') ? 0 : disc;
 
             var amount   = parseFloat(parseFloat(quantity) * salesRate).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
 
-            $(this).parent().parent().find('.add-invoice-body-amount input').val(amount);
+            $(this).parent().parent().find('.add-invoice-body-amount input').val(withDisc);
             $(this).parent().parent().find('.add-invoice-body-rate input').val(salesRate);
+            $(this).parent().parent().find('.add-purchase-body-disc input').val(disc);
             $(this).parent().parent().find('.add-invoice-body-quantity input').val(quantity);
         
             calculateTotal();
@@ -567,6 +581,29 @@ function invoiceModal(id, data) {
             return false;
         });
 
+        $('.add-invoice-body-disc input').unbind('keyup').bind('keyup', function() {
+            
+            //get variables we need
+            var salesRate = $(this).parent().parent().find('.add-invoice-body-rate input').val();
+            var quantity = $(this).parent().parent().find('.add-invoice-body-quantity input').val();
+            var disc     = $(this).parent().parent().find('.add-invoice-body-disc input').val();
+            
+            quantity = (quantity == '') ? 0 : quantity;
+            salesRate = (salesRate == '') ? 0 : salesRate;
+            disc = (disc == '') ? 0 : disc;
+
+            var amount   = parseFloat(parseFloat(quantity) * salesRate).toFixed(2);
+            var withDisc = (amount - parseFloat(disc)).toFixed(2);
+
+            $(this).parent().parent().find('.add-invoice-body-amount input').val(withDisc);
+            $(this).parent().parent().find('.add-invoice-body-rate input').val(salesRate);
+            $(this).parent().parent().find('.add-invoice-body-disc input').val(disc);
+            $(this).parent().parent().find('.add-invoice-body-quantity input').val(quantity);
+        
+            calculateTotal();
+            return false;
+        });
+        
         return this;
     }
 

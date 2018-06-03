@@ -79,6 +79,7 @@ class Detail extends MY_Controller {
             $data['status_text'] = 'Invoiced Quotation';
             $data['status_class'] = 'bgm-lightgreen';
         }
+        $data['pdfLink'] = '/forms/quote/'.$id;
 
     	$this->load->view('quote/detail', $data);
     }

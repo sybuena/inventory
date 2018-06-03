@@ -92,6 +92,11 @@ function purchaseModal(id, data) {
     var total       = $(baseId+'total-amount');
     var attention   = $(baseId+'attention');
     var instruction = $(baseId+'instruction');
+    var code        = $(baseId+'code');
+    var terms       = $(baseId+'terms');
+    var prepared   = $(baseId+'preferred');
+    var requested   = $(baseId+'requested');
+    var approved    = $(baseId+'approved');
 
     var inventory   = $('#select-item-inventory');
 
@@ -149,6 +154,11 @@ function purchaseModal(id, data) {
         total.val(data['total_amount']);
         attention.val(data['attention']);
         instruction.val(data['instruction']);
+        terms.val(data['terms']);
+        code.val(data['code']);
+        prepared.val(data['prepared']);
+        requested.val(data['requested']);
+        approved.val(data['approved']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -481,6 +491,11 @@ function purchaseModal(id, data) {
                 'total_amount'      : total.val(),
                 'attention'         : attention.val(),
                 'instruction'       : instruction.val(),
+                'terms'       : terms.val(),
+                'code'       : code.val(),
+                'prepared'       : prepared.val(),
+                'requested'       : requested.val(),
+                'approved'       : approved.val(),
             };
 
             base.

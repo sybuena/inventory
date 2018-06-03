@@ -120,6 +120,45 @@ class Forms extends MY_Controller {
             ->show();
     }
 
+    public function quote($quoteId = 0) {
+        //get purchase detail
+        $row = $this->quote->detail($quoteId);
+        
+        $row['line']    = isset($row['line']) ? $row['line'] : array();
+        $row['service'] = isset($row['service']) ? $row['service'] : array();
+        $row['other']   = isset($row['other']) ? $row['other'] : array();
+
+        //get line item detail
+        if(!empty($row['line'])) {
+            foreach($row['line'] as $k => $v) {
+                $name = $this->inventory->detail($v['id'], array('code', 'name'));
+
+                $row['line'][$k]['name'] = '('.$name['code'].') '.$name['name'];
+            }
+        }
+
+        if(!empty($row['service'])) {
+            foreach($row['service'] as $k => $v) {
+                $name = $this->inventory->detail($v['id'], array('code', 'name'));
+
+                $row['service'][$k]['name'] = '('.$name['code'].') '.$name['name'];
+            }
+        }
+
+        $data = array(
+            'customer' => $this->customer->detail($row['customer']),
+            'info' => $row
+        );
+ //      pre($data);exit;
+        $html = $this->load->view('pdf/quote', $data, true);
+
+        //echo $html;
+        $this->mpdf
+            ->setTitle('Sales Invoice')
+            ->setHtml($html)
+            ->show();
+    }
+
 
     /* Protected Function
     -------------------------------*/

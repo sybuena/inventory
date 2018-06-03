@@ -41,7 +41,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Due Date <span class="required-text">*</span></label>
+                        <label>Due Date</label>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                                 <div class="dtp-container fg-line">
@@ -79,6 +79,7 @@
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Disc</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>
@@ -101,6 +102,7 @@
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Disc</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>
@@ -123,6 +125,7 @@
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Disc</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>

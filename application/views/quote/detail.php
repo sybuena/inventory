@@ -39,7 +39,10 @@
                 
             </div>
             <div class="clearfix"></div>
-	      
+	       
+           <!-- dont load yet the PDF so dont put to src attribute -->
+            <iframe id="report-frame" class="hide" data-src="<?=$pdfLink; ?>" allowfullscreen webkitallowfullscreen></iframe>
+
             <div class="card">
                 <div class="card-header ch-alt">
                     <button class="btn btn-xs <?=$status_class;?>"><?=$status_text;?></button>
@@ -57,7 +60,9 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" onclick="window.print();">
+                                <!-- <a href="" onclick="window.print();"> -->
+                                <a href="" id="quote-print">
+                                    
                                     <i class="zmdi zmdi-print"></i>
                                 </a>
                             </li>
