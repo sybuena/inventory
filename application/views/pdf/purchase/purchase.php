@@ -56,13 +56,13 @@
 				Address : <?=$supplier['address'].' '.$supplier['city'].', '.$supplier['province'];?> <br>
 				Tel No : <?=$supplier['mobile'];?><br>
 				Attn : <?=$info['attention'];?><br>
-				Code : <?=$supplier['account_number'];?><br>
+				Code : <?=$info['code'];?><br>
 			</p>
 		</div>
 		<div style="width: 50%"  class="pull-left">
 			<p class="f-s-12">
 				Date : <?=$info['date']; ?><br>
-				Terms : <br>
+				Terms : <?=$info['terms'];?><br>
 				Fax No : <?=$supplier['fax'];?><br>
 				Reference : <?=$info['reference_number']; ?><br>
 				Delivery : <?=$info['due_date']; ?><br>

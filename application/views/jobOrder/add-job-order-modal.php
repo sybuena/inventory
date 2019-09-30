@@ -32,7 +32,7 @@
                 </div>
                 <div class="row m-t-10">
                     <div class="col-sm-4">
-                        <label>Date <span class="required-text">*</span></label>
+                        <label>Date Open<span class="required-text">*</span></label>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                                 <div class="dtp-container fg-line">
@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Expiry <span class="required-text">*</span></label>
+                        <label>Date Finish <span class="required-text">*</span></label>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                                 <div class="dtp-container fg-line">

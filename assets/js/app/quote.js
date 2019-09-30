@@ -21,7 +21,7 @@ function header() {
 
 function loadNumber() {
     var number = $('#add-quote-quote-number');
-    number.attr('disabled', 'disabled');
+    //number.attr('disabled', 'disabled');
     var url = '/settings/getNumber/quotation';
 
     base.
@@ -457,7 +457,7 @@ function quoteModal(id, data) {
         (quoteNumber.val() == '') ? (error = helper.hasError(quoteNumber, 1)) : helper.noError(quoteNumber, 1);
         //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
-        (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
+        //(dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
 
         //if all is correct

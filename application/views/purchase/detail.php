@@ -248,7 +248,7 @@
                         
                         <div class="col-lg-3">
                             <h4 class="c-blue f-400">Code</h4>
-                            <p class="c-gray"><?=show($purchase['Code'], 'N/A')?></p>
+                            <p class="c-gray"><?=show($purchase['code'], 'N/A')?></p>
                         </div>
 
                         <div class="col-lg-3">
@@ -286,7 +286,7 @@
 
                         <div class="col-lg-3">
                             <h4 class="c-blue f-400">Terms</h4>
-                            <p class="c-gray"><?=show($purchase['Terms'], 'N/A')?></p>
+                            <p class="c-gray"><?=show($purchase['terms'], 'N/A')?></p>
                         </div>
 
 

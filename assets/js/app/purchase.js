@@ -24,7 +24,7 @@ function header() {
 
 function loadNumber() {
     var number = $('#add-purchase-order-number');
-    number.attr('disabled', 'disabled');
+    //number.attr('disabled', 'disabled');
     var url = '/settings/getNumber/purchase_order';
 
     base.
@@ -94,7 +94,7 @@ function purchaseModal(id, data) {
     var instruction = $(baseId+'instruction');
     var code        = $(baseId+'code');
     var terms       = $(baseId+'terms');
-    var prepared   = $(baseId+'preferred');
+    var prepared   = $(baseId+'prepared');
     var requested   = $(baseId+'requested');
     var approved    = $(baseId+'approved');
 
@@ -118,7 +118,7 @@ function purchaseModal(id, data) {
     //if making new purchase
 	$('#purchase-list-add-show, #purchase-list-add-show2').unbind('click').bind('click', function() {
         //unset fields
-        orderNumber.val('').removeAttr('disabled');
+        //orderNumber.val('').removeAttr('disabled');
         refNumber.val('');
         date.val('');
         dueDate.val('');
@@ -147,7 +147,7 @@ function purchaseModal(id, data) {
         //load supplier and select the current selected
         loadSupplier(data['supplier_info']['_id']['$id']);
         //load basic fields    
-        orderNumber.val(data['order_number']).attr('disabled', 'disabled');
+        orderNumber.val(data['order_number'])
         refNumber.val(data['reference_number']);
         date.val(data['date']);
         dueDate.val(data['due_date']);
@@ -466,7 +466,7 @@ function purchaseModal(id, data) {
         (orderNumber.val() == '') ? (error = helper.hasError(orderNumber, 1)) : helper.noError(orderNumber, 1);
         //(refNumber.val() == '') ? (error = helper.hasError(refNumber, 1)) : helper.noError(refNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
-        (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
+        //(dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
 
         //if all is correct

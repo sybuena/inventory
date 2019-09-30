@@ -147,7 +147,7 @@
                                 <th data-column-id="reference_number" data-order="asc">Reference #</th>
                                 <th data-column-id="to" data-formatter="to" data-order="asc">Customer</th>
                                 <th data-column-id="date" data-sortable="false">Date</th>
-                                <th data-column-id="due_date" data-sortable="false">Expiry</th>
+                                <!-- <th data-column-id="due_date" data-sortable="false">Expiry</th> -->
                                 <th data-column-id="total_amount" data-sortable="false" data-align="right">Amount</th>
                                 <th data-column-id="status_text" data-formatter="status_text" data-sortable="false">Status</th>
                             </tr>
