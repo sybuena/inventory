@@ -451,7 +451,7 @@ function calculateTotal() {
 
 function loadNumber() {
     var number = $('#add-job-order-job-order-number');
-    number.attr('disabled', 'disabled');
+    //number.attr('disabled', 'disabled');
     var url = '/settings/getNumber/job_order';
 
     base.

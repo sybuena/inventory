@@ -77,7 +77,7 @@
                                     <th class="bgm-blue t-white">Service Name</th>
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
-                                    <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Unit Price</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>
@@ -99,7 +99,7 @@
                                     <th class="bgm-blue t-white">Name</th>
                                     <th class="bgm-blue t-white">Description</th>
                                     <th class="bgm-blue t-white" style="width: 5%;">Quantity</th>
-                                    <th class="bgm-blue t-white" style="width: 10%;">Rate</th>
+                                    <th class="bgm-blue t-white" style="width: 10%;">Unit Price</th>
                                     <th class="bgm-blue t-white" style="width: 10%;">Amount</th>
                                     <th class="bgm-blue t-white" style="width: 5%;"></th>
                                 </tr>
