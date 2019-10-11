@@ -64,11 +64,11 @@
                     <li class="active">
                         <a href="#tab-items" data-toggle="tab">Items</a>
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#tab-services" data-toggle="tab">Services</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="#tab-others" data-toggle="tab">Others</a>
+                        <a href="#tab-others" data-toggle="tab">Services/ Others</a>
                     </li>
                     
                 </ul>

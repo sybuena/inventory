@@ -26,7 +26,7 @@ function header() {
 
 function loadNumber() {
     var number = $('#add-invoice-invoice-number');
-    number.attr('disabled', 'disabled');
+    //number.attr('disabled', 'disabled');
     var url = '/settings/getNumber/invoice';
 
     base.

@@ -73,7 +73,6 @@
                             <div class="i-to text-right">
                                 <h4>
                                     <?=$invoice['customer']['company_name']; ?> 
-                                    <?=show('#'.$invoice['customer']['account_number']); ?>
                                 </h4>
                                 
                                 <span class="text-muted">
@@ -128,7 +127,7 @@
                             <?php endforeach;?>
                         </tbody> 
                     </table>
-                    <h5>Services</h5>
+                    <!-- <h5>Services</h5>
                     <table class="table i-table m-t-25 m-b-25">
                         <thead class="text-uppercase">
                             <tr>
@@ -159,8 +158,8 @@
                                 </tr>
                             <?php endforeach;?>
                         </tbody> 
-                    </table>
-                    <h5>Others</h5>
+                    </table> -->
+                    <h5>Services/ Others</h5>
                     <table class="table i-table m-t-25 m-b-25">
                         <thead class="text-uppercase">
                             <tr>

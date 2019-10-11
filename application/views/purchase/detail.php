@@ -94,13 +94,11 @@
                             <div class="i-to text-right">
                                 <h4>
                                     <?=$purchase['supplier']['company_name']; ?> 
-                                    <?=show('#'.$purchase['supplier']['account_number']); ?>
                                 </h4>
                                 
                                 <span class="text-muted">
                                     <address>
                                         <?=$purchase['supplier']['address']; ?>
-                                        
                                         <?php 
                                             $found = false;
                                             if(hasValue($purchase['supplier']['city'])) {
@@ -165,7 +163,7 @@
                         </tbody> 
                         
                     </table>
-                    <h5>Services</h5>
+                    <!-- <h5>Services</h5>
                     <table class="table i-table m-t-25 m-b-25">
                         <thead class="text-uppercase">
                             <tr>
@@ -196,8 +194,8 @@
                             <?php endforeach;?>
                         </tbody> 
                         
-                    </table>
-                    <h5>Others</h5>
+                    </table> -->
+                    <h5>Services/ Others</h5>
                     <table class="table i-table m-t-25 m-b-25">
                         <thead class="text-uppercase">
                             <tr>

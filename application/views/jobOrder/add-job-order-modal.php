@@ -61,16 +61,16 @@
 
                 <ul class="tab-nav m-t-20" role="tablist">
                     
-                    <li class="active">
+                    <!-- <li class="active">
                         <a href="#tab-services" data-toggle="tab">Services</a>
-                    </li>
-                    <li>
-                        <a href="#tab-others" data-toggle="tab">Others</a>
+                    </li> -->
+                    <li class="active">
+                        <a href="#tab-others" data-toggle="tab">Services/ Others</a>
                     </li>
                 </ul>
                 <div class="tab-content">
                     <!-- SERVICE TAB TABLE-->
-                    <div class="tab-pane active" id="tab-services">
+                    <div class="tab-pane" id="tab-services">
                         <table class="table table-bordered table-condensed m-b-20" id="add-job-order-service-table">
                             <thead>
                                 <tr>
@@ -92,7 +92,7 @@
 
                     </div>
                     <!-- OTHER TAB TABLE-->
-                    <div class="tab-pane" id="tab-others">
+                    <div class="tab-pane active" id="tab-others">
                         <table class="table table-bordered table-condensed m-b-20" id="add-job-order-other-table">
                             <thead>
                                 <tr>
