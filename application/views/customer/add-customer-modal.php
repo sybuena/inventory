@@ -53,7 +53,7 @@
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">    
-                                    <label>Tin Number </label>
+                                    <label>TIN</label>
                                     <input type="text" class="form-control fg-input" id="add-customer-tin-number" placeholder="Company tin number">
                                 </div>
                             </div>
