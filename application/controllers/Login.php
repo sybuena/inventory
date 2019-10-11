@@ -192,7 +192,7 @@ class Login extends MY_Controller {
         );
 
         //add user
-        $this->cimongo->insert(self::USERS_TABLE, $data);
+        $this->cimongo->insert(MY_Model::USERS_TABLE, $data);
     }
 
     /**
