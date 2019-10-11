@@ -1,6 +1,6 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
-include dirname(__FILE__).'/../../config.php';
+//include dirname(__FILE__).'/../../config.php';
 
 $config['mailtype']           = '';
 $config['charset']            = '';
