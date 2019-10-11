@@ -176,6 +176,25 @@ class Login extends MY_Controller {
 
     }
 
+    public function createNow() {
+
+        $data = array(
+            'username'      => 'sy@apgars.com',
+            'password'      => md5('passsword'),
+            'first_name'    => 'Sy',
+            'last_name'     => 'Buena',
+            'name'          => 'Sy Buena',
+            'date_created'  => strtotime('now'),
+            'date_updated'  => strtotime('now'),
+            'status'        => 1,
+            //mark as pending user, need confirmation
+            'active'        => 1
+        );
+
+        //add user
+        $this->cimongo->insert(self::USERS_TABLE, $data);
+    }
+
     /**
      * Register (not yet done, not sure of needed)
      *
