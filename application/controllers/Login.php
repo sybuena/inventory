@@ -130,7 +130,7 @@ class Login extends MY_Controller {
         //check for login attempt
         if($this->login->attempt($username) > 3) {
             //show recaptcha
-            return $this->_returnError('login_attempt');
+            //return $this->_returnError('login_attempt');
         }
 
         $user = $this->login->in($username, $password);
