@@ -145,7 +145,7 @@ class Login extends MY_Controller {
             //else account is lock
             if(isset($user['login_attempt']) && $user['login_attempt'] > 3) {
                 //show recaptcha
-                return $this->_returnError('login_attempt');
+                //return $this->_returnError('login_attempt');
             }
 
             //save session as login, but no selected org
