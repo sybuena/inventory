@@ -121,6 +121,7 @@ class Forms extends MY_Controller {
     }
 
     public function quote($quoteId = 0) {
+        
         //get purchase detail
         $row = $this->quote->detail($quoteId);
         
@@ -149,10 +150,10 @@ class Forms extends MY_Controller {
             'customer' => $this->customer->detail($row['customer']),
             'info' => $row
         );
- //      pre($data);exit;
+      //pre($data);exit;
         $html = $this->load->view('pdf/quote', $data, true);
 
-        //echo $html;
+        //echo $html;exit;
         $this->mpdf
             ->setTitle('Sales Invoice')
             ->setHtml($html)
