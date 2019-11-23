@@ -78,7 +78,11 @@ class Detail extends MY_Controller {
         } else if($row['status'] == 4) {
             $data['status_text'] = 'Declined Purchase Order';
             $data['status_class'] = 'bgm-red';
+        } else if($row['status'] == 5) {
+            $data['status_text'] = 'Partial Delivery';
+            $data['status_class'] = 'bgm-red';
         }
+
         $data['pdfLink'] = '/forms/purchase/'.$id;
 
     	$this->load->view('purchase/detail', $data);
@@ -91,14 +95,22 @@ class Detail extends MY_Controller {
      * @param string
      * @return json
      */
-    public function action($action, $id) {
+    public function action($action, $id, $quantity = 0) {
         //prevent duplicate action
         $row = $this->purchase->detail($id);
         //only if pending status we allow approve, decline
         if($row['status'] != 1) {
             return $this->_returnError('wrong_status');
         }
-        $update['status'] = ($action == 'approve') ? 3 : 4;
+        //$update['status'] = ($action == 'approve') ? 3 : 4;
+        if($action == 'approve') {
+            $update['status'] = 3;
+        } else if($action == 'decline') {
+            $update['status'] = 4;
+        } else {
+            $update['status'] = 5;
+        }
+
         $update['approved_by'] = loginId();
         $update['approve_date'] = strtotime('now');
         //update
@@ -106,6 +118,28 @@ class Detail extends MY_Controller {
 
         //if approved, we need to add item stock
         if($action == 'approve' && isset($row['line'])) {
+            
+            foreach($row['line'] as $v) {
+                //get item detail
+                $item = $this->inventory->detail($v['id'], array('stock'));
+                //default, if item has no stock
+                $itemStock = $quantity;
+                //if already have stock
+                if(isset($item['stock']) && !empty($item['stock'])) {
+                    $itemStock = ($item['stock'] + $quantity);
+                }
+                //save 1st the log
+                $this->inventory->addQuantityLog($v['id'], $quantity, '', 'purchase', $id);
+
+                //now update to add stock
+                $this->inventory->updateItem($v['id'], array(
+                    'stock'         => $itemStock,
+                    'stock_updated' => strtotime('now')
+                ));
+            }
+        }
+
+        if($action == 'partial' && isset($row['line'])) {
             
             foreach($row['line'] as $v) {
                 //get item detail

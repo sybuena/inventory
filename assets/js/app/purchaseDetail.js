@@ -1,5 +1,6 @@
 (function() {
 	approve();
+    partial();
 	decline();
 	deletePurchase();
     printPdf();
@@ -74,13 +75,66 @@ function deletePurchase() {
 	return this;
 }
 
+function partial() {
+
+    $('.purchase-partial').unbind('click').bind('click', function() {
+        var id = $(this).attr('purchase-id');
+
+        swal({
+            title : 'Approve Purchase Order as Partial Delivery?',   
+            text  : 'How many items did you receieve',   
+            type  : 'input',   
+            showCancelButton: true,   
+            confirmButtonText: 'Yes, approve this',   
+            cancelButtonText: 'Nope, Im just kidding!',   
+            closeOnConfirm: false,   
+            //closeOnCancel: true,
+            inputPlaceholder: ""
+        },function(inputValue) {
+            if (inputValue === false) return false;
+            if (inputValue === "") {
+                swal.showInputError("You need to write something!");
+                return false
+            }
+
+             if(isNaN(inputValue)){
+                swal.showInputError(inputValue + " is not a number");
+                return false;
+            }
+                
+            var url = '/purchase/detail/action/partial/'+id+'/'+inputValue;
+
+            //loading
+            swal({
+                title : "Saving...",   
+                text : "Just a sec! This might take some minutes depending on the items",   
+                showConfirmButton : false 
+            });
+
+            base.
+                setUrl(url).
+                get(function(response) {
+                    swal.close();
+                    //success message
+                    base.notification('Successfully Approved', 'inverse');
+
+                    location.reload();
+                }
+            );
+            
+        });
+    });
+
+    return this;
+}
+
 function approve() {
 
 	$('.purchase-approve').unbind('click').bind('click', function() {
 		var id = $(this).attr('purchase-id');
 
 		swal({
-            title : 'Approve Purchase Order?',   
+            title : 'Approve Purchase Order as Completed Delivery?',   
             text  : 'You are about to approve this purchase order',   
             type  : 'warning',   
             showCancelButton: true,   

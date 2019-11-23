@@ -668,6 +668,8 @@ function getList() {
                     return '<button class="btn bgm-lightgreen btn-xs waves-effect status-table" status="'+row['status_text']+'">Approved</button>';
                 } else if(row['status_text'] == 4) {
                     return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Declined</button>';
+                } else if(row['status_text'] == 5) {
+                    return '<button class="btn bgm-red btn-xs waves-effect status-table" status="'+row['status_text']+'">Partial Delivery</button>';
                 }
             }
         },

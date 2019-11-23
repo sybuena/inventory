@@ -40,7 +40,10 @@
                 <?php if($purchase['status'] == 1) :?>
                     
                     <button class="btn btn-primary btn-icon-text purchase-approve" purchase-id="<?=$id;?>">
-                        <i class="zmdi zmdi-check"></i> Approve Purchase
+                        <i class="zmdi zmdi-check"></i> Approve/Completed Delivery
+                    </button>
+                    <button class="btn btn-primary btn-icon-text purchase-partial" purchase-id="<?=$id;?>">
+                        <i class="zmdi zmdi-check"></i> Approve/Partial Delivery
                     </button>
                     <button class="btn btn-danger btn-icon-text purchase-decline" purchase-id="<?=$id;?>">
                         <i class="zmdi zmdi-close"></i> Decline Purchase
