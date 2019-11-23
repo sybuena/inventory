@@ -94,8 +94,8 @@ class Quote_model extends MY_Model {
         //search query
         if(!empty($search)) {
             $query = urldecode($search);
-            $where['$or'][]['name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
-            $where['$or'][]['code'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['quote_number'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
+            $where['$or'][]['customer_info.company_name'] = array('$regex' => new MongoRegex('/.*'.$query.'.*/i'));
         }
 
         $select = array('status', 'quote_number', 'reference_number', 'date', 'due_date', 'total_amount', 'customer_info');

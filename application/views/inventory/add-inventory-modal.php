@@ -48,7 +48,7 @@
                                     <select class="form-control fg-input" id="add-inventory-type">
                                         <option value="0">Select Item</option>
                                         <option value="item">Item</option>
-                                        <option value="service">Service</option>
+                                        <!-- <option value="service">Service</option> -->
                                     </select>
                                 </div>
                             </div>
@@ -76,9 +76,37 @@
                                 </div>
                             </div>
 
+                            <div class="col-sm-6">
+                                <div class="form-group">    
+                                    <label>Unit </label>
+                                    <input type="text" class="form-control fg-input" id="add-inventory-unit" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">    
+                                    <label>Brand</label>
+                                    <input type="text" class="form-control fg-input" id="add-inventory-brand" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">    
+                                    <label>Model </label>
+                                    <input type="text" class="form-control fg-input" id="add-inventory-model" placeholder="">
+                                </div>
+                            </div>
+
+                            <div class="col-sm-6">
+                                <div class="form-group">    
+                                    <label>Reference</label>
+                                    <input type="text" class="form-control fg-input" id="add-inventory-ref" placeholder="">
+                                </div>
+                            </div>
+
                             <div class="col-sm-12">
                                 <div class="form-group">    
-                                    <label>Description</label> </label>
+                                    <label>Description/ Remarks</label> </label>
                                     <textarea rows="5" class="form-control fg-input" id="add-inventory-description" placeholder="Tell us more about this inventory Item/Service"></textarea>
                                 </div>
                             </div>

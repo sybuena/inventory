@@ -144,7 +144,7 @@
                             <tr>
                                 <th data-column-id="id" data-visible="false" data-identifier="true">ID</th>
                                 <th data-column-id="quote_number" data-order="asc">Quote #</th>
-                                <th data-column-id="reference_number" data-order="asc">Reference #</th>
+                                <!-- <th data-column-id="reference_number" data-order="asc">Reference #</th> -->
                                 <th data-column-id="to" data-formatter="to" data-order="asc">Customer</th>
                                 <th data-column-id="date" data-sortable="false">Date</th>
                                 <!-- <th data-column-id="due_date" data-sortable="false">Expiry</th> -->

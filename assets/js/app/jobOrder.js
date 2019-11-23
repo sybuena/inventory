@@ -30,6 +30,9 @@ function jobOrderModal(id, data) {
     var title 		= $(baseId+'title');
     var summary 	= $(baseId+'summary');
     var terms 		= $(baseId+'terms');
+    var model       = $(baseId+'model');
+    var serial       = $(baseId+'serial');
+    var tech       = $(baseId+'tech');
 
 
     var save        = $('.add-job-order-save');
@@ -55,6 +58,9 @@ function jobOrderModal(id, data) {
         terms.val('');
         dueDate.val('');
         total.val('');
+        model.val('');
+        serial.val('');
+        tech.val('');
 
         //show modal
         $('#add-job-order-modal').modal('show');
@@ -85,6 +91,8 @@ function jobOrderModal(id, data) {
         title.val(data['title']);
         summary.val(data['summary']);
         terms.val(data['terms']);
+        model.val(data['model']);
+        tech.val(data['tech']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -321,7 +329,7 @@ function jobOrderModal(id, data) {
         (customer.val() == 0) ? (error = helper.hasError(customer, 1)) : helper.noError(customer, 1);
         (jobOrderNumber.val() == '') ? (error = helper.hasError(jobOrderNumber, 1)) : helper.noError(jobOrderNumber, 1);
         (date.val() == '') ? (error = helper.hasError(date, 1)) : helper.noError(date, 1);
-        (dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
+        //(dueDate.val() == '') ? (error = helper.hasError(dueDate, 1)) : helper.noError(dueDate, 1);
         (total.val() == '') ? (error = helper.hasError(total, 1)) : helper.noError(total, 1);
 
         //if all is correct
@@ -345,7 +353,10 @@ function jobOrderModal(id, data) {
                 'total_amount'      : total.val(),
                 'title'				: title.val(),
                 'summary'			: summary.val(),
-                'terms'				: terms.val()
+                'terms'				: terms.val(),
+                'model'             : model.val(),
+                'serial'             : serial.val(),
+                'tech'             : tech.val(),
             };
 
             base.

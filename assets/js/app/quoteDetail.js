@@ -303,6 +303,7 @@ function quoteModal(id, data) {
     var title       = $(baseId+'title');
     var summary     = $(baseId+'summary');
     var terms       = $(baseId+'terms');
+    var validity       = $(baseId+'validity');
 
 
     var save        = $('.add-quote-save');
@@ -336,6 +337,7 @@ function quoteModal(id, data) {
         title.val(data['title']);
         summary.val(data['summary']);
         terms.val(data['terms']);
+        validity.val(data['validity']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -646,7 +648,8 @@ function quoteModal(id, data) {
                 'total_amount'      : total.val(),
                 'title'             : title.val(),
                 'summary'           : summary.val(),
-                'terms'             : terms.val()
+                'terms'             : terms.val(),
+                'validity'             : validity.val()
             };
 
             base.

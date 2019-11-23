@@ -42,7 +42,7 @@
                     </div>
 
                     <div class="col-sm-4">
-                        <label>Date Finish <span class="required-text">*</span></label>
+                        <label>Date Finish </label>
                         <div class="input-group form-group">
                             <span class="input-group-addon"><i class="zmdi zmdi-calendar"></i></span>
                                 <div class="dtp-container fg-line">
@@ -133,7 +133,25 @@
                             <textarea rows="3" class="form-control fg-input" id="add-job-order-terms"></textarea>
                         </div>
                     </div>
-                    
+
+                    <div class="col-sm-4">
+                        <div class="form-group">    
+                            <label>Engine Model</label>
+                            <input type="text" class="form-control fg-input" id="add-job-order-model"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">    
+                            <label>Engine Serial Number</label>
+                            <input type="text" class="form-control fg-input" id="add-job-order-serial"/>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="form-group">    
+                            <label>Technician</label>
+                            <input type="text" class="form-control fg-input" id="add-job-order-tech"/>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="modal-footer">

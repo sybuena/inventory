@@ -219,17 +219,21 @@
                     <div class="clearfix"></div>
                     <div class="p-25 row">
                         
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Title</h4>
                             <p class="c-gray"><?=show($quote['title'], 'N/A')?></p>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Summary</h4>
                             <p class="c-gray"><?=show($quote['summary'], 'N/A')?></p>
                         </div>
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <h4 class="c-blue f-400">Terms</h4>
                             <p class="c-gray"><?=show($quote['terms'], 'N/A')?></p>
+                        </div>
+                        <div class="col-lg-3">
+                            <h4 class="c-blue f-400">Validity</h4>
+                            <p class="c-gray"><?=show($quote['validity'], 'N/A')?></p>
                         </div>
                     </div>
                    

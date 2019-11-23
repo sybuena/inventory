@@ -104,6 +104,7 @@ function quoteModal(id, data) {
     var title 		= $(baseId+'title');
     var summary 	= $(baseId+'summary');
     var terms 		= $(baseId+'terms');
+    var validity       = $(baseId+'validity');
 
 
     var save        = $('.add-quote-save');
@@ -129,6 +130,7 @@ function quoteModal(id, data) {
         terms.val('');
         dueDate.val('');
         total.val('');
+        validity.val('');
 
         //show modal
         $('#add-quote-modal').modal('show');
@@ -158,6 +160,7 @@ function quoteModal(id, data) {
         title.val(data['title']);
         summary.val(data['summary']);
         terms.val(data['terms']);
+        validity.val(data['validity']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -474,6 +477,7 @@ function quoteModal(id, data) {
                 'customer'          : customer.val(),
                 'quote_number'    : quoteNumber.val(),
                 'reference_number'  : refNumber.val(),
+                'validity'  : validity.val(),
                 'date'              : date.val(),
                 'due_date'          : dueDate.val(),
                 'line'              : line,

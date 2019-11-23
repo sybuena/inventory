@@ -237,6 +237,10 @@ function addItem(table) {
 	var location = $(addInv+'location');
 	var type = $(addInv+'type');
 	var category = $(addInv+'category');
+	var unit = $(addInv+'unit');
+	var brand = $(addInv+'brand');
+	var model = $(addInv+'model');
+	var ref = $(addInv+'ref');
 	var description = $(addInv+'description');
 	//pricing
 	var sales = $(addInv+'sales');
@@ -249,6 +253,10 @@ function addItem(table) {
 		code.val('');
 		type.val(0);
 		location.val('');
+		unit.val('');
+		brand.val('');
+		model.val('');
+		ref.val('');
 		description.val('');
 		sales.val('');
 		cost.val('');
@@ -310,6 +318,10 @@ function addItem(table) {
 				'type'  		: type.val(),
 				'location'  		: location.val(),
 				'category'  	: category.val(),
+				'unit'  	: unit.val(),
+				'brand'  	: brand.val(),
+				'model'  	: model.val(),
+				'ref'  	: ref.val(),
 				'description'  	: description.val(),
 				'sales'  		: sales.val(),
 				'cost'  		: cost.val(),

@@ -23,12 +23,12 @@
                             <input type="text" class="form-control fg-input" placeholder="" id="add-quote-quote-number">
                         </div>
                     </div>
-                    <!-- <div class="col-sm-4">
+                    <div class="col-sm-4">
                         <div class="form-group">    
-                            <label>Reference Number</label>
-                            <input type="text" class="form-control fg-input" placeholder="" id="add-quote-reference-number">
+                            <label>Validity</label>
+                            <input type="text" class="form-control fg-input" placeholder="" id="add-quote-validity">
                         </div>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="row m-t-10">
                     <div class="col-sm-4">

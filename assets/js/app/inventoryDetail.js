@@ -153,6 +153,10 @@ function updateInventory(id) {
 	var type  		= $(bName+'type');
 	var location  	= $(bName+'location');
 	var category  	= $(bName+'category');
+    var unit = $(bName+'unit');
+    var brand = $(bName+'brand');
+    var model = $(bName+'model');
+    var ref = $(bName+'ref');
 	var description	= $(bName+'description');
 
     var purchaseCost = $(bName+'purchase-cost');
@@ -174,6 +178,10 @@ function updateInventory(id) {
 				'type'			: type.val(),
 				'location'		: location.val(),
 				'category'		: category.val(),
+                'unit'   : unit.val(),
+                'brand'   : brand.val(),
+                'model'   : model.val(),
+                'ref'   : ref.val(),
 				'description'	: description.val(),
                 'cost'          : purchaseCost.val(),
                 'sales'         : salesCost.val(),

@@ -199,6 +199,21 @@
                             <h4 class="c-blue f-400">Terms</h4>
                             <p class="c-gray"><?=show($jobOrder['terms'], 'N/A')?></p>
                         </div>
+
+                        <div class="col-lg-4">
+                            <h4 class="c-blue f-400">Engine Model</h4>
+                            <p class="c-gray"><?=show($jobOrder['model'], 'N/A')?></p>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <h4 class="c-blue f-400">Engine Serial Number</h4>
+                            <p class="c-gray"><?=show($jobOrder['serial'], 'N/A')?></p>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <h4 class="c-blue f-400">Technician</h4>
+                            <p class="c-gray"><?=show($jobOrder['tech'], 'N/A')?></p>
+                        </div>
                     </div>
                    
 

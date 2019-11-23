@@ -91,7 +91,47 @@
         </div>
 
         <div class="form-group m-b-20">
-            <label class="col-sm-3 control-label textlabel">Description</label>
+            <label class="col-sm-3 control-label textlabel">
+                Unit 
+            </label>
+            <div class="col-sm-3">
+                <div class="fg-line">
+                    <input type="text" class="form-control" id="inventory-unit" value="<?=$data['unit']; ?>">
+                </div>
+            </div>
+            <label class="col-sm-1 control-label textlabel">
+                Brand 
+            </label>
+            <div class="col-sm-4">
+                <div class="fg-line">
+                    <input type="text" class="form-control" id="inventory-brand" value="<?=$data['brand']; ?>">
+                </div>
+            </div>
+            <span class="col-sm-1"></span>
+        </div>
+
+        <div class="form-group m-b-20">
+            <label class="col-sm-3 control-label textlabel">
+                Model 
+            </label>
+            <div class="col-sm-3">
+                <div class="fg-line">
+                    <input type="text" class="form-control" id="inventory-model" value="<?=$data['model']; ?>">
+                </div>
+            </div>
+            <label class="col-sm-1 control-label textlabel">
+                Reference 
+            </label>
+            <div class="col-sm-4">
+                <div class="fg-line">
+                    <input type="text" class="form-control" id="inventory-ref" value="<?=$data['ref']; ?>">
+                </div>
+            </div>
+            <span class="col-sm-1"></span>
+        </div>
+
+        <div class="form-group m-b-20">
+            <label class="col-sm-3 control-label textlabel">Description/ Remarks</label>
             <div class="col-sm-8">
                 <div class="fg-line">
                     <textarea class="form-control" rows="5" id="inventory-description" placeholder="Tell us more about this Item/Service"><?=$data['description']; ?></textarea>

@@ -271,6 +271,9 @@ function jobOrderModal(id, data) {
     var title       = $(baseId+'title');
     var summary     = $(baseId+'summary');
     var terms       = $(baseId+'terms');
+    var model       = $(baseId+'model');
+    var serial       = $(baseId+'serial');
+    var tech       = $(baseId+'tech');
 
 
     var save        = $('.add-job-order-save');
@@ -296,6 +299,9 @@ function jobOrderModal(id, data) {
         terms.val('');
         dueDate.val('');
         total.val('');
+        model.val('');
+        serial.val('');
+        tech.val('');
 
         //show modal
         $('#add-job-order-modal').modal('show');
@@ -326,6 +332,9 @@ function jobOrderModal(id, data) {
         title.val(data['title']);
         summary.val(data['summary']);
         terms.val(data['terms']);
+        model.val(data['model']);
+        serial.val(data['serial']);
+        tech.val(data['tech']);
         
         if(isset(data['line'])) {
             //loop line item
@@ -576,9 +585,12 @@ function jobOrderModal(id, data) {
                 'total_amount'      : total.val(),
                 'title'             : title.val(),
                 'summary'           : summary.val(),
-                'terms'             : terms.val()
+                'terms'             : terms.val(),
+                'model'             : model.val(),
+                'serial'             : serial.val(),
+                'tech'             : tech.val()
             };
-
+            console.log(data);
             base.
                 setUrl(url).
                 setData(data).
@@ -594,7 +606,7 @@ function jobOrderModal(id, data) {
 
                     $('#add-job-order-modal').modal('hide');
 
-                    location.reload();
+                    //location.reload();
                 }
             );
         }
